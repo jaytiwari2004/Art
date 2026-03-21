@@ -49,9 +49,8 @@ const Navbar = () => {
   return (
     <nav
       ref={navbarRef}
-      className={`fixed top-0 left-0 w-full z-50 grid grid-cols-3 items-center px-6 md:px-12 py-8 drop-shadow-sm transition-colors duration-500 ease-in-out ${
-        isScrolled ? "text-stone-900" : "text-white"
-      }`}
+      className={`fixed top-0 left-0 w-full z-50 grid grid-cols-3 items-center px-6 md:px-12 py-8 drop-shadow-sm transition-colors duration-500 ease-in-out ${isScrolled ? "text-stone-900" : "text-white"
+        }`}
     >
       {/* Left Side: Navigation Links */}
       <div className="flex space-x-8 text-[22px] leading-[16px] font-normal tracking-wide font-serif hidden md:flex">

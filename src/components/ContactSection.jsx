@@ -57,11 +57,12 @@ export default function ContactSection() {
           <h2
             className="mb-12"
             style={{
-              fontFamily: "var(--font-elicyon), 'Playfair Display', Georgia, serif",
-              fontSize: "clamp(32px, 4vw, 56px)",
+              fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
+              fontSize: "26px",
               fontWeight: 400,
-              lineHeight: 1.1,
-              color: "rgb(0,0,0)",
+              fontStyle: "normal",
+              lineHeight: "31px",
+              color: "rgb(0, 0, 0)",
               textTransform: "uppercase",
               letterSpacing: "0.02em",
             }}
@@ -104,12 +105,13 @@ export default function ContactSection() {
         <div className="mt-20 text-center">
           <p
             style={{
-              fontFamily: "var(--font-elicyon), 'Playfair Display', Georgia, serif",
-              fontSize: "clamp(24px, 4vw, 56px)",
+              fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
+              fontSize: "26px",
               fontWeight: 400,
-              color: "white",
+              fontStyle: "normal",
+              lineHeight: "31px",
+              color: "rgb(0, 0, 0)",
               textTransform: "uppercase",
-              lineHeight: 1,
               letterSpacing: "-0.02em",
               textShadow: "0px 4px 12px rgba(0,0,0,0.6)",
             }}

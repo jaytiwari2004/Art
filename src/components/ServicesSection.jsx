@@ -10,7 +10,7 @@ export default function ServicesSection() {
         <div className="mb-16">
           <h2
             style={{
-              fontFamily: "var(--font-elicyon), 'Playfair Display', Georgia, serif",
+              fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
               fontSize: "48px",
               fontWeight: 400,
               fontStyle: "normal",
@@ -23,7 +23,7 @@ export default function ServicesSection() {
           </h2>
           <p
             style={{
-              fontFamily: "var(--font-antique), 'EB Garamond', Georgia, serif",
+              fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
               fontSize: "14px",
               fontWeight: 400,
               fontStyle: "normal",
@@ -92,12 +92,13 @@ export default function ServicesSection() {
             >
               <span
                 style={{
-                  color: "#fff",
-                  fontFamily: "'Cormorant Garamond', 'Georgia', serif",
-                  fontSize: "11px",
+                  color: "rgb(244, 242, 238)",
+                  fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", sans-serif',
+                  fontSize: "16px",
                   letterSpacing: "0.3em",
                   textAlign: "center",
-                  lineHeight: "1.7",
+                  lineHeight: "16px",
+                  fontStyle: "normal",
                   fontWeight: 400,
                 }}
               >
@@ -146,12 +147,13 @@ export default function ServicesSection() {
             >
               <span
                 style={{
-                  color: "#fff",
-                  fontFamily: "'Cormorant Garamond', 'Georgia', serif",
-                  fontSize: "11px",
+                  color: "rgb(244, 242, 238)",
+                  fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", sans-serif',
+                  fontSize: "16px",
                   letterSpacing: "0.3em",
                   textAlign: "center",
-                  lineHeight: "1.7",
+                  lineHeight: "16px",
+                  fontStyle: "normal",
                   fontWeight: 400,
                 }}
               >
@@ -200,12 +202,13 @@ export default function ServicesSection() {
             >
               <span
                 style={{
-                  color: "#fff",
-                  fontFamily: "'Cormorant Garamond', 'Georgia', serif",
-                  fontSize: "11px",
+                  color: "rgb(244, 242, 238)",
+                  fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", sans-serif',
+                  fontSize: "16px",
                   letterSpacing: "0.3em",
                   textAlign: "center",
-                  lineHeight: "1.7",
+                  lineHeight: "16px",
+                  fontStyle: "normal",
                   fontWeight: 400,
                 }}
               >
@@ -223,11 +226,11 @@ export default function ServicesSection() {
             {/* Descriptive paragraph */}
             <p
               style={{
-                fontFamily: "var(--font-antique), 'EB Garamond', Georgia, serif",
+                fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
                 fontSize: "14px",
                 fontWeight: 400,
                 fontStyle: "normal",
-                lineHeight: "22px",
+                lineHeight: "17px",
                 color: "rgb(0, 0, 0)",
                 marginBottom: "32px",
               }}
@@ -240,7 +243,7 @@ export default function ServicesSection() {
             {/* EXPLORE OUR SERVICES underlined link */}
             <button
               style={{
-                fontFamily: "var(--font-antique), 'EB Garamond', Georgia, serif",
+                fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
                 fontSize: "13px",
                 fontWeight: 400,
                 letterSpacing: "0.25em",

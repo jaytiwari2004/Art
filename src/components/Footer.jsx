@@ -12,11 +12,12 @@ export default function Footer() {
         <div className="lg:col-span-5 flex flex-col">
           <h2
             style={{
-              fontFamily: "var(--font-elicyon), 'Playfair Display', Georgia, serif",
-              fontSize: "clamp(40px, 4vw, 56px)",
+              fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", sans-serif',
+              fontSize: "16px",
               fontWeight: 400,
-              lineHeight: 1.1,
-              color: "#1a1a1a",
+              fontStyle: "normal",
+              lineHeight: "24px",
+              color: "rgb(0, 0, 0)",
               textTransform: "uppercase",
               letterSpacing: "0.02em",
               marginBottom: "24px",
@@ -24,15 +25,17 @@ export default function Footer() {
           >
             JOIN <span style={{ fontStyle: "italic", textTransform: "lowercase", letterSpacing: "0.05em" }}>the</span> WORLD <br />
             <span style={{ fontStyle: "italic", textTransform: "lowercase", letterSpacing: "0.05em", marginRight: "12px" }}>of</span>
-            ART
+            ELICYON
           </h2>
           
           <p 
             style={{
-              fontFamily: "var(--font-antique), 'EB Garamond', Georgia, serif",
-              fontSize: "13px",
-              lineHeight: "1.6",
-              color: "#1a1a1a",
+              fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
+              fontSize: "14px",
+              fontWeight: 400,
+              fontStyle: "normal",
+              lineHeight: "16px",
+              color: "rgb(0, 0, 0)",
               maxWidth: "360px",
               marginBottom: "48px"
             }}
@@ -119,8 +122,12 @@ export default function Footer() {
           <ul 
             className="space-y-3"
             style={{
-              fontFamily: "var(--font-antique), 'EB Garamond', Georgia, serif",
-              fontSize: "11px",
+              fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
+              fontSize: "14px",
+              fontWeight: 400,
+              fontStyle: "normal",
+              lineHeight: "16px",
+              color: "rgb(0, 0, 0)",
               letterSpacing: "0.3em",
               textTransform: "uppercase",
             }}
@@ -135,8 +142,12 @@ export default function Footer() {
           <ul 
              className="space-y-3"
              style={{
-               fontFamily: "var(--font-antique), 'EB Garamond', Georgia, serif",
-               fontSize: "11px",
+               fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
+               fontSize: "14px",
+               fontWeight: 400,
+               fontStyle: "normal",
+               lineHeight: "16px",
+               color: "rgb(0, 0, 0)",
                letterSpacing: "0.3em",
                textTransform: "uppercase",
              }}
@@ -154,11 +165,12 @@ export default function Footer() {
         <h1 
           className="pointer-events-none select-none"
           style={{
-            fontFamily: "var(--font-elicyon), 'Playfair Display', Georgia, serif",
-            fontSize: "clamp(160px, 35vw, 420px)",
+            fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
+            fontSize: "303px",
             fontWeight: 400,
-            lineHeight: 0.75,
-            color: "#1a1a1a",
+            fontStyle: "normal",
+            lineHeight: "303px",
+            color: "rgb(0, 0, 0)",
             letterSpacing: "-0.04em",
             margin: 0,
             padding: 0,

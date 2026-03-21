@@ -55,7 +55,7 @@ export default function InsightsSection() {
         <div className="max-w-2xl">
           <h2
             style={{
-              fontFamily: "var(--font-elicyon), 'Playfair Display', Georgia, serif",
+              fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
               fontSize: "48px",
               fontWeight: 400,
               fontStyle: "normal",
@@ -71,35 +71,37 @@ export default function InsightsSection() {
           <p
             className="mt-8 uppercase tracking-widest max-w-sm"
             style={{
-              fontFamily: "var(--font-antique), 'EB Garamond', Georgia, serif",
-              fontSize: "13px",
+              fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
+              fontSize: "14px",
               fontWeight: 400,
+              fontStyle: "normal",
               color: "rgb(0, 0, 0)",
-              lineHeight: "1.8",
+              lineHeight: "17px",
             }}
           >
-            Beyond the finished space. Explore the insights, inspiration, 
-            innovations, and ideas that quietly shape our world.
+            Go beyond the finished space. Explore the insights, inspiration,
+            collaborations, and ideas that quietly shape our world.
           </p>
         </div>
         <button
+          className="relative group pb-[6px] uppercase tracking-[0.3em]"
           style={{
-            fontFamily: "var(--font-antique), 'EB Garamond', Georgia, serif",
+            fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
+            fontSize: "14px",
+            fontWeight: 400,
+            fontStyle: "normal",
+            lineHeight: "14px",
+            color: "rgb(0, 0, 0)",
             marginTop: "32px",
-            fontSize: "11px",
-            letterSpacing: "0.3em",
-            fontWeight: 600,
-            textTransform: "uppercase",
-            borderBottom: "1px solid #1a1a1a",
-            paddingBottom: "6px",
             background: "none",
             border: "none",
-            borderBottom: "1px solid #1a1a1a",
             cursor: "pointer",
-            color: "#1a1a1a",
           }}
         >
           Explore Insights
+          <span className="absolute bottom-0 left-0 w-full h-[1px] overflow-hidden">
+            <span className="absolute inset-0 bg-black transition-transform duration-500 ease-in-out translate-x-0 group-hover:translate-x-[101%]"></span>
+          </span>
         </button>
       </div>
 
@@ -112,7 +114,7 @@ export default function InsightsSection() {
               <img 
                 src={item.image} 
                 alt={item.title}
-                className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                className="w-full h-full object-cover"
               />
               {/* Overlay Text (if any) */}
               {item.overlayText && (
@@ -130,10 +132,14 @@ export default function InsightsSection() {
             {/* Meta Data */}
             <div className="flex flex-col flex-grow">
               <span 
-                className="text-gray-500 mb-4"
+                className="mb-4"
                 style={{
-                  fontFamily: "var(--font-antique), 'EB Garamond', Georgia, serif",
-                  fontSize: "10px",
+                  fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
+                  fontSize: "12px",
+                  fontWeight: 400,
+                  fontStyle: "normal",
+                  lineHeight: "12px",
+                  color: "rgb(0, 0, 0)",
                   letterSpacing: "0.3em",
                   textTransform: "uppercase"
                 }}
@@ -141,11 +147,13 @@ export default function InsightsSection() {
                 {item.category}
               </span>
               <h3 
-                className="uppercase leading-snug mb-3 tracking-wider group-hover:underline decoration-1 underline-offset-[6px]"
+                className="uppercase mb-3 tracking-wider"
                 style={{
-                  fontFamily: "var(--font-elicyon), 'Playfair Display', Georgia, serif",
-                  fontSize: "20px",
+                  fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
+                  fontSize: "22px",
                   fontWeight: 400,
+                  fontStyle: "normal",
+                  lineHeight: "26px",
                   color: "rgb(0, 0, 0)",
                 }}
               >
@@ -155,12 +163,12 @@ export default function InsightsSection() {
                 <p 
                   className="mb-6"
                   style={{
-                    fontFamily: "var(--font-antique), 'EB Garamond', Georgia, serif",
+                    fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
                     fontSize: "14px",
                     fontWeight: 400,
-                    lineHeight: "22px",
+                    fontStyle: "normal",
+                    lineHeight: "16px",
                     color: "rgb(0, 0, 0)",
-                    opacity: 0.8
                   }}
                 >
                   {item.description}
@@ -168,16 +176,22 @@ export default function InsightsSection() {
               )}
               <div className="mt-auto pt-4">
                 <span 
-                  className="border-b border-black/20 pb-1 group-hover:border-black transition-colors"
+                  className="relative inline-block pb-1"
                   style={{
-                    fontFamily: "var(--font-antique), 'EB Garamond', Georgia, serif",
-                    fontSize: "10px",
+                    fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
+                    fontSize: "12px",
+                    fontWeight: 400,
+                    fontStyle: "normal",
+                    lineHeight: "12px",
                     letterSpacing: "0.3em",
                     textTransform: "uppercase",
                     color: "rgb(0, 0, 0)",
                   }}
                 >
                   READ MORE
+                  <span className="absolute bottom-0 left-0 w-full h-[1px] overflow-hidden">
+                    <span className="absolute inset-0 bg-black transition-transform duration-500 ease-in-out translate-x-0 group-hover:translate-x-[101%]"></span>
+                  </span>
                 </span>
               </div>
             </div>

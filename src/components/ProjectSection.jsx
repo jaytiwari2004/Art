@@ -94,7 +94,17 @@ export default function ProjectSection() {
             <span className="ml-12 md:ml-20">PROJECTS</span>
           </h2>
           
-          <p className="mt-8 text-[14px] leading-[17px] font-sans font-normal text-black text-center">
+          <p 
+            className="mt-8 text-center"
+            style={{
+              fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
+              fontStyle: 'normal',
+              fontWeight: 400,
+              color: 'rgb(0, 0, 0)',
+              fontSize: '14px',
+              lineHeight: '17px',
+            }}
+          >
             Storytelling through design - a curated selection<br className="hidden md:block" />
             of over 100 projects worldwide.
           </p>
@@ -119,7 +129,10 @@ export default function ProjectSection() {
             </div>
 
             {/* Staggered Text */}
-            <h2 className="relative z-10 text-[10vw] font-serif text-white flex overflow-hidden">
+            <h2 
+              className="relative z-10 text-[10vw] text-white flex overflow-hidden"
+              style={{ fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", sans-serif' }}
+            >
               {project.title.split("").map((char, i) => (
                 <span key={i} className="letter inline-block mx-1">
                   {char === " " ? "\u00A0" : char}
@@ -129,7 +142,19 @@ export default function ProjectSection() {
 
             {/* Subtitle and Details */}
             <div className="project-details absolute bottom-20 right-20 text-right text-white z-20">
-              <div className="text-xl tracking-[0.2em] uppercase mb-4 font-serif">{project.subtitle}</div>
+              <div 
+                className="tracking-[0.2em] uppercase mb-4 text-white"
+                style={{
+                  fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", sans-serif',
+                  fontStyle: 'normal',
+                  fontWeight: 400,
+                  color: 'rgb(255, 255, 255)',
+                  fontSize: '32px',
+                  lineHeight: '40px',
+                }}
+              >
+                {project.subtitle}
+              </div>
               <button className="text-[11px] uppercase tracking-[0.3em] border-b border-white pb-1 hover:text-stone-300 hover:border-stone-300 transition-colors">
                 VIEW PROJECT
               </button>

@@ -129,7 +129,7 @@ export default function VisionSection() {
         <div ref={headlineRef} style={{ textAlign: "center", marginBottom: "56px" }}>
           <h2
             style={{
-              fontFamily: "var(--font-elicyon), 'Playfair Display', Georgia, serif",
+              fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
               fontSize: "48px",
               fontWeight: 400,
               fontStyle: "normal",
@@ -181,8 +181,7 @@ export default function VisionSection() {
         >
           <p
             style={{
-              fontFamily:
-                "var(--font-antique), 'EB Garamond', Georgia, serif",
+              fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
               fontSize: "14px",
               fontWeight: 400,
               fontStyle: "normal",
@@ -203,8 +202,7 @@ export default function VisionSection() {
 
           <button
             style={{
-              fontFamily:
-                "var(--font-antique), 'EB Garamond', Georgia, serif",
+              fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
               fontSize: "13px",
               fontWeight: 400,
               letterSpacing: "0.3em",

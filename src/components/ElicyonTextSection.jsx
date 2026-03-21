@@ -86,10 +86,18 @@ const ElicyonTextSection = () => {
       <div className="absolute inset-0 z-10 flex items-center justify-center px-10 pointer-events-none">
         <h2
           ref={textRef}
-          className="text-3xl md:text-4xl lg:text-[44px] font-serif leading-[1.3] text-stone-800 text-center max-w-[800px] select-none antialiased"
+          className="text-center max-w-[800px] select-none antialiased"
+          style={{
+            fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
+            fontStyle: 'normal',
+            fontWeight: 400,
+            color: 'rgb(0, 0, 0)',
+            fontSize: '48px',
+            lineHeight: '58px',
+          }}
         >
           <span className="part-1 inline-block opacity-0">FORGING a NEW LUXURY</span>{" "}
-          <span className="part-2 inline-block opacity-0 text-stone-600">through CRAFT,</span> <br className="hidden md:block" />
+          <span className="part-2 inline-block opacity-0">through CRAFT,</span> <br className="hidden md:block" />
           <span className="part-3 inline-block opacity-0 mt-2">VISION and unrivalled GLOBAL EXPERTISE.</span>
         </h2>
       </div>

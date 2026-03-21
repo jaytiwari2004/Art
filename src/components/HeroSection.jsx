@@ -73,17 +73,47 @@ const HeroSection = () => {
             style={{ color: 'rgb(244, 242, 238)' }}
           >
             {/* Line 1: Timeless (Exactly aligned with 'Project' link) */}
-            <div className="text-7xl md:text-[140px] leading-tight text-left mt-14">
-              Timeless
+            <div
+              className="text-left mt-14"
+              style={{
+                fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
+                fontSize: "115px",
+                fontWeight: 400,
+                fontStyle: "normal",
+                lineHeight: "132px",
+                color: "rgb(244, 242, 238)",
+              }}
+            >
+              TIMELESS
             </div>
 
             {/* Line 2: TAILORED (Shifted more Left by increasing right-side buffer) */}
-            <div className="text-7xl md:text-[140px] leading-tight text-right md:pr-40 lg:pr-80 md:mt-12">
-              Tailored
+            <div
+              className="text-right md:pr-40 lg:pr-80 md:mt-12"
+              style={{
+                fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
+                fontSize: "115px",
+                fontWeight: 400,
+                fontStyle: "normal",
+                lineHeight: "132px",
+                color: "rgb(244, 242, 238)",
+              }}
+            >
+              TAILORED
             </div>
 
             {/* Line 3: SPACES (Shifted further Left with relative offset) */}
-            <div className="text-7xl md:text-[140px] leading-tight text-left md:pl-[10%] lg:pl-[25%] md:mt-12">
+            <div
+              className="text-left md:pl-[10%] lg:pl-[25%] md:mt-12"
+              style={{
+                fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
+                fontSize: "115px",
+                fontWeight: 400,
+                fontStyle: "normal",
+                lineHeight: "132px",
+                color: "rgb(244, 242, 238)",
+              }}
+            >
               Spaces
             </div>
           </h1>

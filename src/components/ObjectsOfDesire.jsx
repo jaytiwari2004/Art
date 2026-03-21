@@ -140,7 +140,7 @@ export default function ObjectsOfDesire() {
       <div className="text-center mb-16 mt-8">
         <h2
           style={{
-            fontFamily: "var(--font-elicyon), 'Playfair Display', Georgia, serif",
+            fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
             fontSize: "48px",
             fontWeight: 400,
             fontStyle: "normal",
@@ -150,7 +150,7 @@ export default function ObjectsOfDesire() {
             margin: 0,
           }}
         >
-          Objects of Desire
+          OBJECTS of DESIRE
         </h2>
       </div>
 
@@ -210,7 +210,7 @@ export default function ObjectsOfDesire() {
             
             <p
               style={{
-                fontFamily: "var(--font-antique), 'EB Garamond', Georgia, serif",
+                fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
                 fontSize: "14px",
                 fontWeight: 400,
                 fontStyle: "normal",
