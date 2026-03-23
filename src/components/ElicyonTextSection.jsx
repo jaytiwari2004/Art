@@ -62,23 +62,23 @@ const ElicyonTextSection = () => {
       <div ref={imagesRef} className="absolute top-0 left-0 w-full h-[300vh] z-0">
         {/* Phase 1: Top View (0-100vh) */}
         <div className="absolute top-[15vh] right-[8%] w-56 h-80 md:w-72 md:h-[450px] shadow-2xl rounded-sm overflow-hidden parallax-img">
-          <img src="/img1.jpg" className="w-full h-full object-cover" alt="Interior Details" />
+          <img src="/new.jpeg" className="w-full h-full object-cover" alt="Interior Details" />
         </div>
         <div className="absolute top-[65vh] left-[8%] w-48 h-72 md:w-64 md:h-96 shadow-2xl rounded-sm overflow-hidden parallax-img">
-          <img src="/img3.jpg" className="w-full h-full object-cover" alt="Interior Details" />
+          <img src="/new1.jpeg" className="w-full h-full object-cover" alt="Interior Details" />
         </div>
 
         {/* Phase 2: Right Cluster Cluster (Same line, balanced proportions) */}
         <div className="absolute top-[135vh] right-[8%] w-56 h-72 md:w-64 md:h-[380px] shadow-2xl rounded-sm overflow-hidden parallax-img">
-          <img src="/img2.jpg" className="w-full h-full object-cover" alt="Interior Details" />
+          <img src="/new3.jpeg" className="w-full h-full object-cover" alt="Interior Details" />
         </div>
         <div className="absolute top-[135vh] right-[32%] w-56 h-72 md:w-64 md:h-[380px] shadow-2xl rounded-sm overflow-hidden parallax-img">
-          <img src="/img1.jpg" className="w-full h-full object-cover" alt="Interior Details" />
+          <img src="/new4.jpeg" className="w-full h-full object-cover" alt="Interior Details" />
         </div>
 
         {/* Phase 3: Bottom View (Finishes fully visible with empty space below) */}
         <div className="absolute top-[210vh] left-[5%] w-56 h-72 md:w-64 md:h-[380px] shadow-2xl rounded-sm overflow-hidden parallax-img">
-          <img src="/img2.jpg" className="w-full h-full object-cover" alt="Interior Details" />
+          <img src="/img1.jpg" className="w-full h-full object-cover" alt="Interior Details" />
         </div>
       </div>
 
