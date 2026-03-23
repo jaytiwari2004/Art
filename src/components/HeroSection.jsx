@@ -17,19 +17,37 @@ const HeroSection = () => {
 
   useGSAP(
     () => {
-      // 2. Text Parallax (Moves up faster than scroll)
-      gsap.to(heroText.current, {
-        y: -150,
-        ease: "none",
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
+      const mm = gsap.matchMedia();
+
+      mm.add("(max-width: 767px)", () => {
+        // Mobile Parallax
+        gsap.to(heroText.current, {
+          y: -50,
+          ease: "none",
+          scrollTrigger: {
+            trigger: container.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
       });
 
-      // 3. Image subtle zoom-out effect
+      mm.add("(min-width: 768px)", () => {
+        // Desktop Parallax
+        gsap.to(heroText.current, {
+          y: -150,
+          ease: "none",
+          scrollTrigger: {
+            trigger: container.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      });
+
+      // 3. Image subtle zoom-out effect (all screens)
       gsap.fromTo(
         heroImage.current,
         { scale: 1.1 },
@@ -72,45 +90,36 @@ const HeroSection = () => {
             className="w-full font-serif font-normal tracking-tighter uppercase"
             style={{ color: 'rgb(244, 242, 238)' }}
           >
-            {/* Line 1: Timeless (Exactly aligned with 'Project' link) */}
+            {/* Line 1: Timeless */}
             <div
-              className="text-left mt-14"
+              className="text-left mt-14 text-[60px] md:text-[115px] leading-[72px] md:leading-[132px]"
               style={{
-                fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
-                fontSize: "115px",
+                fontFamily: 'var(--font-elicyon), serif',
                 fontWeight: 400,
-                fontStyle: "normal",
-                lineHeight: "132px",
                 color: "rgb(244, 242, 238)",
               }}
             >
               TIMELESS
             </div>
 
-            {/* Line 2: TAILORED (Shifted more Left by increasing right-side buffer) */}
+            {/* Line 2: TAILORED */}
             <div
-              className="text-right md:pr-40 lg:pr-80 md:mt-12"
+              className="text-right md:pr-40 lg:pr-80 mt-4 md:mt-12 text-[60px] md:text-[115px] leading-[72px] md:leading-[132px]"
               style={{
-                fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
-                fontSize: "115px",
+                fontFamily: 'var(--font-elicyon), serif',
                 fontWeight: 400,
-                fontStyle: "normal",
-                lineHeight: "132px",
                 color: "rgb(244, 242, 238)",
               }}
             >
               TAILORED
             </div>
 
-            {/* Line 3: SPACES (Shifted further Left with relative offset) */}
+            {/* Line 3: Spaces */}
             <div
-              className="text-left md:pl-[10%] lg:pl-[25%] md:mt-12"
+              className="text-left pl-4 md:pl-[10%] lg:pl-[25%] mt-4 md:mt-12 text-[60px] md:text-[115px] leading-[72px] md:leading-[132px]"
               style={{
-                fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
-                fontSize: "115px",
+                fontFamily: 'var(--font-elicyon), serif',
                 fontWeight: 400,
-                fontStyle: "normal",
-                lineHeight: "132px",
                 color: "rgb(244, 242, 238)",
               }}
             >

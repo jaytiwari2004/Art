@@ -3,34 +3,27 @@ import React from 'react';
 
 export default function ServicesSection() {
   return (
-    <section className="bg-[#f0ede6] py-20 px-8 md:px-16 lg:px-24 overflow-hidden">
+    <section className="bg-[#f0ede6] py-12 md:py-20 px-6 md:px-16 lg:px-24 overflow-hidden">
       <div className="max-w-6xl mx-auto">
 
         {/* Top: Title + Description */}
-        <div className="mb-16">
+        <div className="mb-12 md:mb-16">
           <h2
+            className="text-[36px] md:text-[48px] leading-[44px] md:leading-[58px]"
             style={{
               fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
-              fontSize: "48px",
               fontWeight: 400,
-              fontStyle: "normal",
-              lineHeight: "58px",
               color: "rgb(0, 0, 0)",
-              letterSpacing: "0em",
             }}
           >
             OUR<br />SERVICES
           </h2>
           <p
+            className="text-[14px] leading-[20px] md:leading-[17px] mt-6 md:mt-5 max-w-full md:max-w-[310px]"
             style={{
               fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
-              fontSize: "14px",
               fontWeight: 400,
-              fontStyle: "normal",
-              lineHeight: "17px",
               color: "rgb(0, 0, 0)",
-              maxWidth: "310px",
-              marginTop: "20px",
             }}
           >
             We craft only the most thoughtful and visionary interiors, spanning
@@ -40,65 +33,25 @@ export default function ServicesSection() {
           </p>
         </div>
 
-        {/* Staggered Image Cards — centered */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "flex-start",
-            justifyContent: "center",
-            gap: "16px",
-          }}
-        >
-          {/* Card 1: INTERIOR DESIGN — starts higher */}
+        {/* Staggered Image Cards */}
+        <div className="flex flex-col md:flex-row items-center md:items-start md:justify-center gap-8 md:gap-4">
+          {/* Card 1: INTERIOR DESIGN */}
           <div
-            style={{
-              position: "relative",
-              width: "200px",
-              height: "280px",
-              flexShrink: 0,
-              marginTop: "0px",
-              cursor: "pointer",
-              overflow: "hidden",
-            }}
+            className="relative w-full max-w-[340px] md:w-[200px] h-[400px] md:h-[280px] cursor-pointer overflow-hidden"
+            style={{ marginTop: "0px" }}
           >
             <img
               src="/img1.jpg"
               alt="Interior Design"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                display: "block",
-              }}
+              className="w-full h-full object-cover"
             />
-            {/* Dark overlay */}
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                background: "rgba(0,0,0,0.22)",
-              }}
-            />
-            {/* Title always visible */}
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
+            <div className="absolute inset-0 bg-black/20" />
+            <div className="absolute inset-0 flex items-center justify-center">
               <span
+                className="text-[16px] tracking-[0.3em] text-center leading-[16px]"
                 style={{
                   color: "rgb(244, 242, 238)",
                   fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", sans-serif',
-                  fontSize: "16px",
-                  letterSpacing: "0.3em",
-                  textAlign: "center",
-                  lineHeight: "16px",
-                  fontStyle: "normal",
                   fontWeight: 400,
                 }}
               >
@@ -107,53 +60,22 @@ export default function ServicesSection() {
             </div>
           </div>
 
-          {/* Card 2: ARCHITECTURE — tallest, shifted down */}
+          {/* Card 2: ARCHITECTURE */}
           <div
-            style={{
-              position: "relative",
-              width: "200px",
-              height: "340px",
-              flexShrink: 0,
-              marginTop: "60px",
-              cursor: "pointer",
-              overflow: "hidden",
-            }}
+            className="relative w-full max-w-[340px] md:w-[200px] h-[400px] md:h-[340px] md:mt-12 cursor-pointer overflow-hidden"
           >
             <img
               src="/img2.jpg"
               alt="Architecture"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                display: "block",
-              }}
+              className="w-full h-full object-cover"
             />
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                background: "rgba(0,0,0,0.22)",
-              }}
-            />
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
+            <div className="absolute inset-0 bg-black/20" />
+            <div className="absolute inset-0 flex items-center justify-center">
               <span
+                className="text-[16px] tracking-[0.3em] text-center leading-[16px]"
                 style={{
                   color: "rgb(244, 242, 238)",
                   fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", sans-serif',
-                  fontSize: "16px",
-                  letterSpacing: "0.3em",
-                  textAlign: "center",
-                  lineHeight: "16px",
-                  fontStyle: "normal",
                   fontWeight: 400,
                 }}
               >
@@ -162,53 +84,22 @@ export default function ServicesSection() {
             </div>
           </div>
 
-          {/* Card 3: PROJECT MANAGEMENT — medium, shifted slightly down */}
+          {/* Card 3: PROJECT MANAGEMENT */}
           <div
-            style={{
-              position: "relative",
-              width: "200px",
-              height: "280px",
-              flexShrink: 0,
-              marginTop: "30px",
-              cursor: "pointer",
-              overflow: "hidden",
-            }}
+            className="relative w-full max-w-[340px] md:w-[200px] h-[400px] md:h-[280px] md:mt-8 cursor-pointer overflow-hidden"
           >
             <img
               src="/img3.jpg"
               alt="Project Management"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                display: "block",
-              }}
+              className="w-full h-full object-cover"
             />
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                background: "rgba(0,0,0,0.22)",
-              }}
-            />
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
+            <div className="absolute inset-0 bg-black/20" />
+            <div className="absolute inset-0 flex items-center justify-center">
               <span
+                className="text-[16px] tracking-[0.3em] text-center leading-[16px]"
                 style={{
                   color: "rgb(244, 242, 238)",
                   fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", sans-serif',
-                  fontSize: "16px",
-                  letterSpacing: "0.3em",
-                  textAlign: "center",
-                  lineHeight: "16px",
-                  fontStyle: "normal",
                   fontWeight: 400,
                 }}
               >
@@ -219,20 +110,14 @@ export default function ServicesSection() {
         </div>
 
         {/* Bottom right: text block + explore link */}
-        <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "56px" }}>
-          <div style={{ maxWidth: "320px", marginLeft: "auto", marginRight: "0px" }}>
-
-
-            {/* Descriptive paragraph */}
+        <div className="flex justify-start md:justify-end mt-12 md:mt-14">
+          <div className="max-w-full md:max-w-[320px]">
             <p
+              className="text-[14px] leading-[22px] md:leading-[17px] mb-8"
               style={{
                 fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
-                fontSize: "14px",
                 fontWeight: 400,
-                fontStyle: "normal",
-                lineHeight: "17px",
                 color: "rgb(0, 0, 0)",
-                marginBottom: "32px",
               }}
             >
               At Elicyon, we take pride in offering a comprehensive suite of
@@ -240,26 +125,19 @@ export default function ServicesSection() {
               consideration, and a deeply personal touch.
             </p>
 
-            {/* EXPLORE OUR SERVICES underlined link */}
             <button
+              className="text-[13px] tracking-[0.25em] uppercase underline underline-offset-4 cursor-pointer"
               style={{
                 fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
-                fontSize: "13px",
                 fontWeight: 400,
-                letterSpacing: "0.25em",
-                textTransform: "uppercase",
-                textDecoration: "underline",
-                textUnderlineOffset: "4px",
                 background: "none",
                 border: "none",
-                cursor: "pointer",
                 color: "rgb(0, 0, 0)",
                 padding: 0,
               }}
             >
               Explore Our Services
             </button>
-
           </div>
         </div>
 
