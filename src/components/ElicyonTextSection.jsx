@@ -10,99 +10,129 @@ if (typeof window !== "undefined") {
 
 const ElicyonTextSection = () => {
   const sectionRef = useRef(null);
-  const textRef = useRef(null);
-  const imagesRef = useRef(null);
 
   useGSAP(() => {
-    // 1. PINNING THE SECTION
-    ScrollTrigger.create({
-      trigger: sectionRef.current,
-      start: "top top",
-      end: "+=200%",
-      pin: true,
-      pinSpacing: true,
-    });
+    let mm = gsap.matchMedia();
 
-    // 2. TEXT REVEAL: Build the sentence sequentially as the user scrolls
-    const tl = gsap.timeline({
+    // 1. PIN THE ENTIRE SECTION
+    const mainTl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "top top",
-        end: "+=150%",
+        end: "+=400%",
+        pin: true,
+        scrub: 1.2,
+      }
+    });
+
+    // 2. RESPONSIVE ANIMATIONS
+    mm.add({
+      isDesktop: "(min-width: 768px)",
+      isMobile: "(max-width: 767px)"
+    }, (context) => {
+      let { isDesktop } = context.conditions;
+      const mergeTime = isDesktop ? 1.3 : 0.4;
+
+      if (isDesktop) {
+        // DESKTOP: FADE HEADER + HORIZONTAL MERGE
+        mainTl.to(".f-vision", { opacity: 0, y: -20, duration: 1 }, 0)
+          .to(".f-studio", { opacity: 0, y: -20, duration: 1 }, 0.2)
+          .to(".f-your", { opacity: 0, y: -20, duration: 1 }, 0.4)
+          .to(".f-sculpts", { opacity: 0, y: -20, duration: 1 }, 0.6)
+          .to(".f-spaces", { opacity: 0, y: -20, duration: 1 }, 0.8)
+          .to(".f-reflect", { opacity: 0, y: -20, duration: 1 }, 1.0)
+          .to(".f-our", { opacity: 0, y: -20, duration: 1 }, 1.2);
+
+        // Row 1 Construction
+        mainTl.to(".f-forging", { y: 58, x: "-32vw", duration: 2, ease: "power2.inOut" }, mergeTime)
+          .to(".f-luxury", { x: "15vw", duration: 2, ease: "power2.inOut" }, mergeTime);
+
+        // Row 2 Construction
+        mainTl.to(".f-unrivalled", { x: "-12vw", duration: 2, ease: "power2.inOut" }, mergeTime + 0.3)
+          .to(".f-expertise", { y: -58, x: "26vw", duration: 2, ease: "power2.inOut" }, mergeTime + 0.3);
+      } else {
+        // MOBILE: CLEAN ENTRANCE (LAND AT SECOND IMAGE BOTTOM)
+        mainTl.from(".f-mobile-row", {
+          y: 400,
+          opacity: 0,
+          stagger: 0.3,
+          duration: 3,
+          ease: "expo.out"
+        }, mergeTime);
+      }
+    });
+
+    // 3. IMAGE PARALLAX
+    gsap.to(".parallax-img", {
+      y: "-200vh",
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top top",
+        end: "+=400%",
         scrub: 1,
       }
     });
 
-    // Words come at the starting, middle, and last
-    tl.fromTo(".part-1", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1 })
-      .fromTo(".part-2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1 }, "+=0.2")
-      .fromTo(".part-3", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1 }, "+=0.2");
-
-    // 3. IMAGE SCROLLING (Full 300vh Strip Cycle)
-    gsap.fromTo(imagesRef.current,
-      { y: 0 },
-      {
-        y: "-200vh", // Pull the 300vh strip up by 200vh to show the bottom part
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "+=200%",
-          scrub: 1.5,
-        }
-      }
-    );
-
   }, { scope: sectionRef });
+
+  const textStyle = {
+    fontFamily: 'var(--font-heading), "Elicyon", serif',
+    fontStyle: 'normal',
+    fontWeight: '400',
+    color: 'rgb(0, 0, 0)',
+    fontSize: '48px',
+    lineHeight: '58px',
+    textAlign: 'center',
+    textTransform: 'none',
+    display: 'inline-block',
+  };
 
   return (
     <div ref={sectionRef} className="relative w-full h-screen bg-[#f8f7f3] overflow-hidden flex items-center justify-center">
 
-      {/* Background Scrolling Images - Taller container (300vh) for full gallery reveals */}
-      <div ref={imagesRef} className="absolute top-0 left-0 w-full h-[300vh] z-0">
-        {/* Phase 1: Top View (0-100vh) */}
-        <div className="absolute top-[15vh] right-[8%] w-56 h-80 md:w-72 md:h-[450px] shadow-2xl rounded-sm overflow-hidden parallax-img">
-          <img src="/new.jpeg" className="w-full h-full object-cover" alt="Interior Details" />
-        </div>
-        <div className="absolute top-[65vh] left-[8%] w-48 h-72 md:w-64 md:h-96 shadow-2xl rounded-sm overflow-hidden parallax-img">
-          <img src="/new1.jpeg" className="w-full h-full object-cover" alt="Interior Details" />
-        </div>
+      {/* BACKGROUND IMAGES */}
+      <div className="absolute top-0 left-0 w-full h-[300vh] z-0 pointer-events-none">
+        <img src="/new.jpeg" className="parallax-img absolute top-[15vh] right-[5%] w-64 h-80 md:w-80 md:h-[450px] object-cover shadow-lg" alt="Interior 1" />
+        <img src="/new1.jpeg" className="parallax-img absolute top-[70vh] left-[5%] w-56 h-72 md:w-72 md:h-96 object-cover shadow-lg" alt="Interior 2" />
+        <img src="/new3.jpeg" className="parallax-img absolute top-[130vh] right-[10%] w-72 h-96 md:w-96 md:h-[500px] object-cover shadow-lg" alt="Interior 3" />
+        <img src="/img1.jpg" className="parallax-img absolute top-[190vh] left-[10%] w-80 h-[500px] md:w-[450px] md:h-[600px] object-cover shadow-lg" alt="Interior 4" />
+      </div>
 
-        {/* Phase 2: Right Cluster Cluster (Same line, balanced proportions) */}
-        <div className="absolute top-[135vh] right-[8%] w-56 h-72 md:w-64 md:h-[380px] shadow-2xl rounded-sm overflow-hidden parallax-img">
-          <img src="/new3.jpeg" className="w-full h-full object-cover" alt="Interior Details" />
-        </div>
-        <div className="absolute top-[135vh] right-[32%] w-56 h-72 md:w-64 md:h-[380px] shadow-2xl rounded-sm overflow-hidden parallax-img">
-          <img src="/new4.jpeg" className="w-full h-full object-cover" alt="Interior Details" />
-        </div>
+      {/* TEXT CONTENT LAYER */}
+      <div className="relative z-10 text-center max-w-7xl px-4 pointer-events-none">
 
-        {/* Phase 3: Bottom View (Finishes fully visible with empty space below) */}
-        <div className="absolute top-[210vh] left-[5%] w-56 h-72 md:w-64 md:h-[380px] shadow-2xl rounded-sm overflow-hidden parallax-img">
-          <img src="/img1.jpg" className="w-full h-full object-cover" alt="Interior Details" />
+        <div className="flex flex-col items-center select-none antialiased">
+
+          {/* DESKTOP ONLY: HEADER BLOCK */}
+          <div className="hidden md:flex flex-col items-center">
+            <h2 className="f-our" style={textStyle}>Our</h2>
+            <h2 className="f-studio-sculpts" style={textStyle}>
+              <span className="f-studio" style={textStyle}>STUDIO</span> <span className="f-sculpts" style={textStyle}>SCULPTS</span>
+            </h2>
+            <h2 className="f-spaces-reflect" style={textStyle}>
+              <span className="f-spaces" style={textStyle}>SPACES</span> <span className="f-reflect" style={textStyle}>that reflect</span>
+            </h2>
+            <h2 style={textStyle}>
+              <span className="f-your" style={textStyle}>your</span> <span className="f-vision" style={textStyle}>vision,</span>
+              <span className="f-forging ml-4" style={textStyle}>FORGING a</span>
+            </h2>
+            <h2 className="f-luxury" style={textStyle}>NEW LUXURY through CRAFT,</h2>
+            <h2 className="f-unrivalled" style={textStyle}>VISION and unrivalled</h2>
+            <h2 className="f-expertise" style={textStyle}>GLOBAL EXPERTISE.</h2>
+          </div>
+
+          {/* MOBILE ONLY: FINAL TEXT REVEAL ONLY */}
+          <div className="flex md:hidden flex-col items-center gap-1">
+            <h2 className="f-mobile-row" style={{ ...textStyle, fontSize: '30px', lineHeight: '38px' }}>FORGING a</h2>
+            <h2 className="f-mobile-row" style={{ ...textStyle, fontSize: '28px', lineHeight: '36px', fontWeight: 'bold' }}>NEW LUXURY through CRAFT,</h2>
+            <h2 className="f-mobile-row" style={{ ...textStyle, fontSize: '20px', lineHeight: '28px', opacity: 0.8 }}>VISION and unrivalled</h2>
+            <h2 className="f-mobile-row" style={{ ...textStyle, fontSize: '24px', lineHeight: '32px' }}>GLOBAL EXPERTISE.</h2>
+          </div>
         </div>
       </div>
 
-      {/* Fixed Text Overlay - The Sentence Builder */}
-      <div className="absolute inset-0 z-10 flex items-center justify-center px-10 pointer-events-none">
-        <h2
-          ref={textRef}
-          className="text-center max-w-[800px] select-none antialiased"
-          style={{
-            fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
-            fontStyle: 'normal',
-            fontWeight: 400,
-            color: 'rgb(0, 0, 0)',
-            fontSize: '48px',
-            lineHeight: '58px',
-          }}
-        >
-          <span className="part-1 inline-block opacity-0">FORGING a NEW LUXURY</span>{" "}
-          <span className="part-2 inline-block opacity-0">through CRAFT,</span> <br className="hidden md:block" />
-          <span className="part-3 inline-block opacity-0 mt-2">VISION and unrivalled GLOBAL EXPERTISE.</span>
-        </h2>
-      </div>
-
-      {/* Subtle frame overlay */}
+      {/* Frame Border */}
       <div className="absolute inset-0 pointer-events-none border-[20px] border-[#f8f7f3] z-20" />
     </div>
   );

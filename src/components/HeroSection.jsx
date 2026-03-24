@@ -90,9 +90,9 @@ const HeroSection = () => {
             className="w-full font-serif font-normal tracking-tighter uppercase"
             style={{ color: 'rgb(244, 242, 238)' }}
           >
-            {/* Line 1: Timeless */}
+            {/* Line 1: TIMELESS (TOP) */}
             <div
-              className="text-left mt-14 text-[60px] md:text-[115px] leading-[72px] md:leading-[132px]"
+              className="text-center md:text-left mt-12 md:mt-14 text-[56px] md:text-[115px] leading-[68px] md:leading-[132px]"
               style={{
                 fontFamily: 'var(--font-elicyon), serif',
                 fontWeight: 400,
@@ -102,9 +102,9 @@ const HeroSection = () => {
               TIMELESS
             </div>
 
-            {/* Line 2: TAILORED */}
+            {/* Line 2: TAILORED (MIDDLE) */}
             <div
-              className="text-right md:pr-40 lg:pr-80 mt-4 md:mt-12 text-[60px] md:text-[115px] leading-[72px] md:leading-[132px]"
+              className="text-center md:text-right md:pr-40 lg:pr-80 mt-40 md:mt-12 text-[56px] md:text-[115px] leading-[68px] md:leading-[132px]"
               style={{
                 fontFamily: 'var(--font-elicyon), serif',
                 fontWeight: 400,
@@ -114,16 +114,16 @@ const HeroSection = () => {
               TAILORED
             </div>
 
-            {/* Line 3: Spaces */}
+            {/* Line 3: SPACES (BOTTOM) */}
             <div
-              className="text-left pl-4 md:pl-[10%] lg:pl-[25%] mt-4 md:mt-12 text-[60px] md:text-[115px] leading-[72px] md:leading-[132px]"
+              className="text-center md:text-left pl-0 md:pl-[10%] lg:pl-[25%] mt-40 md:mt-12 text-[56px] md:text-[115px] leading-[68px] md:leading-[132px]"
               style={{
                 fontFamily: 'var(--font-elicyon), serif',
                 fontWeight: 400,
                 color: "rgb(244, 242, 238)",
               }}
             >
-              Spaces
+              SPACES
             </div>
           </h1>
         </div>
