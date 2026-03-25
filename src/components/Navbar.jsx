@@ -46,7 +46,7 @@ const Navbar = () => {
         ease: "power4.out",
       });
       // Staggered items fade/slide in
-      gsap.fromTo(".menu-item", 
+      gsap.fromTo(".menu-item",
         { y: 20, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power3.out", delay: 0.3 }
       );
@@ -89,24 +89,23 @@ const Navbar = () => {
     <>
       <nav
         ref={navbarRef}
-        className={`fixed top-0 left-0 w-full z-[100] grid grid-cols-3 items-center px-6 md:px-12 py-8 drop-shadow-sm transition-colors duration-500 ease-in-out ${
-          isScrolled && !isMenuOpen ? "text-stone-900" : (isMenuOpen ? "text-stone-900" : "text-white")
-        }`}
+        className={`fixed top-0 left-0 w-full z-[100] grid grid-cols-3 items-center px-6 md:px-12 py-8 drop-shadow-sm transition-colors duration-500 ease-in-out ${isScrolled && !isMenuOpen ? "text-stone-900" : (isMenuOpen ? "text-stone-900" : "text-white")
+          }`}
       >
         {/* Left Side: Desktop Nav / Mobile Menu Button */}
         <div className="flex items-center">
           {/* Desktop Nav */}
-          <div 
+          <div
             className="hidden md:flex space-x-8 text-[22px] leading-[16px] font-normal tracking-wide uppercase"
             style={{ fontFamily: "var(--font-antique)" }}
           >
-            <a href="#" className="hover:opacity-80 transition-all">Project</a>
+            <a href="#" className="hover:opacity-80 transition-all">Projects</a>
             <a href="#" className="hover:opacity-80 transition-all">Services</a>
-            <a href="#" className="hover:opacity-80 transition-all">Studio</a>
+            {/* <a href="#" className="hover:opacity-80 transition-all">Studio</a> */}
             <a href="#" className="hover:opacity-80 transition-all">Insights</a>
           </div>
           {/* Mobile Menu Button */}
-          <button 
+          <button
             onClick={toggleMenu}
             className="md:hidden text-sm md:text-xl font-normal tracking-[0.2em] uppercase cursor-pointer"
             style={{ fontFamily: "var(--font-antique)" }}
@@ -116,42 +115,41 @@ const Navbar = () => {
         </div>
 
         {/* Middle: Logo */}
-        <div 
+        <div
           className="text-center text-3xl md:text-4xl font-normal tracking-[0.4em] uppercase animate-fade-in flex justify-center"
           style={{ fontFamily: "var(--font-elicyon)" }}
         >
-          ART
+          MALMAR
         </div>
 
         {/* Right Side: Contact Us */}
-        <div 
+        <div
           className="flex justify-end items-center text-sm md:text-xl font-normal tracking-[0.2em] uppercase"
           style={{ fontFamily: "var(--font-antique)" }}
         >
-          <a href="#" className={`border-b pb-0.5 hover:opacity-80 transition-all ${
-            (isScrolled && !isMenuOpen) || isMenuOpen ? "border-stone-900" : "border-white"
-          }`}>
+          <a href="#" className={`border-b pb-0.5 hover:opacity-80 transition-all ${(isScrolled && !isMenuOpen) || isMenuOpen ? "border-stone-900" : "border-white"
+            }`}>
             Contact
           </a>
         </div>
       </nav>
 
       {/* Mobile Menu Overlay */}
-      <div 
+      <div
         ref={menuRef}
         style={{ backgroundColor: "rgb(109, 136, 199)" }}
         className="fixed top-0 left-0 w-full h-screen z-[90] -translate-y-full flex flex-col justify-between px-6 md:px-12 py-10 md:py-20"
       >
         <div className="flex-1 flex flex-col items-center justify-center space-y-4 md:space-y-6">
-          {["PROJECTS", "SERVICES", "STUDIO", "CAREERS", "INSIGHTS"].map((item) => (
+          {["PROJECTS", "SERVICES", "CAREERS", "INSIGHTS"].map((item) => (
             <a
               key={item}
               href="#"
               onClick={() => setIsMenuOpen(false)}
               className="menu-item hover:opacity-60 transition-all text-center"
-              style={{ 
-                fontFamily: "var(--font-elicyon), serif", 
-                fontWeight: 400, 
+              style={{
+                fontFamily: "var(--font-elicyon), serif",
+                fontWeight: 400,
                 color: "rgb(0, 0, 0)",
                 fontSize: "28px",
                 lineHeight: "32px"
@@ -168,13 +166,13 @@ const Navbar = () => {
             {/* Socials */}
             <div className="flex flex-col space-y-1">
               {["INSTAGRAM", "PINTEREST", "LINKEDIN", "FACEBOOK"].map((social) => (
-                <a 
-                  key={social} 
-                  href="#" 
+                <a
+                  key={social}
+                  href="#"
                   className="hover:opacity-60 transition-all uppercase"
-                  style={{ 
-                    fontFamily: "var(--font-antique)", 
-                    fontWeight: 400, 
+                  style={{
+                    fontFamily: "var(--font-antique)",
+                    fontWeight: 400,
                     color: "rgb(0, 0, 0)",
                     fontSize: "14px",
                     lineHeight: "24px",
@@ -189,13 +187,13 @@ const Navbar = () => {
             {/* Links */}
             <div className="flex flex-col space-y-1 text-right">
               {["TERMS OF SERVICE", "PRIVACY POLICY", "FAQs"].map((link) => (
-                <a 
-                  key={link} 
-                  href="#" 
+                <a
+                  key={link}
+                  href="#"
                   className="hover:opacity-60 transition-all uppercase"
-                  style={{ 
-                    fontFamily: "var(--font-antique)", 
-                    fontWeight: 400, 
+                  style={{
+                    fontFamily: "var(--font-antique)",
+                    fontWeight: 400,
                     color: "rgb(0, 0, 0)",
                     fontSize: "14px",
                     lineHeight: "24px",
@@ -209,10 +207,10 @@ const Navbar = () => {
           </div>
 
           {/* Trademark */}
-          <div 
+          <div
             className="uppercase opacity-40 text-center tracking-[0.2em]"
-            style={{ 
-              fontFamily: "var(--font-antique)", 
+            style={{
+              fontFamily: "var(--font-antique)",
               color: "rgb(0, 0, 0)",
               fontSize: "10px",
             }}
