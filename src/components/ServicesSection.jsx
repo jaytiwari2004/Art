@@ -16,10 +16,11 @@ export default function ServicesSection() {
               color: "rgb(0, 0, 0)",
             }}
           >
-            OUR<br />SERVICES
+            <span className="relative -left-4 md:-left-20">OUR</span><br />
+            <span className="relative -left-2 md:-left-8">SERVICES</span>
           </h2>
           <p
-            className="text-[14px] leading-[20px] md:leading-[17px] mt-6 md:mt-5 max-w-full md:max-w-[310px]"
+            className="text-[14px] leading-[20px] md:leading-[17px] mt-6 md:mt-5 max-w-full md:max-w-[310px] relative -left-4 md:-left-16"
             style={{
               fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
               fontWeight: 400,
@@ -111,7 +112,7 @@ export default function ServicesSection() {
 
         {/* Bottom right: text block + explore link */}
         <div className="flex justify-start md:justify-end mt-12 md:mt-14">
-          <div className="max-w-full md:max-w-[320px]">
+          <div className="max-w-full md:max-w-[320px] relative left-4 md:left-20">
             <p
               className="text-[14px] leading-[22px] md:leading-[17px] mb-8"
               style={{
@@ -126,7 +127,7 @@ export default function ServicesSection() {
             </p>
 
             <button
-              className="text-[13px] tracking-[0.25em] uppercase underline underline-offset-4 cursor-pointer"
+              className="text-[13px] tracking-[0.25em] uppercase underline underline-offset-4 cursor-pointer relative left-2 md:left-16"
               style={{
                 fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
                 fontWeight: 400,

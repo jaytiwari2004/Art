@@ -1,4 +1,5 @@
-import { Geist, Geist_Mono, Cormorant_Garamond, Playfair_Display, EB_Garamond } from "next/font/google";
+import { Geist, Geist_Mono, Cormorant_Garamond, EB_Garamond } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -17,20 +18,18 @@ const cormorantGaramond = Cormorant_Garamond({
   weight: ["300", "400", "500", "600", "700"],
 });
 
-// Closest match to Elicyon's heading font (__elicyon_df1f4c)
-const playfairDisplay = Playfair_Display({
-  variable: "--font-elicyon",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal"],
-});
-
-// Closest match to Elicyon's body font (__antiqueLegacy_623eb9)
-const ebGaramond = EB_Garamond({
+const antiqueFont = EB_Garamond({
   variable: "--font-antique",
   subsets: ["latin"],
   weight: ["400", "500"],
   style: ["normal"],
+});
+
+const elicyonFont = localFont({
+  src: "../fonts/elicyon.woff2",
+  variable: "--font-elicyon",
+  weight: "400",
+  style: "normal",
 });
 
 export const metadata = {
@@ -42,7 +41,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${cormorantGaramond.variable} ${playfairDisplay.variable} ${ebGaramond.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${cormorantGaramond.variable} ${elicyonFont.variable} ${antiqueFont.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

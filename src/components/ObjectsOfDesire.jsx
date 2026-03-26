@@ -2,6 +2,11 @@
 import React, { useRef, useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const objects = [
   {
@@ -36,31 +41,50 @@ export default function ObjectsOfDesire() {
   const [activeId, setActiveId] = useState(1);
   const [cursorType, setCursorType] = useState("right"); // 'left' or 'right'
 
-  // 1. Custom Cursor Logic
+  // 1. Custom Cursor & Visibility Logic
   useEffect(() => {
+    const section = document.getElementById("objects-section");
+    const cursor = cursorRef.current;
+    if (!section || !cursor) return;
+
     const handleMouseMove = (e) => {
       const { clientX, clientY } = e;
       const isLeft = clientX < window.innerWidth / 2;
       setCursorType(isLeft ? "left" : "right");
 
-      if (cursorRef.current) {
-        gsap.to(cursorRef.current, {
-          x: clientX,
-          y: clientY,
-          duration: 0.1,
-          ease: "power2.out",
-        });
-      }
+      gsap.to(cursor, {
+        x: clientX,
+        y: clientY,
+        duration: 0.1,
+        ease: "power2.out",
+      });
     };
-    
-    // Ensure cursor is hidden initially until mouse moves
-    const section = document.getElementById("objects-section");
-    if (section) {
-      section.addEventListener("mousemove", handleMouseMove);
-    }
-    
+
+    const handleMouseEnter = () => {
+      gsap.to(cursor, { opacity: 1, duration: 0.3 });
+    };
+
+    const handleMouseLeave = () => {
+      gsap.to(cursor, { opacity: 0, duration: 0.3 });
+    };
+
+    section.addEventListener("mousemove", handleMouseMove);
+    section.addEventListener("mouseenter", handleMouseEnter);
+    section.addEventListener("mouseleave", handleMouseLeave);
+
+    // Ensure cursor hides when scrolling section out of view
+    ScrollTrigger.create({
+      trigger: section,
+      start: "top bottom",
+      end: "bottom top",
+      onLeave: () => gsap.to(cursor, { opacity: 0, duration: 0.3 }),
+      onLeaveBack: () => gsap.to(cursor, { opacity: 0, duration: 0.3 }),
+    });
+
     return () => {
-      if (section) section.removeEventListener("mousemove", handleMouseMove);
+      section.removeEventListener("mousemove", handleMouseMove);
+      section.removeEventListener("mouseenter", handleMouseEnter);
+      section.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
 
@@ -128,8 +152,8 @@ export default function ObjectsOfDesire() {
       {/* Custom Floating Cursor */}
       <div
         ref={cursorRef}
-        className="fixed top-0 left-0 z-50 pointer-events-none flex items-center justify-center -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100"
-        style={{ opacity: 1 /* In production, you'd fade this in only when hovering section */ }}
+        className="fixed top-0 left-0 z-50 pointer-events-none flex items-center justify-center -translate-x-1/2 -translate-y-1/2 opacity-0"
+        style={{ opacity: 0 }}
       >
         <div className="text-black drop-shadow-md">
           {cursorType === "left" ? <ChevronLeft size={36} strokeWidth={1} /> : <ChevronRight size={36} strokeWidth={1} />}

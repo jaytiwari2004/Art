@@ -96,7 +96,7 @@ const ElicyonTextSection = () => {
         <img src="/new.jpeg" className="parallax-img absolute top-[15vh] right-[5%] w-64 h-80 md:w-80 md:h-[450px] object-cover shadow-lg" alt="Interior 1" />
         <img src="/new1.jpeg" className="parallax-img absolute top-[70vh] left-[5%] w-56 h-72 md:w-72 md:h-96 object-cover shadow-lg" alt="Interior 2" />
         <img src="/new3.jpeg" className="parallax-img absolute top-[130vh] right-[10%] w-72 h-96 md:w-96 md:h-[500px] object-cover shadow-lg" alt="Interior 3" />
-        <img src="/img1.jpg" className="parallax-img absolute top-[190vh] left-[10%] w-80 h-[500px] md:w-[450px] md:h-[600px] object-cover shadow-lg" alt="Interior 4" />
+        <img src="/elylast.png" className="parallax-img absolute top-[190vh] left-[10%] w-80 h-[500px] md:w-[450px] md:h-[600px] object-cover shadow-lg" alt="Interior 4" />
       </div>
 
       {/* TEXT CONTENT LAYER */}

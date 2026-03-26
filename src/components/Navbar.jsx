@@ -4,6 +4,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
+import Image from "next/image";
+import Link from "next/link";
+
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
@@ -89,7 +92,7 @@ const Navbar = () => {
     <>
       <nav
         ref={navbarRef}
-        className={`fixed top-0 left-0 w-full z-[100] grid grid-cols-3 items-center px-6 md:px-12 py-8 drop-shadow-sm transition-colors duration-500 ease-in-out ${isScrolled && !isMenuOpen ? "text-stone-900" : (isMenuOpen ? "text-stone-900" : "text-white")
+        className={`fixed top-0 left-0 w-full z-[100] grid grid-cols-3 items-center px-6 md:px-12 py-8 drop-shadow-sm transition-colors duration-500 ease-in-out ${isScrolled && !isMenuOpen ? "text-[#751636]" : (isMenuOpen ? "text-[#751636]" : "text-white")
           }`}
       >
         {/* Left Side: Desktop Nav / Mobile Menu Button */}
@@ -99,10 +102,11 @@ const Navbar = () => {
             className="hidden md:flex space-x-8 text-[22px] leading-[16px] font-normal tracking-wide uppercase"
             style={{ fontFamily: "var(--font-antique)" }}
           >
-            <a href="#" className="hover:opacity-80 transition-all">Projects</a>
-            <a href="#" className="hover:opacity-80 transition-all">Services</a>
+            <Link href="/" className="hover:opacity-80 transition-all">Projects</Link>
+            <Link href="/" className="hover:opacity-80 transition-all">Services</Link>
+            <Link href="/about" className="hover:opacity-80 transition-all">About</Link>
             {/* <a href="#" className="hover:opacity-80 transition-all">Studio</a> */}
-            <a href="#" className="hover:opacity-80 transition-all">Insights</a>
+            <Link href="/" className="hover:opacity-80 transition-all">portfolio</Link>
           </div>
           {/* Mobile Menu Button */}
           <button
@@ -115,11 +119,16 @@ const Navbar = () => {
         </div>
 
         {/* Middle: Logo */}
-        <div
-          className="text-center text-3xl md:text-4xl font-normal tracking-[0.4em] uppercase animate-fade-in flex justify-center"
-          style={{ fontFamily: "var(--font-elicyon)" }}
-        >
-          MALMAR
+        <div className="flex justify-center items-center">
+          <Image
+            src="/logo.png"
+            alt="MALMAR"
+            width={200}
+            height={50}
+            className={`h-6 md:h-10 w-auto transition-all duration-500 ${isScrolled && !isMenuOpen ? "" : (isMenuOpen ? "" : "invert brightness-0 invert")
+              }`}
+            priority
+          />
         </div>
 
         {/* Right Side: Contact Us */}
@@ -127,7 +136,7 @@ const Navbar = () => {
           className="flex justify-end items-center text-sm md:text-xl font-normal tracking-[0.2em] uppercase"
           style={{ fontFamily: "var(--font-antique)" }}
         >
-          <a href="#" className={`border-b pb-0.5 hover:opacity-80 transition-all ${(isScrolled && !isMenuOpen) || isMenuOpen ? "border-stone-900" : "border-white"
+          <a href="#" className={`border-b pb-0.5 hover:opacity-80 transition-all ${(isScrolled && !isMenuOpen) || isMenuOpen ? "border-[#751636]" : "border-white"
             }`}>
             Contact
           </a>
@@ -141,22 +150,22 @@ const Navbar = () => {
         className="fixed top-0 left-0 w-full h-screen z-[90] -translate-y-full flex flex-col justify-between px-6 md:px-12 py-10 md:py-20"
       >
         <div className="flex-1 flex flex-col items-center justify-center space-y-4 md:space-y-6">
-          {["PROJECTS", "SERVICES", "CAREERS", "INSIGHTS"].map((item) => (
-            <a
+          {["PROJECTS", "SERVICES", "ABOUT", "CAREERS", "portfolio"].map((item) => (
+            <Link
               key={item}
-              href="#"
+              href={item === "ABOUT" ? "/about" : "/"}
               onClick={() => setIsMenuOpen(false)}
               className="menu-item hover:opacity-60 transition-all text-center"
               style={{
                 fontFamily: "var(--font-elicyon), serif",
                 fontWeight: 400,
-                color: "rgb(0, 0, 0)",
+                color: "#751636",
                 fontSize: "28px",
                 lineHeight: "32px"
               }}
             >
               {item}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -173,7 +182,7 @@ const Navbar = () => {
                   style={{
                     fontFamily: "var(--font-antique)",
                     fontWeight: 400,
-                    color: "rgb(0, 0, 0)",
+                    color: "#751636",
                     fontSize: "14px",
                     lineHeight: "24px",
                     letterSpacing: "0.1em"
@@ -194,7 +203,7 @@ const Navbar = () => {
                   style={{
                     fontFamily: "var(--font-antique)",
                     fontWeight: 400,
-                    color: "rgb(0, 0, 0)",
+                    color: "#751636",
                     fontSize: "14px",
                     lineHeight: "24px",
                     letterSpacing: "0.1em"
@@ -211,7 +220,7 @@ const Navbar = () => {
             className="uppercase opacity-40 text-center tracking-[0.2em]"
             style={{
               fontFamily: "var(--font-antique)",
-              color: "rgb(0, 0, 0)",
+              color: "#751636",
               fontSize: "10px",
             }}
           >
