@@ -16,9 +16,27 @@ const Navbar = () => {
   const menuRef = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isOverArc, setIsOverArc] = useState(false);
+  const [activeMenu, setActiveMenu] = useState("main"); // "main" or "projects"
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsOverArc(entry.isIntersecting);
+      },
+      { 
+        rootMargin: "-80px 0px -90% 0px", 
+        threshold: 0 
+      }
+    );
+
+    const target = document.getElementById("arc-section");
+    if (target) observer.observe(target);
+
+    return () => observer.disconnect();
+  }, []);
 
   useGSAP(() => {
-    // Navbar Hide/Show Logic
     const showAnim = gsap
       .from(navbarRef.current, {
         yPercent: -100,
@@ -39,16 +57,13 @@ const Navbar = () => {
     });
   }, { scope: navbarRef, dependencies: [isMenuOpen] });
 
-  // Mobile Menu Animation
   useGSAP(() => {
     if (isMenuOpen) {
-      // Background slide down
       gsap.to(menuRef.current, {
         y: 0,
         duration: 0.8,
         ease: "power4.out",
       });
-      // Staggered items fade/slide in
       gsap.fromTo(".menu-item",
         { y: 20, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power3.out", delay: 0.3 }
@@ -86,93 +101,135 @@ const Navbar = () => {
     }
   }, [isMenuOpen]);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+    if (!isMenuOpen) {
+      setActiveMenu("main");
+    }
+  };
 
   return (
     <>
       <nav
         ref={navbarRef}
-        className={`fixed top-0 left-0 w-full z-[100] grid grid-cols-3 items-center px-6 md:px-12 py-8 drop-shadow-sm transition-colors duration-500 ease-in-out ${isScrolled && !isMenuOpen ? "text-[#751636]" : (isMenuOpen ? "text-[#751636]" : "text-white")
-          }`}
+        className={`fixed top-0 left-0 w-full z-[100] grid grid-cols-3 items-center px-6 md:px-12 py-8 drop-shadow-sm transition-colors duration-500 ease-in-out ${
+          isOverArc ? "text-white" : (isScrolled && !isMenuOpen ? "text-[#751636]" : (isMenuOpen ? "text-black" : "text-white"))
+        }`}
       >
-        {/* Left Side: Desktop Nav / Mobile Menu Button */}
         <div className="flex items-center">
-          {/* Desktop Nav */}
           <div
             className="hidden md:flex space-x-8 text-[22px] leading-[16px] font-normal tracking-wide uppercase"
-            style={{ fontFamily: "var(--font-antique)" }}
+            style={{ fontFamily: "var(--font-body)" }}
           >
-            <Link href="/" className="hover:opacity-80 transition-all">Projects</Link>
+            <Link 
+              href="/projects"
+              className="hover:opacity-80 transition-all uppercase cursor-pointer"
+            >
+              Projects
+            </Link>
             <Link href="/" className="hover:opacity-80 transition-all">Services</Link>
             <Link href="/about" className="hover:opacity-80 transition-all">About</Link>
-            {/* <a href="#" className="hover:opacity-80 transition-all">Studio</a> */}
-            <Link href="/" className="hover:opacity-80 transition-all">portfolio</Link>
+            <Link href="/projects" className="hover:opacity-80 transition-all">portfolio</Link>
           </div>
-          {/* Mobile Menu Button */}
           <button
             onClick={toggleMenu}
             className="md:hidden text-sm md:text-xl font-normal tracking-[0.2em] uppercase cursor-pointer"
-            style={{ fontFamily: "var(--font-antique)" }}
+            style={{ fontFamily: "var(--font-body)" }}
           >
             {isMenuOpen ? "CLOSE" : "MENU"}
           </button>
         </div>
 
-        {/* Middle: Logo */}
         <div className="flex justify-center items-center">
           <Image
             src="/logo.png"
             alt="MALMAR"
             width={200}
             height={50}
-            className={`h-6 md:h-10 w-auto transition-all duration-500 ${isScrolled && !isMenuOpen ? "" : (isMenuOpen ? "" : "invert brightness-0 invert")
-              }`}
+            className={`h-6 md:h-10 w-auto transition-all duration-500 ${
+              isOverArc ? "invert brightness-0 invert" : (isScrolled && !isMenuOpen ? "" : (isMenuOpen ? "" : "invert brightness-0 invert"))
+            }`}
             priority
           />
         </div>
 
-        {/* Right Side: Contact Us */}
         <div
           className="flex justify-end items-center text-sm md:text-xl font-normal tracking-[0.2em] uppercase"
           style={{ fontFamily: "var(--font-antique)" }}
         >
-          <a href="#" className={`border-b pb-0.5 hover:opacity-80 transition-all ${(isScrolled && !isMenuOpen) || isMenuOpen ? "border-[#751636]" : "border-white"
-            }`}>
+          <a href="#" className={`border-b pb-0.5 hover:opacity-80 transition-all ${
+            isOverArc ? "border-white" : ((isScrolled && !isMenuOpen) || isMenuOpen ? "border-black" : "border-white")
+          }`}>
             Contact
           </a>
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
       <div
         ref={menuRef}
-        style={{ backgroundColor: "rgb(109, 136, 199)" }}
+        style={{ backgroundColor: "rgb(240, 237, 232)" }}
         className="fixed top-0 left-0 w-full h-screen z-[90] -translate-y-full flex flex-col justify-between px-6 md:px-12 py-10 md:py-20"
       >
-        <div className="flex-1 flex flex-col items-center justify-center space-y-4 md:space-y-6">
-          {["PROJECTS", "SERVICES", "ABOUT", "CAREERS", "portfolio"].map((item) => (
-            <Link
-              key={item}
-              href={item === "ABOUT" ? "/about" : "/"}
+        {activeMenu === "main" && (
+          <div className="flex-1 flex flex-col items-center justify-center space-y-4 md:space-y-6 animate-in fade-in duration-500">
+            {["PROJECTS", "SERVICES", "ABOUT", "PORTFOLIO"].map((item) => (
+              <button
+                key={item}
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (item === "PROJECTS") setActiveMenu("projects");
+                  else setIsMenuOpen(false);
+                }}
+                className="menu-item hover:opacity-60 transition-all text-center uppercase cursor-pointer"
+                style={{
+                  fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
+                  fontWeight: 400,
+                  color: "rgb(0, 0, 0)",
+                  fontSize: "64px",
+                  lineHeight: "77px"
+                }}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {activeMenu === "projects" && (
+          <div className="flex-1 flex flex-col items-center justify-start pt-24 md:pt-48 w-full relative animate-in fade-in slide-in-from-right-8 duration-500">
+            {/* Back Arrow - matching the blue chevron in the screenshot */}
+            <button 
+              onClick={() => setActiveMenu("main")}
+              className="absolute top-0 left-0 md:top-20 md:left-12 p-4 hover:opacity-60 transition-all cursor-pointer"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 18L9 12L15 6" stroke="rgb(109, 136, 199)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+            
+            {/* Submenu Title */}
+            <Link 
+              href="/projects"
               onClick={() => setIsMenuOpen(false)}
-              className="menu-item hover:opacity-60 transition-all text-center"
+              className="text-center uppercase tracking-tight block hover:opacity-60 transition-all"
               style={{
-                fontFamily: "var(--font-elicyon), serif",
+                fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
                 fontWeight: 400,
-                color: "#751636",
-                fontSize: "28px",
-                lineHeight: "32px"
+                color: "rgb(0, 0, 0)",
+                fontSize: "64px",
+                lineHeight: "77px"
               }}
             >
-              {item}
+              PROJECT PORTFOLIO
             </Link>
-          ))}
-        </div>
 
-        {/* Bottom Section */}
+            <div className="mt-16 flex flex-col space-y-6">
+            </div>
+          </div>
+        )}
+
         <div className="menu-footer w-full flex flex-col space-y-12">
           <div className="flex justify-between items-end border-t border-black/10 pt-8">
-            {/* Socials */}
             <div className="flex flex-col space-y-1">
               {["INSTAGRAM", "PINTEREST", "LINKEDIN", "FACEBOOK"].map((social) => (
                 <a
@@ -182,7 +239,7 @@ const Navbar = () => {
                   style={{
                     fontFamily: "var(--font-antique)",
                     fontWeight: 400,
-                    color: "#751636",
+                    color: "rgb(0, 0, 0)",
                     fontSize: "14px",
                     lineHeight: "24px",
                     letterSpacing: "0.1em"
@@ -193,7 +250,6 @@ const Navbar = () => {
               ))}
             </div>
 
-            {/* Links */}
             <div className="flex flex-col space-y-1 text-right">
               {["TERMS OF SERVICE", "PRIVACY POLICY", "FAQs"].map((link) => (
                 <a
@@ -203,7 +259,7 @@ const Navbar = () => {
                   style={{
                     fontFamily: "var(--font-antique)",
                     fontWeight: 400,
-                    color: "#751636",
+                    color: "rgb(0, 0, 0)",
                     fontSize: "14px",
                     lineHeight: "24px",
                     letterSpacing: "0.1em"
@@ -215,12 +271,11 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Trademark */}
           <div
             className="uppercase opacity-40 text-center tracking-[0.2em]"
             style={{
               fontFamily: "var(--font-antique)",
-              color: "#751636",
+              color: "rgb(0, 0, 0)",
               fontSize: "10px",
             }}
           >
@@ -233,4 +288,6 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
 

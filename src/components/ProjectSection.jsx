@@ -9,9 +9,9 @@ if (typeof window !== "undefined") {
 }
 
 const projects = [
-  { id: 1, title: "RESIDENTIAL", subtitle: "60 CURZON APARTMENT", image: "/img1.jpg" },
-  { id: 2, title: "DEVELOPMENT", subtitle: "CHELSEA BARRACKS", image: "/img2.jpg" },
-  { id: 3, title: "COMMERCIAL", subtitle: "WIGMORE PRIVATE OFFICE", image: "/img3.jpg" }
+  { id: 1, title: "RESIDENTIAL", subtitle: "60 CURZON APARTMENT", image: "/project1.jpeg" },
+  { id: 2, title: "DEVELOPMENT", subtitle: "CHELSEA BARRACKS", image: "/project22.jpg" },
+  { id: 3, title: "COMMERCIAL", subtitle: "WIGMORE PRIVATE OFFICE", image: "/project33.png" }
 ];
 
 export default function ProjectSection() {
@@ -27,7 +27,7 @@ export default function ProjectSection() {
         start: "top top",
         end: `+=${slides.length * 250}%`,
         pin: true,
-        scrub: 1,
+        scrub: true,
       }
     });
 
@@ -37,47 +37,42 @@ export default function ProjectSection() {
       const details = slide.querySelector('.project-details');
       const imageInner = slide.querySelector('.image-inner');
 
-      // 0. INITIAL STATE (Ensures text starts hidden/scattered to avoid "flash")
+      // 0. INITIAL STATE (Immediate Visibility + 3-Row Pattern from Screenshot)
       gsap.set(letters, {
         y: (index) => {
+          const isMobile = window.innerWidth < 768;
+          if (isMobile) {
+            if (index % 3 === 0) return "0vh";      // Row 1 (Top)
+            if (index % 3 === 1) return "10vh";     // Row 3 (Bottom)
+            return "5vh";                           // Row 2 (Middle)
+          }
+          // Desktop pattern (more scattered as before)
           if (index % 3 === 0) return "0vh";
-          if (index % 3 === 2) return "40vh";
-          return "80vh";
+          if (index % 3 === 1) return "70vh";
+          return "35vh";
         },
-        opacity: 0
+        opacity: 1,
+        scale: 1
       });
 
-      // 1. CLIP PATH REVEAL (The entire slide reveals from bottom)
+      // 1. CLIP PATH REVEAL
       if (i !== 0) {
         tl.fromTo(slide,
           { clipPath: 'inset(100% 0% 0% 0%)' },
           { clipPath: 'inset(0% 0% 0% 0%)', duration: 2, ease: "none" },
           `slide-${i}`
         );
-        tl.fromTo(imageInner, { scale: 1.2 }, { scale: 1, duration: 2 }, "<");
+        // Removed scale animation to keep image at actual size
       }
 
-      // 2. SLOT ANIMATION 
-      // i % 3 logic mimics the "random yet structured" look from your video
-      tl.fromTo(letters,
-        {
-          y: (index) => {
-            if (index % 3 === 0) return "0vh";
-            if (index % 3 === 2) return "40vh";
-            return "80vh";
-          },
-          opacity: 0
-        },
-        {
-          y: "0%",
-          opacity: 1,
-          stagger: { each: 0.05, from: "start" },
-          duration: 1.5,
-          ease: "power2.out",
-          immediateRender: false // Prevents all slides' letters from showing at once
-        },
-        i === 0 ? "0" : ">"
-      );
+      // 2. MERGE ANIMATION (To top row precisely)
+      tl.to(letters, {
+        y: "0%",
+        scale: 1,
+        duration: 2,
+        ease: "power2.inOut",
+        stagger: { each: 0.05, from: "start" }
+      }, i === 0 ? "0" : ">");
 
       // 3. DETAILS REVEAL
       tl.fromTo(details,
@@ -104,7 +99,7 @@ export default function ProjectSection() {
     <div ref={wrapperRef} className="w-full bg-[#f8f7f3]">
       {/* SECTION HEADER */}
       <section className="w-full flex flex-col items-center justify-center pt-32 pb-12 text-black bg-[#f8f7f3]">
-        <h2 className="text-[18vw] md:text-[10vw] font-serif uppercase leading-[0.9] text-center" style={{ color: 'rgb(0,0,0)' }}>
+        <h2 className="text-[32vw] md:text-[18vw] uppercase leading-[0.9] text-center" style={{ color: 'rgb(0,0,0)', fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", sans-serif', fontWeight: 400 }}>
           Our <br /> Projects
         </h2>
         <p className="max-w-2xl text-center text-base md:text-lg font-light mt-8 px-6" style={{ color: 'rgb(0,0,0)' }}>
@@ -114,8 +109,8 @@ export default function ProjectSection() {
         <button className="group relative mt-10 flex flex-col items-center" style={{ color: 'rgb(0,0,0)' }}>
           <span className="uppercase tracking-[0.4em] text-[10px] font-medium mb-1">View Projects</span>
           <div className="relative w-full h-[1px] overflow-hidden">
-             <div className="w-full h-full bg-black transition-transform duration-400 ease-in-out group-hover:translate-x-full" />
-             <div className="absolute inset-0 bg-black -translate-x-full transition-transform duration-400 ease-in-out group-hover:translate-x-0" />
+            <div className="w-full h-full bg-black transition-transform duration-400 ease-in-out group-hover:translate-x-full" />
+            <div className="absolute inset-0 bg-black -translate-x-full transition-transform duration-400 ease-in-out group-hover:translate-x-0" />
           </div>
         </button>
       </section>
@@ -132,17 +127,23 @@ export default function ProjectSection() {
             <div className="project-image absolute inset-0 w-full h-full overflow-hidden">
               <div className="image-inner w-full h-full">
                 <img src={project.image} alt="" className="w-full h-full object-cover" />
-                {/* Minimal overlay to ensure image is visible */}
                 <div className="absolute inset-0 bg-black/10" />
               </div>
             </div>
 
-            {/* TYPOGRAPHY - Positioned at top to show "R I N A" immediately */}
-            <div className="relative z-20 w-full pt-[15vh] md:pt-[12vh] px-[4vw] md:px-[6vw]">
-              <h2 className="flex justify-between w-full text-[14vw] md:text-[12vw] font-serif text-white mix-blend-exclusion leading-none">
+            {/* TYPOGRAPHY - Strictly Defined Pattern */}
+            <div className="relative z-20 w-full pt-[8vh] md:pt-[6vh] px-[4vw] md:px-[6vw]">
+              <h2 className="flex justify-between w-full text-white mix-blend-exclusion leading-none">
                 {project.title.split("").map((char, i) => (
-                  <span key={i} className="flex-1 flex justify-center h-[18vw] md:h-[22vw]">
-                    <span className="letter-inner inline-block will-change-transform">
+                  <span key={i} className="flex-1 flex justify-center">
+                    <span
+                      className="letter-inner inline-block will-change-transform"
+                      style={{
+                        fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", sans-serif',
+                        fontWeight: 400,
+                        fontSize: "clamp(48px, 40vw, 8vw)" // Responsive font sizing: 22vw max for desktop
+                      }}
+                    >
                       {char === " " ? "\u00A0" : char}
                     </span>
                   </span>
@@ -152,8 +153,8 @@ export default function ProjectSection() {
 
             {/* PROJECT INFO */}
             <div className="project-details absolute bottom-8 right-6 md:bottom-12 md:right-12 text-right text-white z-30">
-              <h4 className="text-xl md:text-5xl font-serif mb-2 md:mb-4">{project.subtitle}</h4>
-              <button className="border-b border-white pb-1 uppercase tracking-widest text-[10px] md:text-xs hover:opacity-50 transition-opacity">
+              <h4 className="text-2xl md:text-6xl mb-2 md:mb-4" style={{ fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", sans-serif', fontWeight: 400 }}>{project.subtitle}</h4>
+              <button className="border-b border-white pb-1 uppercase tracking-widest text-[11px] md:text-sm hover:opacity-50 transition-opacity" style={{ fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", sans-serif', fontWeight: 400 }}>
                 View Project
               </button>
             </div>

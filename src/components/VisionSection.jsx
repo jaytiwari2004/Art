@@ -17,7 +17,7 @@ export default function VisionSection() {
     () => {
       // 1. Background Parallax — moves up slower than scroll
       gsap.to(bgRef.current, {
-        yPercent: -20,
+        yPercent: -15, // Adjusted to avoid revealing bottom edge
         ease: "none",
         scrollTrigger: {
           trigger: containerRef.current,
@@ -103,10 +103,10 @@ export default function VisionSection() {
           position: "absolute",
           inset: 0,
           width: "100%",
-          height: "140%",
-          top: "-20%",
+          height: "130%", // Slightly smaller but starts at top
+          top: 0,
           zIndex: 0,
-          backgroundImage: 'url("/img2.jpg")',
+          backgroundImage: 'url("/vision1.jpg")',
           backgroundSize: "cover",
           backgroundPosition: "center",
           opacity: 1,
@@ -159,7 +159,7 @@ export default function VisionSection() {
         >
           <img
             ref={imageRef}
-            src="/img1.jpg"
+            src="/visioninside.png"
             alt="Leading the Vision"
             style={{
               width: "100%",

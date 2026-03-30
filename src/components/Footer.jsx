@@ -92,18 +92,13 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* BACKGROUND TEXT (Preserved) */}
-      <div className="w-full mt-auto pointer-events-none select-none overflow-hidden h-[120px] sm:h-[180px] md:h-[280px]">
-        <h1 
-          className="text-[150px] sm:text-[220px] md:text-[340px] leading-none text-black opacity-100 italic"
-          style={{
-            fontFamily: '"Elicyon", serif',
-            letterSpacing: "-0.05em",
-            transform: "translateY(15%)"
-          }}
-        >
-          ART
-        </h1>
+      {/* BOTTOM LOGO (Centered) */}
+      <div className="w-full mt-auto flex justify-center items-end py-12 md:py-20 z-10 transition-transform duration-700">
+        <img 
+          src="/logo.png" 
+          alt="Art Studio Logo" 
+          className="h-[60px] md:h-[100px] w-auto object-contain opacity-90 transition-opacity hover:opacity-100"
+        />
       </div>
 
       {/* BOTTOM BAR (Legal & Credits) */}

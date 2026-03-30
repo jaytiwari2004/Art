@@ -75,7 +75,7 @@ const HeroSection = () => {
         <div className="absolute inset-0 z-0">
           <img
             ref={heroImage}
-            src="/hero.jpeg"
+            src="/contact.jpg"
             alt="Luxury Interior"
             className="w-full h-full object-cover brightness-95"
           />

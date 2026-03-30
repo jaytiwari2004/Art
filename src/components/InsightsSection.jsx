@@ -11,28 +11,28 @@ const insights = [
     category: "RESIDENTIAL",
     title: "IDENTITY MAGAZINE",
     description: "In Balance - This home by Elicyon creates a sense of sanctuary at every turn.",
-    image: "/img1.jpg",
+    image: "/insite1.jpeg",
     overlayText: ""
   },
   {
     category: "INSIGHT",
     title: "A DUBAI VILLA OF QUIET GRANDEUR AND CRAFTED DETAIL",
     description: "",
-    image: "/img2.jpg",
+    image: "/insite22.jpeg",
     overlayText: ""
   },
   {
     category: "COMMERCIAL",
     title: "DESIGN ANTHOLOGY UK",
     description: "Commercial Design Reimagined",
-    image: "/img3.jpg",
+    image: "/insite3.jpg",
     overlayText: ""
   },
   {
     category: "EDITORIAL",
     title: "ARCHITECTURAL DIGEST",
     description: "Refined Luxury in the heart of the city.",
-    image: "/new3.jpeg",
+    image: "/insite4.jpeg",
     overlayText: ""
   }
 ];
@@ -115,8 +115,8 @@ export default function InsightsSection() {
       {/* Grid Section */}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-12">
         {insights.map((item, idx) => (
-          <div 
-            key={idx} 
+          <div
+            key={idx}
             className={`insight-card group cursor-pointer ${idx === 3 ? 'flex md:hidden' : 'flex'} flex-col`}
           >
             {/* Image Container */}

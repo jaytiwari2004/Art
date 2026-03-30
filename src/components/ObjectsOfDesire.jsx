@@ -11,35 +11,82 @@ if (typeof window !== "undefined") {
 const objects = [
   {
     id: 1,
-    img: "/img1.jpg",
+    img: "/object1.jpeg",
+    title: "VINTAGE ITALIAN CHAIR",
+    desc: "A statement piece that combines Mid-Century Modern aesthetics with luxurious comfort, curated for the refined living space.",
+  },
+  {
+    id: 2,
+    img: "/object2.jpeg",
+    title: "RECLAIMED OAK SIDEBOARD",
+    desc: "Hand-finished to highlight the natural grain, grounding the room with warmth and a deep sense of heritage.",
+  },
+  {
+    id: 3,
+    img: "/object3.jpg",
     title: "BESPOKE JOINERY BENCH",
     desc: "Designed to follow the curvature of the entrance wall, offering an initial moment of grounding upon arrival.",
   },
   {
-    id: 2,
-    img: "/img2.jpg",
+    id: 4,
+    img: "/object4.jpg",
     title: "VINTAGE 1930S CONSOLE",
     desc: "A sculptural moment upon arrival that speaks to the heritage and timeless elegance of the space.",
   },
   {
-    id: 3,
-    img: "/img3.jpg",
+    id: 5,
+    img: "/object5.jpg",
     title: "ART DECO PIANO",
     desc: "Handcrafted in oak, this piece combines comfort with craftsmanship for an unparalleled aesthetic.",
   },
   {
-    id: 4,
-    img: "/img1.jpg",
+    id: 6,
+    img: "/object6.jpg",
     title: "WHITWAY CHANDELIER",
     desc: "Adapted from an original 1940s design, casting a warm, enveloping glow throughout the room.",
+  },
+  {
+    id: 7,
+    img: "/object7.jpg",
+    title: "MURANO GLASS VASE",
+    desc: "Transparent layers of hand-blown glass capture the shifting light, adding a delicate touch of artisanal craft.",
+  },
+  {
+    id: 8,
+    img: "/object8.jpeg",
+    title: "GILDED BRONZE SCONCE",
+    desc: "A subtle play of shadow and light, casting a sophisticated glow across the architectural details of the room.",
   },
 ];
 
 export default function ObjectsOfDesire() {
   const scrollRef = useRef(null);
   const cursorRef = useRef(null);
-  const [activeId, setActiveId] = useState(1);
-  const [cursorType, setCursorType] = useState("right"); // 'left' or 'right'
+  const totalSets = 3;
+  const setLength = objects.length;
+  const [activeIndex, setActiveIndex] = useState(setLength + 3); // Start in middle set (Id: 4)
+  const activeId = objects[activeIndex % setLength].id;
+  const [cursorType, setCursorType] = useState("right");
+
+  // Initial Scroll to Middle Set (Id: 4)
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const timeout = setTimeout(() => {
+      const items = container.querySelectorAll(".carousel-item");
+      const targetItem = items[activeIndex];
+      if (!targetItem) return;
+
+      const containerCenter = container.offsetWidth / 2;
+      const itemCenterOffset = targetItem.offsetLeft + (targetItem.offsetWidth / 2);
+      const scrollTarget = itemCenterOffset - containerCenter;
+
+      container.scrollLeft = scrollTarget;
+    }, 100);
+
+    return () => clearTimeout(timeout);
+  }, []);
 
   // 1. Custom Cursor & Visibility Logic
   useEffect(() => {
@@ -88,51 +135,65 @@ export default function ObjectsOfDesire() {
     };
   }, []);
 
-  // 2. Center Detection (Border Logic)
+  // 2. Active Index Detection
   const handleScroll = () => {
-    if (!scrollRef.current) return;
+    const container = scrollRef.current;
+    if (!container) return;
     const center = window.innerWidth / 2;
-    const items = scrollRef.current.querySelectorAll(".carousel-item");
+    const items = container.querySelectorAll(".carousel-item");
 
-    let closestId = 1;
+    let closestIdx = activeIndex;
     let minDistance = Infinity;
 
     items.forEach((item, idx) => {
       const rect = item.getBoundingClientRect();
       const itemCenter = rect.left + rect.width / 2;
       const distance = Math.abs(center - itemCenter);
-      // Determine which item is closest to the center
       if (distance < minDistance) {
         minDistance = distance;
-        closestId = objects[idx].id;
+        closestIdx = idx;
       }
     });
-    
-    // Give it a tiny bit of leniency to feel natural
-    setActiveId(closestId);
+
+    // SEAMLESS LOOP RESET (Wider Safe Zone)
+    // Only jump back to center if we move too far to the edges (Set 1 or Set 3 extremes)
+    // This prevents jumps during normal 1-item click transitions
+    if (closestIdx >= setLength * 2 + 4) { // Near end of Set 3
+      const offset = closestIdx - (setLength * 2);
+      const newIdx = setLength + offset;
+      const targetItem = items[newIdx];
+      const containerCenter = container.offsetWidth / 2;
+      const scrollTarget = (targetItem.offsetLeft + targetItem.offsetWidth / 2) - containerCenter;
+      container.scrollLeft = scrollTarget;
+      closestIdx = newIdx;
+    } else if (closestIdx < 4) { // Near beginning of Set 1
+      const offset = closestIdx;
+      const newIdx = setLength + offset;
+      const targetItem = items[newIdx];
+      const containerCenter = container.offsetWidth / 2;
+      const scrollTarget = (targetItem.offsetLeft + targetItem.offsetWidth / 2) - containerCenter;
+      container.scrollLeft = scrollTarget;
+      closestIdx = newIdx;
+    }
+
+    setActiveIndex(closestIdx);
   };
 
   const scroll = (direction) => {
     const container = scrollRef.current;
     if (!container) return;
-    
-    // Find current active index
-    const currentIndex = objects.findIndex(obj => obj.id === activeId);
-    if (currentIndex === -1) return;
 
-    // Calculate next index
-    let targetIndex = direction === "left" ? currentIndex - 1 : currentIndex + 1;
-    
-    // Prevent going out of bounds
-    if (targetIndex < 0) targetIndex = 0;
-    if (targetIndex >= objects.length) targetIndex = objects.length - 1;
+    let targetIndex = direction === "left" ? activeIndex - 1 : activeIndex + 1;
 
-    // Get the exact item DOM element
+    // Boundaries — we render 3 sets, so we allow indices 0 to (setLength * 3 - 1)
+    // The handleScroll reset logic will handle the "jumps" to keep it infinite
+    if (targetIndex < 0) targetIndex = (setLength * 3) - 1;
+    if (targetIndex >= setLength * 3) targetIndex = 0;
+
     const items = container.querySelectorAll(".carousel-item");
     const targetItem = items[targetIndex];
     if (!targetItem) return;
 
-    // Calculate exact scroll position to center the target item
     const containerCenter = container.offsetWidth / 2;
     const itemCenterOffset = targetItem.offsetLeft + (targetItem.offsetWidth / 2);
     const scrollTarget = itemCenterOffset - containerCenter;
@@ -142,6 +203,8 @@ export default function ObjectsOfDesire() {
       behavior: "smooth",
     });
   };
+
+  const displayItems = [...objects, ...objects, ...objects];
 
   return (
     <section
@@ -186,11 +249,11 @@ export default function ObjectsOfDesire() {
         className="flex gap-8 px-[10vw] md:px-[35vw] overflow-x-auto snap-x snap-mandatory no-scrollbar [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         style={{ scrollBehavior: "smooth" }}
       >
-        {objects.map((item) => {
-          const isActive = activeId === item.id;
+        {displayItems.map((item, idx) => {
+          const isActive = activeIndex === idx;
           return (
             <div
-              key={item.id}
+              key={`${item.id}-${idx}`}
               className="carousel-item flex-shrink-0 w-[280px] md:w-[350px] snap-center transition-all duration-700 ease-in-out"
             >
               <div
@@ -214,9 +277,8 @@ export default function ObjectsOfDesire() {
         {objects.map((item) => (
           <div
             key={item.id}
-            className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-              activeId === item.id ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
-            }`}
+            className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${activeId === item.id ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+              }`}
           >
             <h3
               style={{
@@ -231,7 +293,7 @@ export default function ObjectsOfDesire() {
             >
               {item.title}
             </h3>
-            
+
             <p
               style={{
                 fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',

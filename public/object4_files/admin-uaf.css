@@ -1,0 +1,23 @@
+				@font-face {
+					font-family: 'publica';
+					src: url('/wp-content/uploads/useanyfont/7061publica.woff2') format('woff2'),
+						url('/wp-content/uploads/useanyfont/7061publica.woff') format('woff');
+						  font-display: auto;
+				}
+
+				.publica{font-family: 'publica' !important;}
+
+				.et_gf_publica{background:none !important;font-family:publica;text-indent:0 !important;font-size:25px;}
+
+						@font-face {
+					font-family: 'vouge';
+					src: url('/wp-content/uploads/useanyfont/621vouge.woff2') format('woff2'),
+						url('/wp-content/uploads/useanyfont/621vouge.woff') format('woff');
+						  font-display: auto;
+				}
+
+				.vouge{font-family: 'vouge' !important;}
+
+				.et_gf_vouge{background:none !important;font-family:vouge;text-indent:0 !important;font-size:25px;}
+
+		

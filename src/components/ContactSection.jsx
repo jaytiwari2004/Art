@@ -38,7 +38,7 @@ export default function ContactSection() {
         ref={bgRef}
         className="absolute top-0 left-0 w-full h-[130%] z-0"
         style={{
-          backgroundImage: 'url("/img2.jpg")', // Fallback to an existing image
+          backgroundImage: 'url("/contact.jpg")', // Fallback to an existing image
           backgroundSize: "cover",
           backgroundPosition: "center",
           opacity: 1,

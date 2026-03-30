@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,400&display=swap');
 @import "tailwindcss";
 
 /* 🔥 Heading Font (Elicyon) */
@@ -26,9 +27,8 @@
   --font-heading: 'Elicyon', serif;
   --font-body: 'AntiqueLegacy', serif;
 
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-serif: var(--font-body);
+  --font-sans: var(--font-body), Arial, Helvetica, sans-serif;
+  --font-serif: var(--font-heading), serif;
 }
 
 @theme inline {
@@ -107,4 +107,90 @@ h2 {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Arc Marquee Styles */
+.arc-section {
+  background: #3b0d1c;
+  padding: 90px 0 20px;
+  overflow: hidden;
+}
+.arc-hero {
+  text-align: center;
+  padding: 0 24px 56px;
+}
+.arc-hero h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 600;
+  color: #f0dcc8;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+.arc-hero p {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: #b07a60;
+  margin-top: 10px;
+}
+
+.arc-stage {
+  width: 100%;
+  position: relative;
+  height: 520px;
+  overflow: visible;
+}
+
+
+.arc-card {
+  position: absolute;
+  width: 350px;
+  height: 460px;
+  border-radius: 20px;
+  overflow: hidden;
+  transform-origin: center bottom;
+  will-change: transform;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+  cursor: pointer;
+}
+
+.arc-card:hover {
+  box-shadow: 0 36px 90px rgba(0,0,0,0.75), 0 8px 24px rgba(0,0,0,0.4);
+  z-index: 20 !important;
+}
+.arc-card img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  pointer-events: none; user-select: none;
+  transition: transform 0.5s ease;
+}
+.arc-card:hover img { transform: scale(1.07); }
+
+.arc-hint {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  opacity: 0.4;
+}
+.arc-hint span {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: #c9a882;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+}
+.arc-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: #c9a882;
+  animation: dp 1.6s ease-in-out infinite;
+}
+.arc-dot:nth-child(3) { animation-delay: 0.25s; }
+.arc-dot:nth-child(4) { animation-delay: 0.5s; }
+@keyframes dp {
+  0%,100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.5); }
 }
