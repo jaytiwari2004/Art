@@ -6,12 +6,15 @@ import { useGSAP } from "@gsap/react";
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
 const Navbar = () => {
+  const pathname = usePathname();
+  const isProjectsPage = pathname === "/projects";
   const navbarRef = useRef(null);
   const menuRef = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -113,7 +116,7 @@ const Navbar = () => {
       <nav
         ref={navbarRef}
         className={`fixed top-0 left-0 w-full z-[100] grid grid-cols-3 items-center px-6 md:px-12 py-8 drop-shadow-sm transition-colors duration-500 ease-in-out ${
-          isOverArc ? "text-white" : (isScrolled && !isMenuOpen ? "text-[#751636]" : (isMenuOpen ? "text-black" : "text-white"))
+          isOverArc ? "text-white" : (isScrolled || isProjectsPage ? (isMenuOpen ? "text-black" : "text-[#78233e]") : (isMenuOpen ? "text-black" : "text-white"))
         }`}
       >
         <div className="flex items-center">
@@ -127,7 +130,7 @@ const Navbar = () => {
             >
               Projects
             </Link>
-            <Link href="/" className="hover:opacity-80 transition-all">Services</Link>
+            <Link href="/services" className="hover:opacity-80 transition-all">Services</Link>
             <Link href="/about" className="hover:opacity-80 transition-all">About</Link>
             <Link href="/projects" className="hover:opacity-80 transition-all">portfolio</Link>
           </div>
@@ -147,7 +150,7 @@ const Navbar = () => {
             width={200}
             height={50}
             className={`h-6 md:h-10 w-auto transition-all duration-500 ${
-              isOverArc ? "invert brightness-0 invert" : (isScrolled && !isMenuOpen ? "" : (isMenuOpen ? "" : "invert brightness-0 invert"))
+              isOverArc ? "invert brightness-0 invert" : (isScrolled || isProjectsPage ? (isMenuOpen ? "" : "") : (isMenuOpen ? "" : "invert brightness-0 invert"))
             }`}
             priority
           />
@@ -158,7 +161,7 @@ const Navbar = () => {
           style={{ fontFamily: "var(--font-antique)" }}
         >
           <a href="#" className={`border-b pb-0.5 hover:opacity-80 transition-all ${
-            isOverArc ? "border-white" : ((isScrolled && !isMenuOpen) || isMenuOpen ? "border-black" : "border-white")
+            isOverArc ? "border-white" : ((isScrolled || isProjectsPage) && !isMenuOpen ? "border-[#78233e]" : (isMenuOpen ? "border-black" : "border-white"))
           }`}>
             Contact
           </a>
@@ -173,24 +176,41 @@ const Navbar = () => {
         {activeMenu === "main" && (
           <div className="flex-1 flex flex-col items-center justify-center space-y-4 md:space-y-6 animate-in fade-in duration-500">
             {["PROJECTS", "SERVICES", "ABOUT", "PORTFOLIO"].map((item) => (
-              <button
-                key={item}
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (item === "PROJECTS") setActiveMenu("projects");
-                  else setIsMenuOpen(false);
-                }}
-                className="menu-item hover:opacity-60 transition-all text-center uppercase cursor-pointer"
-                style={{
-                  fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
-                  fontWeight: 400,
-                  color: "rgb(0, 0, 0)",
-                  fontSize: "64px",
-                  lineHeight: "77px"
-                }}
-              >
-                {item}
-              </button>
+              item === "PROJECTS" ? (
+                <button
+                  key={item}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveMenu("projects");
+                  }}
+                  className="menu-item hover:opacity-60 transition-all text-center uppercase cursor-pointer block"
+                  style={{
+                    fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
+                    fontWeight: 400,
+                    color: "rgb(0, 0, 0)",
+                    fontSize: "64px",
+                    lineHeight: "77px"
+                  }}
+                >
+                  {item}
+                </button>
+              ) : (
+                <Link
+                  key={item}
+                  href={item === "SERVICES" ? "/services" : (item === "PORTFOLIO" ? "/projects" : `/${item.toLowerCase()}`)}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="menu-item hover:opacity-60 transition-all text-center uppercase cursor-pointer block"
+                  style={{
+                    fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
+                    fontWeight: 400,
+                    color: "rgb(0, 0, 0)",
+                    fontSize: "64px",
+                    lineHeight: "77px"
+                  }}
+                >
+                  {item}
+                </Link>
+              )
             ))}
           </div>
         )}

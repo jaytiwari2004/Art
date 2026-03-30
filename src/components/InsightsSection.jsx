@@ -56,7 +56,7 @@ export default function InsightsSection() {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="bg-[#F3F0E9] py-24 px-6 md:px-12 lg:px-20 overflow-hidden">
+    <section ref={containerRef} className="bg-[#f5f3f0] pt-4 pb-24 px-6 md:px-12 lg:px-20 overflow-hidden">
       {/* Header Section */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 pt-16">
         <div className="max-w-2xl">
@@ -71,12 +71,12 @@ export default function InsightsSection() {
             }}
           >
             The WORLD <br />
-            <span>
+            <span className="ml-12 md:ml-36 inline-block">
               of ELICYON
             </span>
           </h2>
           <p
-            className="mt-8 uppercase tracking-widest max-w-sm"
+            className="mt-8 uppercase tracking-widest max-w-lg"
             style={{
               fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
               fontSize: "14px",
@@ -86,8 +86,8 @@ export default function InsightsSection() {
               lineHeight: "17px",
             }}
           >
-            Go beyond the finished space. Explore the insights, inspiration,
-            collaborations, and ideas that quietly shape our world.
+            Go beyond the finished space. <br />
+            Explore the insights, inspiration, collaborations, and ideas that quietly shape our world.
           </p>
         </div>
         <button
@@ -185,6 +185,22 @@ export default function InsightsSection() {
                   {item.description}
                 </p>
               )}
+
+              <div className="mt-4">
+                <button 
+                  className="group relative inline-flex items-center pb-1 uppercase tracking-widest"
+                  style={{
+                    fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
+                    fontWeight: 400,
+                    color: "rgb(0, 0, 0)",
+                    fontSize: "14px",
+                    lineHeight: "14px"
+                  }}
+                >
+                  READ MORE
+                  <span className="absolute bottom-0 left-0 w-full h-[1px] bg-black origin-left scale-x-100 transition-transform duration-500 ease-out group-hover:origin-right group-hover:scale-x-0" />
+                </button>
+              </div>
             </div>
           </div>
         ))}

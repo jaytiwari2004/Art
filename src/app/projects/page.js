@@ -2,6 +2,8 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import InsightsSection from "@/components/InsightsSection";
+import ContactForm from "@/components/ContactForm";
 import Link from "next/link";
 
 const PROJECTS = [
@@ -46,10 +48,84 @@ const PROJECTS = [
     category: "INTERIOR DESIGN",
     image: "/arc6.jpg",
     year: "2024"
+  },
+  {
+    id: 7,
+    title: "NORTH LONDON FAMILY HOME",
+    category: "RESIDENTIAL",
+    image: "/arc1.jpg",
+    year: "2024"
+  },
+  {
+    id: 8,
+    title: "TOWNHOUSE RENOVATION",
+    category: "ARCHITECTURE",
+    image: "/arc2.jpg",
+    year: "2024"
+  },
+  {
+    id: 9,
+    title: "PENTHOUSE SUITE",
+    category: "INTERIOR DESIGN",
+    image: "/arc3.jpg",
+    year: "2025"
+  },
+  {
+    id: 10,
+    title: "COUNTRY ESTATE",
+    category: "ARCHITECTURE",
+    image: "/arc4.jpeg",
+    year: "2023"
+  },
+  {
+    id: 11,
+    title: "URBAN OASIS",
+    category: "INTERIOR DESIGN",
+    image: "/arc5.jpeg",
+    year: "2024"
+  },
+  {
+    id: 12,
+    title: "KENSINGTON GARDEN VIEW, PIED-A-TERRE",
+    category: "KENSINGTON • RESIDENTIAL",
+    image: "/arc6.jpg",
+    year: "2024"
+  },
+  {
+    id: 13,
+    title: "REGENT'S PARK FAMILY HOUSE",
+    category: "REGENT'S PARK • RESIDENTIAL",
+    image: "/arc1.jpg",
+    year: "2024"
+  },
+  {
+    id: 14,
+    title: "MODERN VILLA",
+    category: "ARCHITECTURE",
+    image: "/arc2.jpg",
+    year: "2024"
+  },
+  {
+    id: 15,
+    title: "STUDIO APARTMENT",
+    category: "INTERIOR DESIGN",
+    image: "/arc3.jpg",
+    year: "2025"
+  },
+  {
+    id: 16,
+    title: "LUXURY SUITE",
+    category: "INTERIOR DESIGN",
+    image: "/arc4.jpeg",
+    year: "2024"
   }
 ];
 
 export default function ProjectsPage() {
+  const [activeFilter, setActiveFilter] = React.useState("ALL");
+  const [viewMode, setViewMode] = React.useState("grid-3"); // grid-3, grid-2, or full
+  const [visibleCount, setVisibleCount] = React.useState(13);
+
   const headingStyle = {
     fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
     fontWeight: 400,
@@ -62,68 +138,226 @@ export default function ProjectsPage() {
     color: "rgb(0, 0, 0)",
   };
 
+  const filterLabelStyle = {
+    fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
+    fontWeight: 400,
+    color: "rgb(0, 0, 0)",
+    fontSize: "10px",
+    lineHeight: "10px",
+    letterSpacing: "0.05em",
+  };
+
+  const filterButtonStyle = {
+    fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
+    fontWeight: 400,
+    color: "rgb(0, 0, 0)",
+    fontSize: "18px",
+    lineHeight: "21px",
+  };
+
+  const filteredProjects = (activeFilter === "ALL"
+    ? PROJECTS
+    : PROJECTS.filter(p => {
+      if (activeFilter === "RESIDENTIAL") return p.category.includes("INTERIOR DESIGN");
+      if (activeFilter === "COMMERCIAL") return p.category.includes("PROJECT MANAGEMENT");
+      if (activeFilter === "DEVELOPMENT") return p.category.includes("ARCHITECTURE");
+      return true;
+    })).slice(0, visibleCount);
+
+  const categories = ["DEVELOPMENT", "RESIDENTIAL", "COMMERCIAL"];
+
   return (
-    <main className="min-h-screen bg-[#f0ede6] selection:bg-stone-200">
+    <main className="min-h-screen bg-[#f5f3f0] selection:bg-stone-200">
       <Navbar />
 
       {/* Header Section */}
-      <section className="pt-40 md:pt-56 pb-20 px-6 md:px-12 max-w-[1600px] mx-auto overflow-hidden">
+      <section className="pt-70 pb-40 flex items-center justify-center px-6 md:px-12 max-w-[1600px] mx-auto overflow-hidden">
         <h1
-          className="text-[56px] md:text-[115px] leading-[68px] md:leading-[132px] uppercase text-center md:text-left mb-24"
+          className="text-[48px] md:text-[115px] leading-tight uppercase text-center tracking-tight"
           style={headingStyle}
         >
-          PROJECT<br />PORTFOLIO
+          PROJECT PORTFOLIO
         </h1>
-
-        {/* Project Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-x-8 md:gap-y-24">
-          {PROJECTS.map((project, idx) => (
-            <div 
-              key={project.id} 
-              className={`group cursor-pointer ${idx % 2 === 1 ? 'md:translate-y-24' : ''}`}
-            >
-              <div className="relative aspect-[3/4] overflow-hidden mb-6 shadow-xl">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
-              </div>
-              
-              <div className="flex justify-between items-start">
-                <div>
-                  <h3 className="text-[18px] md:text-[22px] tracking-wider uppercase mb-1" style={headingStyle}>
-                    {project.title}
-                  </h3>
-                  <p className="text-[12px] tracking-[0.2em] uppercase opacity-60" style={bodyStyle}>
-                    {project.category}
-                  </p>
-                </div>
-                <span className="text-[14px] opacity-40 font-serif" style={bodyStyle}>
-                  {project.year}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
       </section>
 
-      {/* Narrative Section */}
-      <section className="py-48 px-6 md:px-12 bg-white/30">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-[24px] md:text-[36px] leading-tight mb-12" style={headingStyle}>
-            Thinking about your next project?<br />
-            Our team is here to help define your vision.
-          </p>
-          <button 
-            className="px-10 py-4 border border-black text-[13px] tracking-[0.3em] uppercase hover:bg-black hover:text-white transition-all duration-500"
-            style={bodyStyle}
+      {/* Filter & View Controls */}
+      <section className="px-6 md:px-12 max-w-[1600px] mx-auto mb-6 flex flex-col md:flex-row justify-between items-end gap-8 pt-6">
+        <div className="flex flex-col space-y-3">
+          <span className="uppercase tracking-widest" style={filterLabelStyle}>
+            FILTER PROJECTS
+          </span>
+          <div className="flex flex-wrap gap-x-8 md:gap-x-10 gap-y-4">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveFilter(activeFilter === cat ? "ALL" : cat)}
+                className={`uppercase transition-all duration-300 flex items-center ${
+                  activeFilter === cat ? "opacity-100" : "opacity-20 hover:opacity-100"
+                }`}
+                style={filterButtonStyle}
+              >
+                {cat}
+                {activeFilter === cat && (
+                  <span className="text-[16px] md:text-[20px] ml-2 leading-none">×</span>
+                )}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex items-center gap-4 text-[#8a685b]">
+          <button
+            onClick={() => setViewMode("grid-3")}
+            className={`transition-opacity duration-300 flex items-center justify-center w-8 h-8 ${viewMode === "grid-3" ? "opacity-100" : "opacity-40 hover:opacity-100"}`}
+            title="Grid View"
           >
-            Get in touch
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <rect x="2" y="2" width="9" height="9" />
+              <rect x="13" y="2" width="9" height="9" />
+              <rect x="2" y="13" width="9" height="9" />
+              <rect x="13" y="13" width="9" height="9" />
+            </svg>
+          </button>
+          <button
+            onClick={() => setViewMode("full")}
+            className={`transition-opacity duration-300 flex items-center justify-center w-8 h-8 ${viewMode === "full" ? "opacity-100" : "opacity-40 hover:opacity-100"}`}
+            title="List View"
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <rect x="2" y="2" width="20" height="4" />
+              <rect x="2" y="10" width="20" height="4" />
+              <rect x="2" y="18" width="20" height="4" />
+            </svg>
           </button>
         </div>
       </section>
+
+      {/* Project Grid Section */}
+      <section className="pt-2 pb-16 px-6 md:px-12 max-w-[1600px] mx-auto min-h-[600px]">
+        <div className={`grid gap-12 md:gap-x-12 md:gap-y-24 transition-all duration-700 ${viewMode === "grid-3"
+          ? "grid-cols-1 md:grid-cols-12"
+          : "grid-cols-1 max-w-5xl mx-auto"
+          }`}>
+          {filteredProjects.map((project, idx) => {
+            let colSpanClass = "col-span-12";
+            let aspectClass = "aspect-video w-full";
+            let wrapperClass = "w-full";
+
+            if (viewMode === "grid-3") {
+              if (idx < 3) {
+                // First 3 items: 3-column row
+                colSpanClass = "md:col-span-4";
+                aspectClass = "aspect-[4/5]";
+              } else if (idx === 11 || idx === 12) {
+                // Last Row: Symmetrical Twin Boxes
+                colSpanClass = idx === 11
+                  ? "md:col-start-1 md:col-span-6 lg:col-span-6"
+                  : "md:col-start-7 lg:col-start-7 md:col-span-6 lg:col-span-6";
+                aspectClass = "aspect-[4/5]";
+                wrapperClass = "w-full";
+              } else if (idx >= 13) {
+                // Load More Section Layout
+                if (idx === 13) {
+                  // Small Left 1
+                  colSpanClass = "md:col-span-3 lg:col-span-3";
+                  aspectClass = "aspect-[3/4]";
+                  wrapperClass = "w-full";
+                } else if (idx === 14) {
+                  // Small Left 2
+                  colSpanClass = "md:col-span-3 lg:col-span-3";
+                  aspectClass = "aspect-[3/4]";
+                  wrapperClass = "w-full";
+                } else if (idx === 15) {
+                  // Right Big
+                  colSpanClass = "md:col-span-6 lg:col-span-6";
+                  aspectClass = "aspect-[4/5]";
+                  wrapperClass = "w-full";
+                }
+              } else {
+                // Alternating Pattern for the rest
+                const pattern = (idx - 3) % 4;
+                if (pattern === 0) {
+                  // Small Left (Left Aligned)
+                  colSpanClass = "md:col-start-1 md:col-span-5 lg:col-span-4";
+                  aspectClass = "aspect-[3/4]";
+                  wrapperClass = "w-full";
+                } else if (pattern === 1) {
+                  // Big Right (Right Aligned)
+                  colSpanClass = "md:col-start-6 lg:col-start-6 md:col-span-7 lg:col-span-7";
+                  aspectClass = "aspect-[4/5]";
+                  wrapperClass = "w-[80%] mx-auto lg:ml-26 mr-auto";
+                } else if (pattern === 2) {
+                  // Big Left (Left Aligned)
+                  colSpanClass = "md:col-start-1 md:col-span-7 lg:col-span-7";
+                  aspectClass = "aspect-[3/4]";
+                  wrapperClass = "w-[75%] ml-4 md:ml-10 lg:ml-0 mr-auto";
+                } else if (pattern === 3) {
+                  // Small Right (Right Aligned)
+                  colSpanClass = "md:col-start-8 lg:col-start-8 md:col-span-5 lg:col-span-4";
+                  aspectClass = "aspect-[3/4]";
+                  wrapperClass = "w-full -ml-4 md:-ml-14 lg:-ml-58";
+                }
+              }
+            }
+
+            return (
+              <div
+                key={project.id}
+                className={`group cursor-pointer transition-all duration-700 flex flex-col justify-center ${colSpanClass} ${viewMode === "full" ? 'md:flex-row gap-12 items-center mb-12' : ''
+                  }`}
+              >
+                <div className={`relative overflow-hidden mb-6 shadow-xl transition-all duration-700 ${wrapperClass} ${aspectClass}`}>
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
+                </div>
+
+                <div className={`flex justify-between items-start transition-all duration-700 ${viewMode === "full" ? 'md:w-1/3' : wrapperClass
+                  }`}>
+
+                  <div className="flex flex-col">
+                    <p className="text-[10px] md:text-[11px] tracking-[0.2em] uppercase opacity-60 mb-2" style={bodyStyle}>
+                      {project.category}
+                    </p>
+                    <h3 className="text-[20px] md:text-[26px] tracking-wide uppercase leading-tight" style={headingStyle}>
+                      {project.title}
+                    </h3>
+                  </div>
+                  {viewMode === "full" && (
+                    <span className="text-[14px] opacity-40 font-serif ml-4 mt-1" style={bodyStyle}>
+                      {project.year}
+                    </span>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Load More Button */}
+        <div className="flex justify-center mt-20 md:mt-32">
+          <button
+            onClick={() => setVisibleCount(PROJECTS.length)}
+            className={`group relative inline-flex justify-center items-center pb-1 uppercase tracking-wide transition-opacity duration-500 ${visibleCount >= PROJECTS.length ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+            style={{
+              fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
+              fontWeight: 400,
+              color: "rgb(0, 0, 0)",
+              fontSize: "14px",
+              lineHeight: "14px"
+            }}
+          >
+            LOAD MORE
+            <span className="absolute bottom-0 left-0 w-full h-[1px] bg-black origin-left scale-x-100 transition-transform duration-500 ease-out group-hover:origin-right group-hover:scale-x-0" />
+          </button>
+        </div>
+      </section>
+
+      <InsightsSection />
+      <ContactForm />
 
       <Footer />
     </main>
