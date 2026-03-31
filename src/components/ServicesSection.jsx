@@ -313,7 +313,7 @@ function ArcMarquee() {
     <>
 
       {/* Gallery section — animation only when visible */}
-      <div className="arc-section" ref={sectionRef} id="arc-section">
+      <div className="arc-section" ref={sectionRef} id="arc-section" style={{ background: '#734128' }}>
         <div className="arc-hero">
           <h2>Our Gallery</h2>
 

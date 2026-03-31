@@ -73,10 +73,13 @@ const HeroSection = () => {
       <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
         {/* Background Image Container */}
         <div className="absolute inset-0 z-0">
-          <img
+          <video
             ref={heroImage}
-            src="/contact.jpg"
-            alt="Luxury Interior"
+            src="/malmar.webm"
+            autoPlay
+            loop
+            muted
+            playsInline
             className="w-full h-full object-cover brightness-95"
           />
           <div className="absolute inset-0 bg-stone-900/10" /> {/* Subtle warming overlay */}

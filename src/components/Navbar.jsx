@@ -27,9 +27,9 @@ const Navbar = () => {
       ([entry]) => {
         setIsOverArc(entry.isIntersecting);
       },
-      { 
-        rootMargin: "-80px 0px -90% 0px", 
-        threshold: 0 
+      {
+        rootMargin: "-80px 0px -90% 0px",
+        threshold: 0
       }
     );
 
@@ -115,16 +115,15 @@ const Navbar = () => {
     <>
       <nav
         ref={navbarRef}
-        className={`fixed top-0 left-0 w-full z-[100] grid grid-cols-3 items-center px-6 md:px-12 py-8 drop-shadow-sm transition-colors duration-500 ease-in-out ${
-          isOverArc ? "text-white" : (isScrolled || isProjectsPage ? (isMenuOpen ? "text-black" : "text-[#78233e]") : (isMenuOpen ? "text-black" : "text-white"))
-        }`}
+        className={`fixed top-0 left-0 w-full z-[100] grid grid-cols-3 items-center px-6 md:px-12 py-8 drop-shadow-sm transition-colors duration-500 ease-in-out ${isOverArc ? "text-white" : (isScrolled || isProjectsPage ? (isMenuOpen ? "text-black" : "text-[#78233e]") : (isMenuOpen ? "text-black" : "text-white"))
+          }`}
       >
         <div className="flex items-center">
           <div
             className="hidden md:flex space-x-8 text-[22px] leading-[16px] font-normal tracking-wide uppercase"
             style={{ fontFamily: "var(--font-body)" }}
           >
-            <Link 
+            <Link
               href="/projects"
               className="hover:opacity-80 transition-all uppercase cursor-pointer"
             >
@@ -132,7 +131,6 @@ const Navbar = () => {
             </Link>
             <Link href="/services" className="hover:opacity-80 transition-all">Services</Link>
             <Link href="/about" className="hover:opacity-80 transition-all">About</Link>
-            <Link href="/projects" className="hover:opacity-80 transition-all">portfolio</Link>
           </div>
           <button
             onClick={toggleMenu}
@@ -149,9 +147,8 @@ const Navbar = () => {
             alt="MALMAR"
             width={200}
             height={50}
-            className={`h-6 md:h-10 w-auto transition-all duration-500 ${
-              isOverArc ? "invert brightness-0 invert" : (isScrolled || isProjectsPage ? (isMenuOpen ? "" : "") : (isMenuOpen ? "" : "invert brightness-0 invert"))
-            }`}
+            className={`h-6 md:h-10 w-auto transition-all duration-500 ${isOverArc ? "invert brightness-0 invert" : (isScrolled || isProjectsPage ? (isMenuOpen ? "" : "") : (isMenuOpen ? "" : "invert brightness-0 invert"))
+              }`}
             priority
           />
         </div>
@@ -160,9 +157,8 @@ const Navbar = () => {
           className="flex justify-end items-center text-sm md:text-xl font-normal tracking-[0.2em] uppercase"
           style={{ fontFamily: "var(--font-antique)" }}
         >
-          <a href="#" className={`border-b pb-0.5 hover:opacity-80 transition-all ${
-            isOverArc ? "border-white" : ((isScrolled || isProjectsPage) && !isMenuOpen ? "border-[#78233e]" : (isMenuOpen ? "border-black" : "border-white"))
-          }`}>
+          <a href="#" className={`border-b pb-0.5 hover:opacity-80 transition-all ${isOverArc ? "border-white" : ((isScrolled || isProjectsPage) && !isMenuOpen ? "border-[#78233e]" : (isMenuOpen ? "border-black" : "border-white"))
+            }`}>
             Contact
           </a>
         </div>
@@ -170,12 +166,12 @@ const Navbar = () => {
 
       <div
         ref={menuRef}
-        style={{ backgroundColor: "rgb(240, 237, 232)" }}
+        style={{ backgroundColor: "#6d88c7" }}
         className="fixed top-0 left-0 w-full h-screen z-[90] -translate-y-full flex flex-col justify-between px-6 md:px-12 py-10 md:py-20"
       >
         {activeMenu === "main" && (
           <div className="flex-1 flex flex-col items-center justify-center space-y-4 md:space-y-6 animate-in fade-in duration-500">
-            {["PROJECTS", "SERVICES", "ABOUT", "PORTFOLIO"].map((item) => (
+            {["PROJECTS", "SERVICES", "ABOUT"].map((item) => (
               item === "PROJECTS" ? (
                 <button
                   key={item}
@@ -183,13 +179,11 @@ const Navbar = () => {
                     e.preventDefault();
                     setActiveMenu("projects");
                   }}
-                  className="menu-item hover:opacity-60 transition-all text-center uppercase cursor-pointer block"
+                  className="menu-item hover:opacity-60 transition-all text-center uppercase cursor-pointer block text-[28px] leading-[32px] md:text-[64px] md:leading-[77px]"
                   style={{
                     fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
                     fontWeight: 400,
-                    color: "rgb(0, 0, 0)",
-                    fontSize: "64px",
-                    lineHeight: "77px"
+                    color: "rgb(0, 0, 0)"
                   }}
                 >
                   {item}
@@ -199,13 +193,11 @@ const Navbar = () => {
                   key={item}
                   href={item === "SERVICES" ? "/services" : (item === "PORTFOLIO" ? "/projects" : `/${item.toLowerCase()}`)}
                   onClick={() => setIsMenuOpen(false)}
-                  className="menu-item hover:opacity-60 transition-all text-center uppercase cursor-pointer block"
+                  className="menu-item hover:opacity-60 transition-all text-center uppercase cursor-pointer block text-[28px] leading-[32px] md:text-[64px] md:leading-[77px]"
                   style={{
                     fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
                     fontWeight: 400,
-                    color: "rgb(0, 0, 0)",
-                    fontSize: "64px",
-                    lineHeight: "77px"
+                    color: "rgb(0, 0, 0)"
                   }}
                 >
                   {item}
@@ -218,17 +210,17 @@ const Navbar = () => {
         {activeMenu === "projects" && (
           <div className="flex-1 flex flex-col items-center justify-start pt-24 md:pt-48 w-full relative animate-in fade-in slide-in-from-right-8 duration-500">
             {/* Back Arrow - matching the blue chevron in the screenshot */}
-            <button 
+            <button
               onClick={() => setActiveMenu("main")}
               className="absolute top-0 left-0 md:top-20 md:left-12 p-4 hover:opacity-60 transition-all cursor-pointer"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 18L9 12L15 6" stroke="rgb(109, 136, 199)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M15 18L9 12L15 6" stroke="rgb(109, 136, 199)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
-            
+
             {/* Submenu Title */}
-            <Link 
+            <Link
               href="/projects"
               onClick={() => setIsMenuOpen(false)}
               className="text-center uppercase tracking-tight block hover:opacity-60 transition-all"
@@ -249,7 +241,7 @@ const Navbar = () => {
         )}
 
         <div className="menu-footer w-full flex flex-col space-y-12">
-          <div className="flex justify-between items-end border-t border-black/10 pt-8">
+          <div className="flex justify-between items-end pt-8">
             <div className="flex flex-col space-y-1">
               {["INSTAGRAM", "PINTEREST", "LINKEDIN", "FACEBOOK"].map((social) => (
                 <a
@@ -299,7 +291,7 @@ const Navbar = () => {
               fontSize: "10px",
             }}
           >
-            REGISTERED TRADE MARK OF CHARU GANDHI 2025
+            REGISTERED TRADE MARK OF MALMAR 2026
           </div>
         </div>
       </div>
@@ -308,6 +300,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-
-

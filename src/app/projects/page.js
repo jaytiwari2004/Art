@@ -191,9 +191,12 @@ export default function ProjectsPage() {
               <button
                 key={cat}
                 onClick={() => setActiveFilter(activeFilter === cat ? "ALL" : cat)}
-                className={`uppercase transition-all duration-300 flex items-center ${
-                  activeFilter === cat ? "opacity-100" : "opacity-20 hover:opacity-100"
-                }`}
+                className={`uppercase transition-all duration-300 flex items-center ${activeFilter === "ALL"
+                  ? "opacity-100"
+                  : activeFilter === cat
+                    ? "opacity-100"
+                    : "opacity-20 hover:opacity-100"
+                  }`}
                 style={filterButtonStyle}
               >
                 {cat}
@@ -240,7 +243,7 @@ export default function ProjectsPage() {
           }`}>
           {filteredProjects.map((project, idx) => {
             let colSpanClass = "col-span-12";
-            let aspectClass = "aspect-video w-full";
+            let aspectClass = viewMode === "full" ? "w-full h-auto" : "aspect-video w-full";
             let wrapperClass = "w-full";
 
             if (viewMode === "grid-3") {
@@ -306,11 +309,12 @@ export default function ProjectsPage() {
                 className={`group cursor-pointer transition-all duration-700 flex flex-col justify-center ${colSpanClass} ${viewMode === "full" ? 'md:flex-row gap-12 items-center mb-12' : ''
                   }`}
               >
-                <div className={`relative overflow-hidden mb-6 shadow-xl transition-all duration-700 ${wrapperClass} ${aspectClass}`}>
+                <div className={`relative overflow-hidden mb-6 shadow-xl transition-all duration-700 ${viewMode === "full" ? "md:w-2/3 w-full" : wrapperClass} ${aspectClass}`}>
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className={`w-full transition-transform duration-700 group-hover:scale-105 ${viewMode === "full" ? "h-auto object-contain" : "h-full object-cover"
+                      }`}
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
                 </div>
