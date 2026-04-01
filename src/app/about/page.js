@@ -1,9 +1,47 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Link from "next/link";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 
 export default function AboutPage() {
+  const testimonials = [
+    {
+      quote: "The attention to detail and innovative features have completely transformed our workflow. This is exactly what we've been looking for.",
+      name: "Sarah Chen",
+      designation: "Product Manager at TechFlow",
+      src: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=3560&auto=format&fit=crop",
+    },
+    {
+      quote: "Implementation was seamless and the results exceeded our expectations. The platform's flexibility is remarkable.",
+      name: "Michael Rodriguez",
+      designation: "CTO at InnovateSphere",
+      src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3540&auto=format&fit=crop",
+    },
+    {
+      quote: "This solution has significantly improved our team's productivity. The intuitive interface makes complex tasks simple.",
+      name: "Emily Watson",
+      designation: "Operations Director at CloudScale",
+      src: "https://images.unsplash.com/photo-1623582854588-d60de57fa33f?q=80&w=3540&auto=format&fit=crop",
+    },
+    {
+      quote: "Outstanding support and robust features. It's rare to find a product that delivers on all its promises.",
+      name: "James Kim",
+      designation: "Engineering Lead at DataPro",
+      src: "https://images.unsplash.com/photo-1636041293178-808a6762ab39?q=80&w=3464&auto=format&fit=crop",
+    },
+    {
+      quote: "The scalability and performance have been game-changing for our organization. Highly recommend to any growing business.",
+      name: "Lisa Thompson",
+      designation: "VP of Technology at FutureNet",
+      src: "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?q=80&w=2592&auto=format&fit=crop",
+    },
+  ];
+
   const textStyle = {
     fontFamily: 'var(--font-elicyon), serif',
     fontWeight: 400,
@@ -16,103 +54,330 @@ export default function AboutPage() {
     color: "rgba(0, 0, 0, 0.7)",
   };
 
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef(null);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const counters = document.querySelectorAll(".stat-number");
+      counters.forEach((counter) => {
+        const target = parseInt(counter.getAttribute("data-target") || "0");
+        const obj = { value: 0 };
+        gsap.to(obj, {
+          value: target,
+          duration: 2.5,
+          ease: "power2.out",
+          onUpdate: () => {
+            const val = Math.floor(obj.value);
+            counter.innerText = val < 10 ? '0' + val : val;
+          },
+          scrollTrigger: {
+            trigger: counter,
+            start: "top 90%",
+            toggleActions: "play none none none"
+          },
+        });
+      });
+    }
+  }, []);
+
   return (
     <main className="min-h-screen bg-[#f0ede6] selection:bg-stone-200">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="pt-40 md:pt-48 pb-20 px-6 md:px-12 max-w-[1600px] mx-auto overflow-hidden">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
-          {/* Left: Branding Image */}
-          <div className="relative h-[400px] md:h-[700px] w-full group overflow-hidden shadow-2xl">
+      {/* Hero Section - Banner Style */}
+      <section className="relative w-full h-[60vh] md:h-[70vh] flex items-center justify-center bg-cover bg-center overflow-hidden"
+        style={{ backgroundImage: "url('/services-hero.png')" }}>
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/50"></div>
+
+        <div className="relative z-10 text-center flex flex-col items-center">
+          <h1 className="text-white text-[48px] md:text-[80px] font-bold uppercase tracking-wide mb-4">
+            About Us
+          </h1>
+
+          {/* Breadcrumbs */}
+          <div className="flex items-center space-x-4 text-[16px] md:text-[18px] font-medium">
+            <Link href="/" className="text-white hover:text-[#c5a059] transition-colors cursor-pointer">
+              Home
+            </Link>
+            <span className="text-white opacity-60">|</span>
+            <span className="text-[#c5a059]">About</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Experience Section - Light Style */}
+      <section className="bg-[#ede8df] py-24 px-6 md:px-12 overflow-hidden">
+        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-center">
+
+          {/* Left: Two Vertical Images */}
+          <div className="flex gap-4 md:gap-8 h-[500px] md:h-[650px]">
+            <div className="flex-1 overflow-hidden">
+              <img
+                src="/arc1.jpg"
+                alt="Architecture Interior 1"
+                className="w-full h-full object-cover transition-all duration-700 hover:scale-105"
+              />
+            </div>
+            <div className="flex-1 overflow-hidden mt-12 md:mt-20">
+              <img
+                src="/arc2.jpg"
+                alt="Architecture Interior 2"
+                className="w-full h-full object-cover transition-all duration-700 hover:scale-105"
+              />
+            </div>
+          </div>
+
+          {/* Right: Content */}
+          <div className="flex flex-col space-y-8 text-[#222222]">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-[2px] bg-[#c5a059]"></div>
+              <span className="text-[#c5a059] uppercase tracking-[0.3em] font-bold text-sm">
+                About Us
+              </span>
+            </div>
+
+            <h2 className="text-[40px] md:text-[60px] leading-tight font-bold uppercase tracking-tight text-[#111111]">
+              We Provide You Best <br className="hidden md:block" /> Experience
+            </h2>
+
+            <div className="flex items-start gap-6 border-l-2 border-[#c5a059] pl-6 py-2">
+              <p className="text-[#444444] italic text-[18px] md:text-[20px] leading-relaxed">
+                Our signature design process comes standard...refresh, remodel, new and enjoyable design experience
+              </p>
+            </div>
+
+            <div className="space-y-6 text-[#666666] text-[16px] leading-[1.8] font-light">
+              <p>
+                Cras aliquet scelerisque dui, dapibus condimentum lacus pulvinar quis. Quisque ullamcorper placerat sem nec congue. Ut sed consequat nunc. Aenean mollis dolor nec diam feugiat molestie.
+              </p>
+              <p>
+                Nulla et leo lacus. Nulla facilisi. Integer nunc orci, porttitor eu urna non, porta faucibus dolor. Integer at felis varius, interdum enim vel, ornare felis.
+              </p>
+            </div>
+
+            <div className="flex items-center gap-10 pt-4">
+              <button className="bg-[#c5a059] text-white px-10 py-4 uppercase tracking-widest font-bold text-sm hover:bg-[#b38f4a] transition-all">
+                Learn More
+              </button>
+
+              {/* Signature */}
+              <div className="w-40 opacity-80">
+                <img src="/signature.png" alt="Signature" className="w-full h-auto"
+                  onError={(e) => e.target.style.display = 'none'}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* Video & Stats Section */}
+      <section className="relative w-full overflow-hidden">
+        {/* Background Video Content */}
+        <div className="relative h-[60vh] md:h-[75vh] w-full flex flex-col items-center justify-center text-white text-center">
+          {/* Video Background */}
+          <div className="absolute inset-0 z-0">
+            <video
+              ref={videoRef}
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+              poster="/services-hero.png"
+            >
+              <source src="/malmar.webm" type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
+            <div className={`absolute inset-0 bg-black/40 transition-opacity duration-700 ${isPlaying ? 'opacity-0' : 'opacity-100'}`}></div>
+          </div>
+
+          {/* Centered Content */}
+          <div className={`relative z-10 flex flex-col items-center transition-all duration-700 ${isPlaying ? 'opacity-0 cursor-default pointer-events-none' : 'opacity-100'}`}>
+            {/* Play Button - exact same as image */}
+            <div
+              onClick={togglePlay}
+              className="w-20 h-20 md:w-24 md:h-24 bg-white/20 backdrop-blur-sm border-2 border-white flex items-center justify-center mb-8 cursor-pointer group hover:bg-white transition-all duration-500"
+            >
+              <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[18px] border-l-white border-b-[10px] border-b-transparent group-hover:border-l-black ml-1"></div>
+            </div>
+            <h2 className="text-[36px] md:text-[64px] font-bold uppercase tracking-[2px] leading-tight">
+              Take A Tour Of Luxuri
+            </h2>
+          </div>
+
+          {/* Invisible Overlay to allow pausing when video is playing */}
+          {isPlaying && (
+            <div
+              onClick={togglePlay}
+              className="absolute inset-0 z-20 cursor-pointer"
+              title="Click to Pause"
+            ></div>
+          )}
+        </div>
+
+        {/* Stats Bar - Centered Container Style */}
+        <div className="bg-[#ede8df] relative z-30 pt-1">
+          <div className="relative -mt-12 md:-mt-16 px-6 md:px-12 pb-12">
+            <div className="bg-[#111111] max-w-[1200px] mx-auto py-10 md:py-14 px-8 md:px-16 grid grid-cols-2 lg:grid-cols-4 gap-12 text-center md:text-left items-center shadow-2xl">
+
+              {/* Stat Item 1 */}
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
+                <div className="flex text-[#c5a059] text-[48px] md:text-[72px] font-bold leading-none">
+                  <span>15</span>
+                  <span className="stat-number" data-target="47">00</span>
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="text-white text-[16px] md:text-[18px] font-bold leading-tight">Project<br />Completed</span>
+                </div>
+              </div>
+
+              {/* Stat Item 2 */}
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
+                <div className="flex text-[#c5a059] text-[48px] md:text-[72px] font-bold leading-none">
+                  <span>25</span>
+                  <span className="stat-number" data-target="87">00</span>
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="text-white text-[16px] md:text-[18px] font-bold leading-tight">Our Happy<br />Clients</span>
+                </div>
+              </div>
+
+              {/* Stat Item 3 */}
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
+                <div className="flex text-[#c5a059] text-[48px] md:text-[72px] font-bold leading-none">
+                  <span>18</span>
+                  <span className="stat-number" data-target="79">00</span>
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="text-white text-[16px] md:text-[18px] font-bold leading-tight">Cup<br />Of Coffee</span>
+                </div>
+              </div>
+
+              {/* Stat Item 4 */}
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
+                <div className="flex text-[#c5a059] text-[48px] md:text-[72px] font-bold leading-none">
+                  <span>25</span>
+                  <span className="stat-number" data-target="47">00</span>
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="text-white text-[16px] md:text-[18px] font-bold leading-tight">Win<br />Awards</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* Happy Client Testimonials Section */}
+      <section className="bg-[#ede8df] py-24 px-6 md:px-12 overflow-hidden">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="flex flex-col items-center text-center space-y-4 mb-16">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-[2px] bg-[#c5a059]"></div>
+              <span className="text-[#c5a059] uppercase tracking-[0.3em] font-bold text-sm">
+                Testimonials
+              </span>
+            </div>
+            <h2 className="text-[40px] md:text-[60px] leading-tight font-bold uppercase tracking-tight text-[#111111]">
+              Our Happy Client
+            </h2>
+          </div>
+
+          <AnimatedTestimonials testimonials={testimonials} autoplay={true} />
+        </div>
+      </section>
+
+      {/* Our Process Section */}
+      <section className="relative w-full overflow-hidden bg-[#111111] min-h-[500px] flex items-stretch">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-2">
+
+          {/* Left: Image Pane */}
+          <div className="relative h-[370px] lg:h-auto">
             <img
-              src="/img3.jpg"
-              alt="Luxury Interior Studio"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              src="/object1.jpeg"
+              alt="Interior Process"
+              className="absolute inset-0 w-full h-full object-cover"
+              onError={(e) => e.target.src = "/object1.jpeg"}
             />
           </div>
 
-          {/* Right: Intro Text */}
-          <div className="flex flex-col space-y-12">
-            <div>
-              <h1
-                className="text-[48px] md:text-[64px] leading-[56px] md:leading-[72px] uppercase mb-8"
-                style={textStyle}
-              >
-                Welcome in<br />our world
-              </h1>
-              <p
-                className="text-[18px] md:text-[22px] leading-[28px] md:leading-[32px] font-normal"
-                style={textStyle}
-              >
-                Our architecture and design practice offers only the finest services, drawing from our extensive experience in the industry.
-              </p>
-            </div>
+          {/* Right: Text Pane */}
+          <div className="px-10 md:px-16 lg:px-20 pt-10 md:pt-16 lg:pt-30 pb-16 md:pb-24 lg:pb-32 flex flex-col justify-center relative bg-[url(/blueprint.png)] bg-fixed bg-cover">
+            {/* Dark Overlay for the background pattern if any */}
+            <div className="absolute inset-0 bg-[#0a0a0a]/90 z-0"></div>
 
-            <div className="space-y-6">
-              <p className="text-[14px] md:text-[16px] leading-[24px] tracking-wide" style={bodyStyle}>
-                We strongly believe that a home or business should be a genuine expression of your unique individuality or the essence of your entreprise. It should embody the way you aspire to live, encompassing the ideas that define your unique tastes, perspectives, and connections to the world.
-              </p>
-
-              <div className="py-12 border-y border-black/10">
-                <blockquote className="text-[28px] md:text-[36px] italic leading-tight" style={textStyle}>
-                  ”It’s not about space but about time and imagination”
-                </blockquote>
+            <div className="relative z-10 space-y-8">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-[2px] bg-[#c5a059]"></div>
+                <span className="text-[#c5a059] uppercase tracking-[0.3em] font-bold text-sm">
+                  Our Process
+                </span>
               </div>
 
-              <p className="text-[14px] md:text-[16px] leading-[24px] tracking-wide" style={bodyStyle}>
-                Its not only about the aesthetics and functionality of a space, but also with how it evolves and adapts over time. The dynamic nature of design and architecture and its ability to shape and be shaped by the passage of time.
-              </p>
+              <h2 className="text-[32px] md:text-[48px] font-bold text-white uppercase leading-tight tracking-tight">
+                See How We Work <br /> For You
+              </h2>
+
+              <div className="space-y-6 pt-4">
+                {/* Step 1 */}
+                <div className="flex gap-6 group">
+                  <div className="flex-shrink-0 w-16 h-16 border border-[#c5a059]/30 flex items-center justify-center text-[20px] font-bold text-white group-hover:bg-[#c5a059] transition-all duration-500">
+                    1.
+                  </div>
+                  <div className="space-y-1">
+                    <h3 className="text-[20px] font-bold text-white uppercase tracking-wide">Idea</h3>
+                    <p className="text-gray-400 text-[14px] leading-[22px] max-w-sm">
+                      Phasellus non libero non nisi fermentum sodales non non neque nulla quis tortor orci.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Step 2 */}
+                <div className="flex gap-6 group">
+                  <div className="flex-shrink-0 w-16 h-16 border border-[#c5a059]/30 flex items-center justify-center text-[20px] font-bold text-white group-hover:bg-[#c5a059] transition-all duration-500">
+                    2.
+                  </div>
+                  <div className="space-y-1">
+                    <h3 className="text-[20px] font-bold text-white uppercase tracking-wide">Design</h3>
+                    <p className="text-gray-400 text-[14px] leading-[22px] max-w-sm">
+                      Phasellus non libero non nisi fermentum sodales non non neque nulla quis tortor orci.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Step 3 */}
+                <div className="flex gap-6 group">
+                  <div className="flex-shrink-0 w-16 h-16 border border-[#c5a059]/30 flex items-center justify-center text-[20px] font-bold text-white group-hover:bg-[#c5a059] transition-all duration-500">
+                    3.
+                  </div>
+                  <div className="space-y-1">
+                    <h3 className="text-[20px] font-bold text-white uppercase tracking-wide">Execution</h3>
+                    <p className="text-gray-400 text-[14px] leading-[22px] max-w-sm">
+                      Phasellus non libero non nisi fermentum sodales non non neque nulla quis tortor orci.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+
         </div>
       </section>
 
-      {/* Perspective Section */}
-      <section className="py-24 bg-stone-900/5 px-6 md:px-12">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-[32px] md:text-[40px] uppercase mb-12 tracking-[0.2em]" style={textStyle}>
-            Our Perspective
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
-            <div className="space-y-6">
-              <p className="text-[16px] leading-[26px]" style={bodyStyle}>
-                Our work reflects each client’s unique identity and lifestyle—sometimes bold and dramatic, other times subtle and refined.
-              </p>
-              <p className="text-[16px] leading-[26px]" style={bodyStyle}>
-                With expertise in traditional, contemporary, and local design, our diverse perspective embraces many styles and pushes creative boundaries. We love collaborating with artists and sourcing distinctive pieces to elevate every space.
-              </p>
-            </div>
-            <div className="space-y-6 flex flex-col justify-center">
-              <p className="text-[16px] leading-[26px] italic" style={textStyle}>
-                We research and apply eco-friendly and sustainable materials where possible to create interiors that harmonize with their natural surroundings and evoke a sense of calm and balance, a true retreat from everyday life.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Vision Section */}
-      <section className="py-32 px-6 md:px-12 max-w-[1600px] mx-auto">
-        <div className="flex flex-col md:flex-row gap-20 items-end">
-          <div className="flex-1">
-            <h2 className="text-[32px] md:text-[40px] uppercase mb-8" style={textStyle}>
-              Our Vision
-            </h2>
-            <p className="text-[18px] md:text-[24px] leading-relaxed mb-12" style={textStyle}>
-              We strive to craft timeless spaces that go beyond trends. Our focus on quality, precision, and sustainability distinguishes us in the realm of interior design.
-            </p>
-          </div>
-          <div className="flex-1 bg-white p-12 md:p-20 shadow-xl border-t-8 border-stone-800">
-            <p className="text-[16px] leading-[28px] mb-8" style={bodyStyle}>
-              If you aim to turn your home into a harmonious sanctuary that resonates with its surroundings or historical significance, let us infuse that essence into your living space. We will create a design that authentically mirrors your individual style.
-            </p>
-            <button className="text-[14px] uppercase tracking-[0.3em] font-medium border-b border-black pb-2 hover:opacity-10 transition-all">
-              Start Your Journey
-            </button>
-          </div>
-        </div>
-      </section>
 
       <Footer />
     </main>

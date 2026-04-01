@@ -15,6 +15,9 @@ if (typeof window !== "undefined") {
 const Navbar = () => {
   const pathname = usePathname();
   const isProjectsPage = pathname === "/projects";
+  const isContactPage = pathname === "/contact";
+  const isAboutPage = pathname === "/about";
+  const isLightPage = isProjectsPage || isContactPage || isAboutPage;
   const navbarRef = useRef(null);
   const menuRef = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -115,7 +118,7 @@ const Navbar = () => {
     <>
       <nav
         ref={navbarRef}
-        className={`fixed top-0 left-0 w-full z-[100] grid grid-cols-3 items-center px-6 md:px-12 py-8 drop-shadow-sm transition-colors duration-500 ease-in-out ${isOverArc ? "text-white" : (isScrolled || isProjectsPage ? (isMenuOpen ? "text-black" : "text-[#78233e]") : (isMenuOpen ? "text-black" : "text-white"))
+        className={`fixed top-0 left-0 w-full z-[100] grid grid-cols-3 items-center px-6 md:px-12 py-8 drop-shadow-sm transition-colors duration-500 ease-in-out ${isOverArc ? "text-white" : (isScrolled || isLightPage ? (isMenuOpen ? "text-black" : "text-[#78233e]") : (isMenuOpen ? "text-black" : "text-white"))
           }`}
       >
         <div className="flex items-center">
@@ -123,6 +126,7 @@ const Navbar = () => {
             className="hidden md:flex space-x-8 text-[22px] leading-[16px] font-normal tracking-wide uppercase"
             style={{ fontFamily: "var(--font-body)" }}
           >
+            <Link href="/" className="hover:opacity-80 transition-all">Home</Link>
             <Link
               href="/projects"
               className="hover:opacity-80 transition-all uppercase cursor-pointer"
@@ -147,7 +151,7 @@ const Navbar = () => {
             alt="MALMAR"
             width={200}
             height={50}
-            className={`h-6 md:h-10 w-auto transition-all duration-500 ${isOverArc ? "invert brightness-0 invert" : (isScrolled || isProjectsPage ? (isMenuOpen ? "" : "") : (isMenuOpen ? "" : "invert brightness-0 invert"))
+            className={`h-6 md:h-10 w-auto transition-all duration-500 ${isOverArc ? "invert brightness-0 invert" : (isScrolled || isLightPage ? (isMenuOpen ? "" : "") : (isMenuOpen ? "" : "invert brightness-0 invert"))
               }`}
             priority
           />
@@ -157,10 +161,11 @@ const Navbar = () => {
           className="flex justify-end items-center text-sm md:text-xl font-normal tracking-[0.2em] uppercase"
           style={{ fontFamily: "var(--font-antique)" }}
         >
-          <a href="#" className={`border-b pb-0.5 hover:opacity-80 transition-all ${isOverArc ? "border-white" : ((isScrolled || isProjectsPage) && !isMenuOpen ? "border-[#78233e]" : (isMenuOpen ? "border-black" : "border-white"))
-            }`}>
-            Contact
-          </a>
+          <Link href="/contact" className="relative group inline-block">
+            <span className="relative z-10 transition-opacity group-hover:opacity-80">Contact</span>
+            <span className={`absolute bottom-0 left-0 w-full h-[1.5px] transition-transform duration-500 ease-in-out origin-left group-hover:origin-right scale-x-100 group-hover:scale-x-0 ${isOverArc ? "bg-white" : ((isScrolled || isLightPage) && !isMenuOpen ? "bg-[#78233e]" : (isMenuOpen ? "bg-black" : "bg-white"))
+              }`}></span>
+          </Link>
         </div>
       </nav>
 

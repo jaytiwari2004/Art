@@ -100,7 +100,7 @@ export default function ProjectSection() {
       {/* SECTION HEADER */}
       <section className="w-full flex flex-col items-center justify-center pt-32 pb-12 text-black bg-[#f8f7f3]">
         <h2 className="text-[32vw] md:text-[18vw] uppercase leading-[0.9] text-center" style={{ color: 'rgb(0,0,0)', fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", sans-serif', fontWeight: 400 }}>
-          Our <br /> Projects
+          <span className="pr-[15vw] md:pr-[2vw]">Our</span> <br /> <span className="pl-[20vw] md:pl-[15vw]">Projects</span>
         </h2>
         <p className="max-w-2xl text-center text-base md:text-lg font-light mt-8 px-6" style={{ color: 'rgb(0,0,0)' }}>
           Storytelling through design - a curated selection <br />
