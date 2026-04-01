@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -131,19 +132,17 @@ export default function ServicesSection() {
                 consideration, and a deeply personal touch.
               </p>
 
-              <button
-                className="text-[13px] tracking-[0.25em] uppercase underline underline-offset-4 cursor-pointer relative left-2 md:left-16"
+              <Link
+                href="/services"
+                className="text-[13px] tracking-[0.25em] uppercase underline underline-offset-4 cursor-pointer relative left-2 md:left-16 inline-block"
                 style={{
                   fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
                   fontWeight: 400,
-                  background: "none",
-                  border: "none",
                   color: "rgb(0, 0, 0)",
-                  padding: 0,
                 }}
               >
                 Explore Our Services
-              </button>
+              </Link>
             </div>
           </div>
 

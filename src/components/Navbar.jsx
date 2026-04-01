@@ -177,73 +177,24 @@ const Navbar = () => {
         {activeMenu === "main" && (
           <div className="flex-1 flex flex-col items-center justify-center space-y-4 md:space-y-6 animate-in fade-in duration-500">
             {["PROJECTS", "SERVICES", "ABOUT"].map((item) => (
-              item === "PROJECTS" ? (
-                <button
-                  key={item}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setActiveMenu("projects");
-                  }}
-                  className="menu-item hover:opacity-60 transition-all text-center uppercase cursor-pointer block text-[28px] leading-[32px] md:text-[64px] md:leading-[77px]"
-                  style={{
-                    fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
-                    fontWeight: 400,
-                    color: "rgb(0, 0, 0)"
-                  }}
-                >
-                  {item}
-                </button>
-              ) : (
-                <Link
-                  key={item}
-                  href={item === "SERVICES" ? "/services" : (item === "PORTFOLIO" ? "/projects" : `/${item.toLowerCase()}`)}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="menu-item hover:opacity-60 transition-all text-center uppercase cursor-pointer block text-[28px] leading-[32px] md:text-[64px] md:leading-[77px]"
-                  style={{
-                    fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
-                    fontWeight: 400,
-                    color: "rgb(0, 0, 0)"
-                  }}
-                >
-                  {item}
-                </Link>
-              )
+              <Link
+                key={item}
+                href={item === "PROJECTS" ? "/projects" : (item === "SERVICES" ? "/services" : `/${item.toLowerCase()}`)}
+                onClick={() => setIsMenuOpen(false)}
+                className="menu-item hover:opacity-60 transition-all text-center uppercase cursor-pointer block text-[28px] leading-[32px] md:text-[64px] md:leading-[77px]"
+                style={{
+                  fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
+                  fontWeight: 400,
+                  color: "rgb(0, 0, 0)"
+                }}
+              >
+                {item}
+              </Link>
             ))}
           </div>
         )}
 
-        {activeMenu === "projects" && (
-          <div className="flex-1 flex flex-col items-center justify-start pt-24 md:pt-48 w-full relative animate-in fade-in slide-in-from-right-8 duration-500">
-            {/* Back Arrow - matching the blue chevron in the screenshot */}
-            <button
-              onClick={() => setActiveMenu("main")}
-              className="absolute top-0 left-0 md:top-20 md:left-12 p-4 hover:opacity-60 transition-all cursor-pointer"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 18L9 12L15 6" stroke="rgb(109, 136, 199)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
 
-            {/* Submenu Title */}
-            <Link
-              href="/projects"
-              onClick={() => setIsMenuOpen(false)}
-              className="text-center uppercase tracking-tight block hover:opacity-60 transition-all"
-              style={{
-                fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
-                fontWeight: 400,
-                color: "rgb(0, 0, 0)",
-                fontSize: "64px",
-                lineHeight: "77px"
-              }}
-            >
-              PROJECT PORTFOLIO
-            </Link>
-
-            <div className="mt-16 flex flex-col space-y-6">
-            </div>
-          </div>
-        )}
 
         <div className="menu-footer w-full flex flex-col space-y-12">
           <div className="flex justify-between items-end pt-8">
