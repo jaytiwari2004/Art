@@ -61,33 +61,30 @@ export default function InsightsSection() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 pt-16">
         <div className="max-w-2xl">
           <h2
+            className="text-[32px] md:text-[48px] leading-[37px] md:leading-[58px]"
             style={{
               fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
-              fontSize: "48px",
               fontWeight: 400,
               fontStyle: "normal",
-              lineHeight: "58px",
               color: "rgb(0, 0, 0)",
             }}
           >
             The WORLD <br />
-            <span className="ml-12 md:ml-36 inline-block">
-              of ELICYON
+            <span className="ml-16 md:ml-36 inline-block">
+              of <span className="hidden md:inline">ELICYON</span>
+              <span className="inline md:hidden">MALMAR</span>
             </span>
           </h2>
           <p
-            className="mt-8 uppercase tracking-widest max-w-lg"
+            className="mt-8 md:uppercase tracking-widest md:tracking-widest max-w-lg text-[16px] md:text-[14px] leading-[22px] md:leading-[17px]"
             style={{
               fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
-              fontSize: "14px",
               fontWeight: 400,
               fontStyle: "normal",
               color: "rgb(0, 0, 0)",
-              lineHeight: "17px",
             }}
           >
-            Go beyond the finished space. <br />
-            Explore the insights, inspiration, collaborations, and ideas that quietly shape our world.
+            Go beyond the finished space. Explore the insights, inspiration, collaborations, and ideas that quietly shape our world.
           </p>
         </div>
         <button
@@ -105,7 +102,7 @@ export default function InsightsSection() {
             cursor: "pointer",
           }}
         >
-          Explore Insights
+          EXPLORE INSIGHTS
           <span className="absolute bottom-0 left-0 w-full h-[1px] overflow-hidden">
             <span className="absolute inset-0 bg-black transition-transform duration-500 ease-in-out translate-x-0 group-hover:translate-x-[101%]"></span>
           </span>
@@ -187,7 +184,7 @@ export default function InsightsSection() {
               )}
 
               <div className="mt-4">
-                <button 
+                <button
                   className="group relative inline-flex items-center pb-1 uppercase tracking-widest"
                   style={{
                     fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',

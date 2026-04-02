@@ -15,7 +15,7 @@ export default function ServicesSection() {
           {/* Top: Title + Description */}
           <div className="mb-12 md:mb-16">
             <h2
-              className="text-[36px] md:text-[48px] leading-[44px] md:leading-[58px]"
+              className="text-[32px] md:text-[48px] leading-[37px] md:leading-[58px]"
               style={{
                 fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
                 fontWeight: 400,
@@ -356,9 +356,9 @@ function ArcMarquee() {
         {/* Seamlessly integrated scrolling text effect */}
         <div
           ref={scrollContainerRef}
-          className="flex flex-col md:flex-row items-center md:items-start justify-center gap-12 md:gap-24 px-10 py-20 pb-32 md:pb-48 pt-24"
+          className="flex flex-col md:flex-row items-center md:items-start justify-center gap-6 md:gap-24 px-6 md:px-10 py-16 md:py-20 pb-24 md:pb-48 pt-12 md:pt-24"
         >
-          <div className="flex items-center gap-3 self-start mt-6 relative md:-left-8">
+          <div className="flex items-center gap-3 self-start md:mt-6 relative md:-left-8">
             <div className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: "#e8e6e7" }} />
             <span
               className="text-xs tracking-widest uppercase whitespace-nowrap"
@@ -377,12 +377,10 @@ function ArcMarquee() {
           <div className="max-w-4xl text-start">
             <p
               ref={textRef}
-              className="text-[#472833]"
+              className="text-[#472833] text-[26px] md:text-[46px] leading-[34px] md:leading-[54px]"
               style={{
                 fontFamily: 'AntiqueLegacy, serif, Arial, Helvetica, sans-serif',
                 fontWeight: 400,
-                fontSize: "46px",
-                lineHeight: "54px",
               }}
             >
               Our clients are organizations that want to make a difference.
@@ -393,7 +391,7 @@ function ArcMarquee() {
             </p>
 
             <button
-              className="mt-12 px-8 py-3 border border-white/20 rounded-full text-white text-sm tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-500"
+              className="mt-8 md:mt-12 px-8 py-3 border border-white/20 rounded-full text-white text-sm tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-500"
               style={{
                 fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", sans-serif',
               }}
