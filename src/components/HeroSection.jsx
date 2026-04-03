@@ -95,7 +95,7 @@ const HeroSection = () => {
           >
             {/* Line 1: TIMELESS (TOP) */}
             <div
-              className="text-center md:text-left mt-12 md:mt-14 text-[56px] md:text-[95px] leading-[68px] md:leading-[110px]"
+              className="text-center md:text-left mt-12 md:mt-16 text-[56px] md:text-[80px] leading-[68px] md:leading-[110px]"
               style={{
                 fontFamily: 'var(--font-elicyon), serif',
                 fontWeight: 400,
@@ -107,7 +107,7 @@ const HeroSection = () => {
 
             {/* Line 2: TAILORED (MIDDLE) */}
             <div
-              className="text-center md:text-right md:pr-56 lg:pr-130 mt-40 md:mt-12 text-[56px] md:text-[95px] leading-[68px] md:leading-[110px]"
+              className="text-center md:text-right md:pr-56 lg:pr-170 mt-40 md:mt-12 text-[56px] md:text-[80px] leading-[68px] md:leading-[110px]"
               style={{
                 fontFamily: 'var(--font-elicyon), serif',
                 fontWeight: 400,
@@ -116,10 +116,10 @@ const HeroSection = () => {
             >
               TAILORED
             </div>
-
+            {/* here i change some size tex of the text in md text 70 and left right lg pr 190 */}
             {/* Line 3: SPACES (BOTTOM) */}
             <div
-              className="text-center md:text-left pl-0 md:pl-[10%] lg:pl-[20%] mt-40 md:mt-12 text-[56px] md:text-[95px] leading-[68px] md:leading-[110px]"
+              className="text-center md:text-left pl-0 md:pl-[10%] lg:pl-[15%] mt-40 md:mt-12 text-[56px] md:text-[80px] leading-[68px] md:leading-[110px]"
               style={{
                 fontFamily: 'var(--font-elicyon), serif',
                 fontWeight: 400,
