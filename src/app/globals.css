@@ -19,6 +19,15 @@
   font-display: swap;
 }
 
+/* 🔥 Navbar Menu Font (Big Caslon CC Black) */
+@font-face {
+  font-family: 'BigCaslon';
+  src: url('/fonts/fonts/fonnts.com-Big_Caslon_CC_Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -26,6 +35,7 @@
   /* ✅ Font variables */
   --font-heading: 'Elicyon', serif;
   --font-body: 'AntiqueLegacy', serif;
+  --font-nav-menu: 'BigCaslon', serif;
 
   --font-sans: var(--font-body), Arial, Helvetica, sans-serif;
   --font-serif: var(--font-heading), serif;

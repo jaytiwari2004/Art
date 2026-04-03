@@ -125,10 +125,10 @@ const Navbar = () => {
           <div
             className="hidden md:flex space-x-8 font-normal tracking-wide uppercase"
             style={{ 
-              fontFamily: "__antiqueLegacy_623eb9, __antiqueLegacy_Fallback_623eb9",
+              fontFamily: "var(--font-nav-menu)",
               fontSize: "14px",
               lineHeight: "14px",
-              fontWeight: 400
+              fontWeight: 900
             }}
           >
             <Link
@@ -143,7 +143,7 @@ const Navbar = () => {
           <button
             onClick={toggleMenu}
             className="md:hidden text-sm md:text-xl font-normal tracking-[0.2em] uppercase cursor-pointer"
-            style={{ fontFamily: "var(--font-body)" }}
+            style={{ fontFamily: "var(--font-nav-menu)", fontWeight: 900 }}
           >
             {isMenuOpen ? "CLOSE" : "MENU"}
           </button>
@@ -166,10 +166,10 @@ const Navbar = () => {
         <div
           className="flex justify-end items-center font-normal tracking-[0.2em] uppercase"
           style={{ 
-            fontFamily: "__antiqueLegacy_623eb9, __antiqueLegacy_Fallback_623eb9",
+            fontFamily: "var(--font-nav-menu)",
             fontSize: "14px",
             lineHeight: "14px",
-            fontWeight: 400
+            fontWeight: 900
           }}
         >
           <Link href="/contact" className="relative group inline-block">
@@ -194,8 +194,8 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
                 className="menu-item hover:opacity-60 transition-all text-center uppercase cursor-pointer block text-[28px] leading-[32px] md:text-[64px] md:leading-[77px]"
                 style={{
-                  fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
-                  fontWeight: 400,
+                  fontFamily: 'var(--font-nav-menu)',
+                  fontWeight: 900,
                   color: "rgb(0, 0, 0)"
                 }}
               >
