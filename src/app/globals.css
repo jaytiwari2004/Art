@@ -21,9 +21,18 @@
 
 /* 🔥 Navbar Menu Font (Big Caslon CC Black) */
 @font-face {
-  font-family: 'BigCaslon';
+  font-family: 'BigCaslonBlack';
   src: url('/fonts/fonts/fonnts.com-Big_Caslon_CC_Black.otf') format('opentype');
   font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 🔥 Hero Font (Big Caslon CC Regular) */
+@font-face {
+  font-family: 'BigCaslonRegular';
+  src: url('/fonts/fonts/fonnts.com-Big_Caslon_CC.otf') format('opentype');
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -35,7 +44,8 @@
   /* ✅ Font variables */
   --font-heading: 'Elicyon', serif;
   --font-body: 'AntiqueLegacy', serif;
-  --font-nav-menu: 'BigCaslon', serif;
+  --font-nav-menu: 'BigCaslonBlack', serif;
+  --font-hero: 'BigCaslonRegular', serif;
 
   --font-sans: var(--font-body), Arial, Helvetica, sans-serif;
   --font-serif: var(--font-heading), serif;

@@ -97,7 +97,7 @@ const HeroSection = () => {
             <div
               className="text-center md:text-left mt-12 md:mt-16 text-[56px] md:text-[80px] leading-[68px] md:leading-[110px]"
               style={{
-                fontFamily: 'var(--font-elicyon), serif',
+                fontFamily: 'var(--font-hero), serif',
                 fontWeight: 400,
                 color: "rgb(244, 242, 238)",
               }}
@@ -109,7 +109,7 @@ const HeroSection = () => {
             <div
               className="text-center md:text-right md:pr-56 lg:pr-170 mt-40 md:mt-12 text-[56px] md:text-[80px] leading-[68px] md:leading-[110px]"
               style={{
-                fontFamily: 'var(--font-elicyon), serif',
+                fontFamily: 'var(--font-hero), serif',
                 fontWeight: 400,
                 color: "rgb(244, 242, 238)",
               }}
@@ -121,7 +121,7 @@ const HeroSection = () => {
             <div
               className="text-center md:text-left pl-0 md:pl-[10%] lg:pl-[15%] mt-40 md:mt-12 text-[56px] md:text-[80px] leading-[68px] md:leading-[110px]"
               style={{
-                fontFamily: 'var(--font-elicyon), serif',
+                fontFamily: 'var(--font-hero), serif',
                 fontWeight: 400,
                 color: "rgb(244, 242, 238)",
               }}
