@@ -123,10 +123,14 @@ const Navbar = () => {
       >
         <div className="flex items-center">
           <div
-            className="hidden md:flex space-x-8 text-[22px] leading-[16px] font-normal tracking-wide uppercase"
-            style={{ fontFamily: "var(--font-body)" }}
+            className="hidden md:flex space-x-8 font-normal tracking-wide uppercase"
+            style={{ 
+              fontFamily: "__antiqueLegacy_623eb9, __antiqueLegacy_Fallback_623eb9",
+              fontSize: "14px",
+              lineHeight: "14px",
+              fontWeight: 400
+            }}
           >
-            <Link href="/" className="hover:opacity-80 transition-all">Home</Link>
             <Link
               href="/projects"
               className="hover:opacity-80 transition-all uppercase cursor-pointer"
@@ -146,20 +150,27 @@ const Navbar = () => {
         </div>
 
         <div className="flex justify-center items-center">
-          <Image
-            src="/logo.png"
-            alt="MALMAR"
-            width={200}
-            height={50}
-            className={`h-6 md:h-10 w-auto transition-all duration-500 ${isOverArc ? "invert brightness-0 invert" : (isScrolled || isLightPage ? (isMenuOpen ? "" : "") : (isMenuOpen ? "" : "invert brightness-0 invert"))
-              }`}
-            priority
-          />
+          <Link href="/">
+            <Image
+              src="/logo.png"
+              alt="MALMAR"
+              width={200}
+              height={50}
+              className={`h-6 md:h-10 w-auto transition-all duration-500 ${isOverArc ? "invert brightness-0 invert" : (isScrolled || isLightPage ? (isMenuOpen ? "" : "") : (isMenuOpen ? "" : "invert brightness-0 invert"))
+                }`}
+              priority
+            />
+          </Link>
         </div>
 
         <div
-          className="flex justify-end items-center text-sm md:text-xl font-normal tracking-[0.2em] uppercase"
-          style={{ fontFamily: "var(--font-antique)" }}
+          className="flex justify-end items-center font-normal tracking-[0.2em] uppercase"
+          style={{ 
+            fontFamily: "__antiqueLegacy_623eb9, __antiqueLegacy_Fallback_623eb9",
+            fontSize: "14px",
+            lineHeight: "14px",
+            fontWeight: 400
+          }}
         >
           <Link href="/contact" className="relative group inline-block">
             <span className="relative z-10 transition-opacity group-hover:opacity-80">Contact</span>
@@ -171,7 +182,7 @@ const Navbar = () => {
 
       <div
         ref={menuRef}
-        style={{ backgroundColor: "#6d88c7" }}
+        style={{ backgroundColor: "#fcefd4" }}
         className="fixed top-0 left-0 w-full h-screen z-[90] -translate-y-full flex flex-col justify-between px-6 md:px-12 py-10 md:py-20"
       >
         {activeMenu === "main" && (

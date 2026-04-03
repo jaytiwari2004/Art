@@ -151,8 +151,6 @@ export default function ProjectsPage() {
     fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
     fontWeight: 400,
     color: "rgb(0, 0, 0)",
-    fontSize: "18px",
-    lineHeight: "21px",
   };
 
   const filteredProjects = (activeFilter === "ALL"
@@ -171,27 +169,36 @@ export default function ProjectsPage() {
       <Navbar />
 
       {/* Header Section */}
-      <section className="pt-70 pb-40 flex items-center justify-center px-6 md:px-12 max-w-[1600px] mx-auto overflow-hidden">
+      <section className="pt-40 pb-20 flex items-center justify-center px-6 md:px-12 max-w-[1600px] mx-auto overflow-hidden">
+        {/* Mobile View */}
         <h1
-          className="text-[48px] md:text-[115px] leading-tight uppercase text-center tracking-tight"
+          className="md:hidden text-[36px] leading-[1.1] text-center tracking-tight flex flex-col items-center justify-center"
           style={headingStyle}
         >
-          PROJECT PORTFOLIO
+          <span className="italic lowercase" style={{ textTransform: "none" }}>MALMAR</span>
+          <span className="uppercase">PROJECT</span>
+        </h1>
+        {/* Desktop View */}
+        <h1
+          className="hidden md:block text-[115px] leading-tight uppercase text-center tracking-tight"
+          style={headingStyle}
+        >
+          MALMAR  PROJECTS
         </h1>
       </section>
 
       {/* Filter & View Controls */}
-      <section className="px-6 md:px-12 max-w-[1600px] mx-auto mb-6 flex flex-col md:flex-row justify-between items-end gap-8 pt-6">
-        <div className="flex flex-col space-y-3">
-          <span className="uppercase tracking-widest" style={filterLabelStyle}>
+      <section className="px-6 md:px-12 max-w-[1600px] mx-auto mb-12 flex flex-row justify-between items-end pt-6">
+        <div className="flex flex-col">
+          <span className="mb-4" style={filterLabelStyle}>
             FILTER PROJECTS
           </span>
-          <div className="flex flex-wrap gap-x-8 md:gap-x-10 gap-y-4">
+          <div className="flex flex-col gap-y-2 md:flex-row md:gap-x-12">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveFilter(activeFilter === cat ? "ALL" : cat)}
-                className={`uppercase transition-all duration-300 flex items-center ${activeFilter === "ALL"
+                className={`uppercase transition-all duration-300 text-left text-[20px] md:text-[18px] leading-[1.2] ${activeFilter === "ALL"
                   ? "opacity-100"
                   : activeFilter === cat
                     ? "opacity-100"
@@ -201,35 +208,35 @@ export default function ProjectsPage() {
               >
                 {cat}
                 {activeFilter === cat && (
-                  <span className="text-[16px] md:text-[20px] ml-2 leading-none">×</span>
+                  <span className="ml-2">×</span>
                 )}
               </button>
             ))}
           </div>
         </div>
 
-        <div className="flex items-center gap-4 text-[#8a685b]">
+        <div className="flex items-center gap-4 text-[#8a685b] pb-1">
           <button
             onClick={() => setViewMode("grid-3")}
-            className={`transition-opacity duration-300 flex items-center justify-center w-8 h-8 ${viewMode === "grid-3" ? "opacity-100" : "opacity-40 hover:opacity-100"}`}
+            className={`transition-opacity duration-300 flex items-center justify-center ${viewMode === "grid-3" ? "opacity-100" : "opacity-40 hover:opacity-100"}`}
             title="Grid View"
           >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-              <rect x="2" y="2" width="9" height="9" />
-              <rect x="13" y="2" width="9" height="9" />
-              <rect x="2" y="13" width="9" height="9" />
-              <rect x="13" y="13" width="9" height="9" />
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <rect x="3" y="3" width="8" height="8" />
+              <rect x="13" y="3" width="8" height="8" />
+              <rect x="3" y="13" width="8" height="8" />
+              <rect x="13" y="13" width="8" height="8" />
             </svg>
           </button>
           <button
             onClick={() => setViewMode("full")}
-            className={`transition-opacity duration-300 flex items-center justify-center w-8 h-8 ${viewMode === "full" ? "opacity-100" : "opacity-40 hover:opacity-100"}`}
+            className={`transition-opacity duration-300 flex items-center justify-center ${viewMode === "full" ? "opacity-100" : "opacity-40 hover:opacity-100"}`}
             title="List View"
           >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-              <rect x="2" y="2" width="20" height="4" />
-              <rect x="2" y="10" width="20" height="4" />
-              <rect x="2" y="18" width="20" height="4" />
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <rect x="3" y="5" width="18" height="3" />
+              <rect x="3" y="11" width="18" height="3" />
+              <rect x="3" y="17" width="18" height="3" />
             </svg>
           </button>
         </div>
@@ -303,13 +310,15 @@ export default function ProjectsPage() {
               }
             }
 
+            const isEven = idx % 2 === 0;
+            const mobileLayoutClass = isEven ? "max-md:items-start max-md:text-left max-md:pr-12" : "max-md:items-end max-md:text-right max-md:pl-12";
+
             return (
               <div
                 key={project.id}
-                className={`group cursor-pointer transition-all duration-700 flex flex-col justify-center ${colSpanClass} ${viewMode === "full" ? 'md:flex-row gap-12 items-center mb-12' : ''
-                  }`}
+                className={`group cursor-pointer transition-all duration-700 flex flex-col justify-center ${colSpanClass} ${viewMode === "full" ? 'md:flex-row gap-12 items-center mb-12' : ''} ${viewMode === "grid-3" ? mobileLayoutClass : ''}`}
               >
-                <div className={`relative overflow-hidden mb-6 shadow-xl transition-all duration-700 ${viewMode === "full" ? "md:w-2/3 w-full" : wrapperClass} ${aspectClass}`}>
+                <div className={`relative overflow-hidden mb-6 shadow-xl transition-all duration-700 ${viewMode === "full" ? "md:w-2/3 w-full" : (viewMode === "grid-3" ? `max-md:w-[85%] ${wrapperClass}` : wrapperClass)} ${aspectClass}`}>
                   <img
                     src={project.image}
                     alt={project.title}
@@ -319,10 +328,10 @@ export default function ProjectsPage() {
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
                 </div>
 
-                <div className={`flex justify-between items-start transition-all duration-700 ${viewMode === "full" ? 'md:w-1/3' : wrapperClass
+                <div className={`flex justify-between items-start transition-all duration-700 ${viewMode === "full" ? 'md:w-1/3' : (viewMode === "grid-3" ? `max-md:w-full ${wrapperClass}` : wrapperClass)
                   }`}>
 
-                  <div className="flex flex-col">
+                  <div className={`flex flex-col w-full`}>
                     <p className="text-[10px] md:text-[11px] tracking-[0.2em] uppercase opacity-60 mb-2" style={bodyStyle}>
                       {project.category}
                     </p>

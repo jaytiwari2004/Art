@@ -70,9 +70,10 @@ export default function InsightsSection() {
             }}
           >
             The WORLD <br />
-            <span className="ml-16 md:ml-36 inline-block">
-              of <span className="hidden md:inline">ELICYON</span>
-              <span className="inline md:hidden">MALMAR</span>
+            <span className="ml-14 md:ml-36 inline-block">
+              of
+              <span className="inline md:hidden ml-2">MALMAR</span>
+              <span className="hidden md:inline md:ml-3">MALMAR</span>
             </span>
           </h2>
           <p

@@ -97,6 +97,14 @@ export default function ProjectSection() {
 
   return (
     <div ref={wrapperRef} className="w-full bg-[#f8f7f3]">
+      <style dangerouslySetInnerHTML={{ __html: `
+        @font-face {
+          font-family: 'BigCaslonFB';
+          src: url('/fonts/BigCaslonFB-BlackItalic.woff') format('woff');
+          font-weight: normal;
+          font-style: normal;
+        }
+      `}} />
       {/* SECTION HEADER */}
       <section className="w-full flex flex-col items-center justify-center pt-32 pb-12 text-black bg-[#f8f7f3]">
         <h2 className="text-[32vw] md:text-[18vw] uppercase leading-[0.9] text-center" style={{ color: 'rgb(0,0,0)', fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", sans-serif', fontWeight: 400 }}>
@@ -139,7 +147,7 @@ export default function ProjectSection() {
                     <span
                       className="letter-inner inline-block will-change-transform"
                       style={{
-                        fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", sans-serif',
+                        fontFamily: "'BigCaslonFB', serif",
                         fontWeight: 400,
                         fontSize: "clamp(48px, 40vw, 8vw)" // Responsive font sizing: 22vw max for desktop
                       }}

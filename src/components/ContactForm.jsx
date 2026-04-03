@@ -25,8 +25,6 @@ export default function ContactForm() {
 
   const elicyonFont = {
     fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
-    fontSize: "35px",
-    lineHeight: "42px",
     fontWeight: "400",
     color: "rgb(0, 0, 0)",
     textTransform: "uppercase",
@@ -34,8 +32,6 @@ export default function ContactForm() {
 
   const antiqueFont = {
     fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
-    fontSize: "16px",
-    lineHeight: "24px",
     fontWeight: "400",
     color: "rgb(0, 0, 0)",
     textTransform: "uppercase",
@@ -43,7 +39,6 @@ export default function ContactForm() {
 
   const inputStyle = {
     fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
-    fontSize: "16px",
     color: "black",
     caretColor: "black"
   };
@@ -57,17 +52,21 @@ export default function ContactForm() {
       />
 
       {/* Main Content Card - Full Height Column */}
-      <div ref={cardRef} className="relative z-10 w-full max-w-[720px] bg-[#f8f6f3] p-10 md:p-14 shadow-2xl flex flex-col justify-start">
+      <div ref={cardRef} className="relative z-10 w-[85%] md:w-full max-w-[720px] bg-[#f8f6f3] p-8 md:p-14 shadow-2xl flex flex-col justify-start">
         {/* Heading Section */}
         <div className="mb-6">
-          <h2 style={elicyonFont} className="tracking-tighter">
+          <style>{`
+            .contact-mobile-h2 { font-size: 18px; line-height: 21px; }
+            @media (min-width: 768px) { .contact-mobile-h2 { font-size: 35px; line-height: 42px; } }
+          `}</style>
+          <h2 style={elicyonFont} className="contact-mobile-h2 tracking-tighter">
             START YOUR CREATIVE <br /> 
             JOURNEY NOW
           </h2>
         </div>
 
         {/* Form Container */}
-        <form className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
+        <form className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 text-[11px] md:text-[16px] leading-[1.3] md:leading-[24px]">
           {/* Inputs Row 1 */}
           <div className="flex flex-col group">
             <label style={antiqueFont} className="mb-1 opacity-80 transition-opacity group-focus-within:opacity-100">FIRST NAME *</label>

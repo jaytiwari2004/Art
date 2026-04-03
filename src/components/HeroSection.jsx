@@ -95,7 +95,7 @@ const HeroSection = () => {
           >
             {/* Line 1: TIMELESS (TOP) */}
             <div
-              className="text-center md:text-left mt-12 md:mt-14 text-[56px] md:text-[115px] leading-[68px] md:leading-[132px]"
+              className="text-center md:text-left mt-12 md:mt-14 text-[56px] md:text-[95px] leading-[68px] md:leading-[110px]"
               style={{
                 fontFamily: 'var(--font-elicyon), serif',
                 fontWeight: 400,
@@ -107,7 +107,7 @@ const HeroSection = () => {
 
             {/* Line 2: TAILORED (MIDDLE) */}
             <div
-              className="text-center md:text-right md:pr-40 lg:pr-80 mt-40 md:mt-12 text-[56px] md:text-[115px] leading-[68px] md:leading-[132px]"
+              className="text-center md:text-right md:pr-56 lg:pr-130 mt-40 md:mt-12 text-[56px] md:text-[95px] leading-[68px] md:leading-[110px]"
               style={{
                 fontFamily: 'var(--font-elicyon), serif',
                 fontWeight: 400,
@@ -119,7 +119,7 @@ const HeroSection = () => {
 
             {/* Line 3: SPACES (BOTTOM) */}
             <div
-              className="text-center md:text-left pl-0 md:pl-[10%] lg:pl-[25%] mt-40 md:mt-12 text-[56px] md:text-[115px] leading-[68px] md:leading-[132px]"
+              className="text-center md:text-left pl-0 md:pl-[10%] lg:pl-[20%] mt-40 md:mt-12 text-[56px] md:text-[95px] leading-[68px] md:leading-[110px]"
               style={{
                 fontFamily: 'var(--font-elicyon), serif',
                 fontWeight: 400,

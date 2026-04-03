@@ -43,13 +43,11 @@ const ElicyonTextSection = () => {
           .to(".f-reflect", { opacity: 0, y: -20, duration: 1 }, 1.0)
           .to(".f-our", { opacity: 0, y: -20, duration: 1 }, 1.2);
 
-        // Row 1 Construction
-        mainTl.to(".f-forging", { y: 58, x: "-32vw", duration: 2, ease: "power2.inOut" }, mergeTime)
-          .to(".f-luxury", { x: "15vw", duration: 2, ease: "power2.inOut" }, mergeTime);
-
-        // Row 2 Construction
-        mainTl.to(".f-unrivalled", { x: "-12vw", duration: 2, ease: "power2.inOut" }, mergeTime + 0.3)
-          .to(".f-expertise", { y: -58, x: "26vw", duration: 2, ease: "power2.inOut" }, mergeTime + 0.3);
+        // Merging into two rows: 
+        // Row 1: through CRAFT, (stays static)
+        // Row 2: VISION and unrivalled + GLOBAL EXPERTISE.
+        mainTl.to(".f-unrivalled", { x: "-15vw", duration: 2, ease: "power2.inOut" }, mergeTime)
+          .to(".f-expertise", { y: -58, x: "22vw", duration: 2, ease: "power2.inOut" }, mergeTime);
 
         // 3. IMAGE PARALLAX (DESKTOP ONLY)
         gsap.to(".parallax-img", {
@@ -124,26 +122,20 @@ const ElicyonTextSection = () => {
 
           {/* DESKTOP ONLY: HEADER BLOCK */}
           <div className="hidden md:flex flex-col items-center">
-            <h2 className="f-our" style={textStyle}>Our</h2>
-            <h2 className="f-studio-sculpts" style={textStyle}>
-              <span className="f-studio" style={textStyle}>STUDIO</span> <span className="f-sculpts" style={textStyle}>SCULPTS</span>
-            </h2>
             <h2 className="f-spaces-reflect" style={textStyle}>
               <span className="f-spaces" style={textStyle}>SPACES</span> <span className="f-reflect" style={textStyle}>that reflect</span>
             </h2>
             <h2 style={textStyle}>
               <span className="f-your" style={textStyle}>your</span> <span className="f-vision" style={textStyle}>vision,</span>
-              <span className="f-forging ml-4" style={textStyle}>FORGING a</span>
             </h2>
-            <h2 className="f-luxury" style={textStyle}>NEW LUXURY through CRAFT,</h2>
+            <h2 className="f-luxury" style={textStyle}>through CRAFT,</h2>
             <h2 className="f-unrivalled" style={textStyle}>VISION and unrivalled</h2>
             <h2 className="f-expertise" style={textStyle}>GLOBAL EXPERTISE.</h2>
           </div>
 
           {/* MOBILE ONLY: FINAL TEXT REVEAL ONLY */}
           <div className="flex md:hidden flex-col items-center gap-4">
-            <h2 className="f-mobile-row" style={{ ...textStyle, color: 'black', fontSize: '32px', lineHeight: '38px', fontWeight: '500', textShadow: '0px 0px 12px rgba(255,255,255,0.9)' }}>FORGING a</h2>
-            <h2 className="f-mobile-row" style={{ ...textStyle, color: 'black', fontSize: '30px', lineHeight: '36px', fontWeight: 'bold', textShadow: '0px 0px 12px rgba(255,255,255,0.9)' }}>NEW LUXURY through CRAFT,</h2>
+            <h2 className="f-mobile-row" style={{ ...textStyle, color: 'black', fontSize: '30px', lineHeight: '36px', fontWeight: 'bold', textShadow: '0px 0px 12px rgba(255,255,255,0.9)' }}>through CRAFT,</h2>
             <h2 className="f-mobile-row" style={{ ...textStyle, color: 'black', fontSize: '24px', lineHeight: '28px', fontWeight: '500', textShadow: '0px 0px 12px rgba(255,255,255,0.9)' }}>VISION and unrivalled</h2>
             <h2 className="f-mobile-row" style={{ ...textStyle, color: 'black', fontSize: '28px', lineHeight: '32px', fontWeight: '500', textShadow: '0px 0px 12px rgba(255,255,255,0.9)' }}>GLOBAL EXPERTISE.</h2>
           </div>

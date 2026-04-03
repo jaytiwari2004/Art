@@ -17,6 +17,7 @@ export default function ServicesPage() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [progress, setProgress] = useState(0);
+  const [isNarrativeExpanded, setIsNarrativeExpanded] = useState(false);
   const videoRef = useRef(null);
 
   const handleTimeUpdate = () => {
@@ -129,8 +130,6 @@ export default function ServicesPage() {
     fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
     fontWeight: 400,
     color: "rgb(244, 242, 238)",
-    fontSize: "64px",
-    lineHeight: "77px",
     textTransform: "uppercase",
     letterSpacing: "0.1em"
   };
@@ -247,41 +246,74 @@ export default function ServicesPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#f5f3f0]">
+    <main className="min-h-screen bg-[#f5f3f0] overflow-x-hidden">
+      <style dangerouslySetInnerHTML={{
+        __html: `
+        @media (max-width: 767px) {
+          .services-hero-title {
+            font-size: 28px !important;
+            letter-spacing: 0.25em !important;
+            line-height: 1 !important;
+          }
+          .services-narrative-heading {
+            font-size: 7.5vw !important;
+            line-height: 1.2 !important;
+          }
+          .mobile-service-title {
+            font-size: 5.5vw !important;
+            line-height: 1.2 !important;
+            letter-spacing: 0.05em !important;
+          }
+          @media (max-width: 400px) {
+            .mobile-service-title {
+              font-size: 5vw !important;
+            }
+          }
+        }
+      `}} />
       <Navbar />
 
       {/* Hero Section with Background Image */}
-      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-screen max-md:h-[62vh] w-full flex items-center justify-center overflow-hidden">
         {/* Background Image Layer */}
         <div
           className="absolute inset-0 z-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/services-hero.png')" }}
         />
         {/* Subtle Dark Overlay */}
-        <div className="absolute inset-0 bg-black/10 z-10" />
+        <div className="absolute inset-0 bg-black/20 z-10" />
 
         {/* Centered Heading */}
         <motion.div
-          className="relative z-20 text-center px-6"
+          className="relative z-20 text-center px-6 w-full"
           style={{ y }}
         >
-          <h1 style={heroHeadingStyle}>
+          <h1
+            className="services-hero-title md:text-[64px] md:leading-[77px] max-md:leading-none drop-shadow-lg"
+            style={heroHeadingStyle}
+          >
             SERVICES
           </h1>
         </motion.div>
       </section>
 
       {/* New Narrative Section */}
-      <section className="py-32 px-6 md:px-12 lg:px-20 max-w-[1600px] mx-auto">
-        <div className="mb-48">
-          <h2 style={narrativeHeadingStyle} className="max-w-[1000px]">
-            REALISATION of EXTRAORDINARY <br />
-            <span className="pl-16 md:pl-18 inline-block">DETAIL and an UNRIVALLED</span> <br />
-            DEDICATION to MATERIAL.
+      <section className="py-32 max-md:py-10 px-6 md:px-12 lg:px-20 max-w-[1600px] mx-auto overflow-x-hidden">
+
+        {/* Heading - both mobile and desktop */}
+        <div className="mb-48 max-md:mb-8">
+          <h2
+            style={narrativeHeadingStyle}
+            className="services-narrative-heading max-w-[1000px] max-md:w-full"
+          >
+            <span className="block">REALISATION of EXTRAORDINARY</span>
+            <span className="pl-16 md:pl-18 max-md:pl-6 inline-block">DETAIL and an UNRIVALLED</span>
+            <span className="block">DEDICATION to MATERIAL.</span>
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-x-16 md:w-1/2 ml-auto">
+        {/* DESKTOP ONLY: 2-column body text */}
+        <div className="hidden md:grid grid-cols-2 gap-12 md:gap-x-16 md:w-1/2 ml-auto">
           <div style={narrativeBodyStyle}>
             <p className="mb-6">
               Elicyon is an award-winning design studio renowned for crafting spaces that combine individuality, refinement and enduring quality. From elegant residences to innovative workplaces and landmark developments, we create environments that balance function and beauty, while reflecting the unique identity of each client. As a leading luxury design studio, our work spans the full spectrum of design and delivery, from initial concept and spatial planning to architectural detailing, bespoke interior design and final installation.
@@ -293,10 +325,66 @@ export default function ServicesPage() {
             </p>
           </div>
         </div>
+
+        {/* MOBILE ONLY: Stacked editorial layout with accordion */}
+        <div className="md:hidden flex flex-col">
+          {/* First paragraph - always visible */}
+          <p className="mb-4 text-[13px] leading-[1.6]" style={narrativeBodyStyle}>
+            Malmar is an award-winning design studio renowned for crafting spaces that combine individuality, refinement and enduring quality. From elegant residences to innovative workplaces and landmark developments, we create environments that balance function and beauty, while reflecting the unique identity of each client. As a leading luxury design studio, our work spans the full spectrum of design and delivery, from initial concept and spatial planning to architectural detailing, bespoke interior design and final installation.
+          </p>
+
+          {/* Second paragraph - hidden by default, expands on chevron click */}
+          <div
+            style={{
+              maxHeight: isNarrativeExpanded ? '500px' : '0px',
+              overflow: 'hidden',
+              transition: 'max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
+            }}
+          >
+            <p className="mb-6 text-[13px] leading-[1.6] opacity-60" style={narrativeBodyStyle}>
+              With in-house expertise across interior design, architecture and project management, we offer a fully integrated service that ensures every project is cohesive, meticulously executed and tailored to its purpose. We collaborate with an international network of artisans, suppliers and craftspeople, sourcing materials and creating pieces that are both timeless and distinctive. Every decision is made with intention, considering sustainability, longevity and the story a space will tell.
+            </p>
+          </div>
+
+          {/* Animated Chevron - simple clean arrow like reference */}
+          <button
+            onClick={() => setIsNarrativeExpanded(!isNarrativeExpanded)}
+            className="w-full flex justify-center mb-10 mt-4 cursor-pointer"
+            aria-label="Toggle more text"
+          >
+            <svg
+              width="28" height="28" viewBox="0 0 24 24"
+              fill="none" stroke="black" strokeWidth="1.5"
+              className="transition-transform duration-500"
+              style={{ transform: isNarrativeExpanded ? 'rotate(180deg)' : 'rotate(0deg)' }}
+            >
+              <path d="M5 10l7 7 7-7" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+
+          {/* Explore Services */}
+          <p className="text-[10px] tracking-[0.3em] uppercase opacity-90 mb-6 text-center" style={bodyStyle}>
+            Explore Services
+          </p>
+
+          {/* Service list */}
+          <div className="flex flex-col items-center gap-1">
+            {["INTERIOR DESIGN", "ARCHITECTURE", "PROJECT MANAGEMENT", "PROCUREMENT"].map((s) => (
+              <span
+                key={s}
+                className="text-[5vw] max-[400px]:text-[4.5vw] uppercase leading-tight text-center"
+                style={{ ...headingStyle, color: "rgb(0,0,0)" }}
+              >
+                {s}
+              </span>
+            ))}
+          </div>
+        </div>
+
       </section>
 
-      {/* Pinned Scroller Section */}
-      <section ref={scrollerContainerRef} className="relative h-screen w-full overflow-hidden bg-[#ede8df]">
+      {/* Pinned Scroller Section - DESKTOP ONLY */}
+      <section ref={scrollerContainerRef} className="relative h-screen w-full overflow-hidden bg-[#ede8df] hidden md:block">
         {projects.map((project, index) => (
           <div
             key={index}
@@ -319,7 +407,6 @@ export default function ServicesPage() {
               </div>
             </div>
 
-            {/* Right Side: Content */}
             {/* Right Side: Content */}
             <div className="flex w-1/2 flex-col items-center justify-between py-24 px-20 text-center">
               <h2
@@ -359,6 +446,52 @@ export default function ServicesPage() {
           </div>
         ))}
       </section>
+
+      {/* MOBILE ONLY: Service Cards - Stacked vertical editorial layout */}
+      <div className="md:hidden bg-[#ede8df] overflow-hidden">
+        {projects.map((project, index) => (
+          <div
+            key={index}
+            className="flex flex-col items-center px-6 py-16 border-b border-black/10 last:border-b-0"
+          >
+            {/* Title at top */}
+            <h2
+              className="mobile-service-title uppercase tracking-wide text-center mb-8 w-full px-2"
+              style={narrativeHeadingStyle}
+            >
+              {project.title}
+            </h2>
+
+            {/* Image in middle - padded with shadow like reference */}
+            <div className="w-[78%] aspect-[3/4] overflow-hidden shadow-md mb-8">
+              <img
+                src={project.rightImage}
+                alt={project.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Description text */}
+            <p
+              className="text-[13px] leading-[1.7] text-center opacity-80 mb-8 max-w-[320px]"
+              style={narrativeBodyStyle}
+            >
+              {project.description}
+            </p>
+
+            {/* VIEW PROJECTS underline link */}
+            <div className="inline-block relative group cursor-pointer pb-1 overflow-hidden">
+              <span
+                className="text-[10px] tracking-[0.3em] uppercase font-semibold relative"
+                style={bodyStyle}
+              >
+                VIEW PROJECTS
+                <span className="absolute bottom-0 left-0 w-full h-[1px] bg-black transform scale-x-100 origin-left transition-transform duration-500 ease-out group-hover:scale-x-0 group-hover:origin-right" />
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
 
       {/* Interactive Video Section */}
       <section
