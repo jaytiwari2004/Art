@@ -51,7 +51,7 @@ const ElicyonTextSection = () => {
           .to(".f-our", { opacity: 0, y: -20, duration: 1 }, 3.7);
 
         // 3. SMOOTHLY PUSH TO BOTTOM AT THE END OF THE SECTION (goes a little further down, stays visible)
-        mainTl.to(".text-wrapper", { y: "5vh", duration: 4, ease: "sine.inOut" }, 6.5);
+        mainTl.to(".text-wrapper", { y: "7vh", duration: 4, ease: "sine.inOut" }, 6.5);
 
         // Merging into two rows: 
         // Row 1: through CRAFT, (stays static)
