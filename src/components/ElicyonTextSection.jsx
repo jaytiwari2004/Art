@@ -23,7 +23,7 @@ const ElicyonTextSection = () => {
       if (isDesktop) {
         // Platform detection for Mac to fix specific overlap issues on high-res displays like MacBook Pro
         const isMac = typeof window !== 'undefined' && (/Macintosh|MacIntel|MacPPC|Mac68K/.test(navigator.platform) || /Mac/i.test(navigator.userAgent));
-        const verticalOffset = isMac ? "-22vh" : "-45vh";
+        const verticalOffset = isMac ? "-18vh" : "-45vh";
 
         // 1. PIN THE ENTIRE SECTION (DESKTOP ONLY)
         const mainTl = gsap.timeline({
@@ -50,8 +50,8 @@ const ElicyonTextSection = () => {
           .to(".f-reflect", { opacity: 0, y: -20, duration: 1 }, 3.5)
           .to(".f-our", { opacity: 0, y: -20, duration: 1 }, 3.7);
 
-        // 3. SMOOTHLY RETURN TO BOTTOM AT THE END OF THE SECTION
-        mainTl.to(".text-wrapper", { y: "0vh", duration: 4, ease: "sine.inOut" }, 6.5);
+        // 3. SMOOTHLY PUSH TO BOTTOM AT THE END OF THE SECTION (goes a little further down, stays visible)
+        mainTl.to(".text-wrapper", { y: "5vh", duration: 4, ease: "sine.inOut" }, 6.5);
 
         // Merging into two rows: 
         // Row 1: through CRAFT, (stays static)
