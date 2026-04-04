@@ -107,7 +107,7 @@ const HeroSection = () => {
 
             {/* Line 2: TAILORED (MIDDLE) */}
             <div
-              className="text-center md:text-right md:pr-56 lg:pr-170 mt-40 md:mt-12 text-[56px] md:text-[90px] leading-[68px] md:leading-[124.4px]"
+              className="text-center md:text-right md:pr-56 lg:pr-150 mt-40 md:mt-12 text-[56px] md:text-[90px] leading-[68px] md:leading-[124.4px]"
               style={{
                 fontFamily: '_Elicyon-Regular.woff2, __elicyon_Fallback_df1f4c',
                 fontWeight: 400,
@@ -119,7 +119,7 @@ const HeroSection = () => {
             {/* here i change some size tex of the text in md text 70 and left right lg pr 190 */}
             {/* Line 3: SPACES (BOTTOM) */}
             <div
-              className="text-center md:text-left pl-0 md:pl-[10%] lg:pl-[15%] mt-40 md:mt-12 text-[56px] md:text-[90px] leading-[68px] md:leading-[124.4px]"
+              className="text-center md:text-left pl-0 md:pl-[10%] lg:pl-[16%] mt-40 md:mt-12 text-[56px] md:text-[90px] leading-[68px] md:leading-[124.4px]"
               style={{
                 fontFamily: '_Elicyon-Regular.woff2, __elicyon_Fallback_df1f4c',
                 fontWeight: 400,
