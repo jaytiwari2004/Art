@@ -105,7 +105,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-black/50"></div>
 
         <div className="relative z-10 text-center flex flex-col items-center">
-          <h1 className="text-white text-[48px] md:text-[80px] font-bold uppercase tracking-wide mb-4">
+          <h1 className="text-white text-[32px] md:text-[80px] font-bold uppercase tracking-wide mb-4">
             About Us
           </h1>
 
@@ -151,7 +151,7 @@ export default function AboutPage() {
               </span>
             </div>
 
-            <h2 className="text-[40px] md:text-[60px] leading-tight font-bold uppercase tracking-tight text-[#111111]">
+            <h2 className="text-[32px] md:text-[60px] leading-tight font-bold uppercase tracking-tight text-[#111111]">
               We Provide You Best <br className="hidden md:block" /> Experience
             </h2>
 
@@ -171,9 +171,9 @@ export default function AboutPage() {
             </div>
 
             <div className="flex items-center gap-10 pt-4">
-              <button className="bg-[#c5a059] text-white px-10 py-4 uppercase tracking-widest font-bold text-sm hover:bg-[#b38f4a] transition-all">
+              {/* <button className="bg-[#c5a059] text-white px-10 py-4 uppercase tracking-widest font-bold text-sm hover:bg-[#b38f4a] transition-all">
                 Learn More
-              </button>
+              </button> */}
 
               {/* Signature */}
               <div className="w-40 opacity-80">
@@ -214,8 +214,8 @@ export default function AboutPage() {
             >
               <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[18px] border-l-white border-b-[10px] border-b-transparent group-hover:border-l-black ml-1"></div>
             </div>
-            <h2 className="text-[36px] md:text-[64px] font-bold uppercase tracking-[2px] leading-tight">
-              Take A Tour Of Luxuri
+            <h2 className="text-[32px] md:text-[64px] font-bold uppercase tracking-[2px] leading-tight">
+              Take A Tour Of Luxury
             </h2>
           </div>
 
@@ -292,7 +292,7 @@ export default function AboutPage() {
                 Testimonials
               </span>
             </div>
-            <h2 className="text-[40px] md:text-[60px] leading-tight font-bold uppercase tracking-tight text-[#111111]">
+            <h2 className="text-[32px] md:text-[60px] leading-tight font-bold uppercase tracking-tight text-[#111111]">
               Our Happy Client
             </h2>
           </div>

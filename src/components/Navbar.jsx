@@ -124,11 +124,10 @@ const Navbar = () => {
         <div className="flex items-center">
           <div
             className="hidden md:flex space-x-8 font-normal tracking-wide uppercase"
-            style={{ 
+            style={{
               fontFamily: "var(--font-nav-menu)",
               fontSize: "14px",
               lineHeight: "14px",
-              fontWeight: 900
             }}
           >
             <Link
@@ -143,7 +142,7 @@ const Navbar = () => {
           <button
             onClick={toggleMenu}
             className="md:hidden text-sm md:text-xl font-normal tracking-[0.2em] uppercase cursor-pointer"
-            style={{ fontFamily: "var(--font-nav-menu)", fontWeight: 900 }}
+            style={{ fontFamily: "var(--font-nav-menu)" }}
           >
             {isMenuOpen ? "CLOSE" : "MENU"}
           </button>
@@ -165,11 +164,10 @@ const Navbar = () => {
 
         <div
           className="flex justify-end items-center font-normal tracking-[0.2em] uppercase"
-          style={{ 
+          style={{
             fontFamily: "var(--font-nav-menu)",
             fontSize: "14px",
             lineHeight: "14px",
-            fontWeight: 900
           }}
         >
           <Link href="/contact" className="relative group inline-block">
@@ -187,15 +185,14 @@ const Navbar = () => {
       >
         {activeMenu === "main" && (
           <div className="flex-1 flex flex-col items-center justify-center space-y-4 md:space-y-6 animate-in fade-in duration-500">
-            {["PROJECTS", "SERVICES", "ABOUT"].map((item) => (
+            {["Project", "Services", "About"].map((item) => (
               <Link
                 key={item}
-                href={item === "PROJECTS" ? "/projects" : (item === "SERVICES" ? "/services" : `/${item.toLowerCase()}`)}
+                href={item === "Project" ? "/projects" : (item === "Services" ? "/services" : `/${item.toLowerCase()}`)}
                 onClick={() => setIsMenuOpen(false)}
                 className="menu-item hover:opacity-60 transition-all text-center uppercase cursor-pointer block text-[28px] leading-[32px] md:text-[64px] md:leading-[77px]"
                 style={{
                   fontFamily: 'var(--font-nav-menu)',
-                  fontWeight: 900,
                   color: "rgb(0, 0, 0)"
                 }}
               >

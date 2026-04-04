@@ -220,7 +220,7 @@ function ArcMarquee() {
     const spans = textElement.querySelectorAll("span");
 
     const tl = gsap.to(spans, {
-      color: "rgb(237, 237, 237)",
+      color: "rgb(255, 255, 255)",
       stagger: 0.1,
       ease: "power2.out", // Add a subtle ease for smoother transition
       scrollTrigger: {
@@ -314,7 +314,7 @@ function ArcMarquee() {
       {/* Gallery section — animation only when visible */}
       <div className="arc-section" ref={sectionRef} id="arc-section" style={{ background: '#734128' }}>
         <div className="arc-hero">
-          <h2>Our Gallery</h2>
+          <h2 style={{ fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif', fontWeight: 400 }}>Our Gallery</h2>
 
         </div>
 
@@ -377,9 +377,9 @@ function ArcMarquee() {
           <div className="max-w-4xl text-start">
             <p
               ref={textRef}
-              className="text-[#472833] text-[26px] md:text-[46px] leading-[34px] md:leading-[54px]"
+              className="text-[#603522] text-[48px] leading-[53px]"
               style={{
-                fontFamily: 'AntiqueLegacy, serif, Arial, Helvetica, sans-serif',
+                fontFamily: "'InstrumentSans', sans-serif",
                 fontWeight: 400,
               }}
             >
@@ -396,7 +396,7 @@ function ArcMarquee() {
                 fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", sans-serif',
               }}
             >
-              The story behind it all →
+              gallery →
             </button>
           </div>
         </div>

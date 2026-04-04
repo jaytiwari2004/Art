@@ -19,11 +19,20 @@
   font-display: swap;
 }
 
-/* 🔥 Navbar Menu Font (Big Caslon CC Black) */
+/* 🔥 Sackers Font */
 @font-face {
-  font-family: 'BigCaslonBlack';
-  src: url('/fonts/fonts/fonnts.com-Big_Caslon_CC_Black.otf') format('opentype');
-  font-weight: 900;
+  font-family: 'SackersNav';
+  src: url('/fonts/Sackers Gothic Std Heavy/Sackers Gothic Std Heavy.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 🔥 Sage Font */
+@font-face {
+  font-family: 'SageNav';
+  src: url('/fonts/sage-webfont.woff') format('woff');
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -37,6 +46,15 @@
   font-display: swap;
 }
 
+/* 🔥 Instrument Sans Font */
+@font-face {
+  font-family: 'InstrumentSans';
+  src: url('/fonts/InstrumentSans_Condensed-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -44,8 +62,9 @@
   /* ✅ Font variables */
   --font-heading: 'Elicyon', serif;
   --font-body: 'AntiqueLegacy', serif;
-  --font-nav-menu: 'BigCaslonBlack', serif;
+  --font-nav-menu: 'SackersNav', sans-serif;
   --font-hero: 'BigCaslonRegular', serif;
+  --font-sage: 'SageNav', sans-serif;
 
   --font-sans: var(--font-body), Arial, Helvetica, sans-serif;
   --font-serif: var(--font-heading), serif;
@@ -135,10 +154,12 @@ h2 {
   padding: 90px 0 20px;
   overflow: hidden;
 }
+
 .arc-hero {
   text-align: center;
   padding: 0 24px 56px;
 }
+
 .arc-hero h2 {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2.2rem, 5vw, 3.8rem);
@@ -147,6 +168,7 @@ h2 {
   letter-spacing: -0.01em;
   line-height: 1.1;
 }
+
 .arc-hero p {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
@@ -171,21 +193,28 @@ h2 {
   overflow: hidden;
   transform-origin: center bottom;
   will-change: transform;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
   cursor: pointer;
 }
 
 .arc-card:hover {
-  box-shadow: 0 36px 90px rgba(0,0,0,0.75), 0 8px 24px rgba(0,0,0,0.4);
+  box-shadow: 0 36px 90px rgba(0, 0, 0, 0.75), 0 8px 24px rgba(0, 0, 0, 0.4);
   z-index: 20 !important;
 }
+
 .arc-card img {
-  width: 100%; height: 100%;
-  object-fit: cover; display: block;
-  pointer-events: none; user-select: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  user-select: none;
   transition: transform 0.5s ease;
 }
-.arc-card:hover img { transform: scale(1.07); }
+
+.arc-card:hover img {
+  transform: scale(1.07);
+}
 
 .arc-hint {
   margin-top: 5px;
@@ -195,6 +224,7 @@ h2 {
   gap: 8px;
   opacity: 0.4;
 }
+
 .arc-hint span {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
@@ -202,15 +232,33 @@ h2 {
   font-size: 0.85rem;
   letter-spacing: 0.1em;
 }
+
 .arc-dot {
-  width: 4px; height: 4px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
   background: #c9a882;
   animation: dp 1.6s ease-in-out infinite;
 }
-.arc-dot:nth-child(3) { animation-delay: 0.25s; }
-.arc-dot:nth-child(4) { animation-delay: 0.5s; }
+
+.arc-dot:nth-child(3) {
+  animation-delay: 0.25s;
+}
+
+.arc-dot:nth-child(4) {
+  animation-delay: 0.5s;
+}
+
 @keyframes dp {
-  0%,100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.5); }
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
 }

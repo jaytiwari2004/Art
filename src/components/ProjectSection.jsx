@@ -107,10 +107,10 @@ export default function ProjectSection() {
       `}} />
       {/* SECTION HEADER */}
       <section className="w-full flex flex-col items-center justify-center pt-32 pb-12 text-black bg-[#f8f7f3]">
-        <h2 className="text-[32vw] md:text-[18vw] uppercase leading-[0.9] text-center" style={{ color: 'rgb(0,0,0)', fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", sans-serif', fontWeight: 400 }}>
+        <h2 className="text-[32vw] md:text-[18vw] uppercase leading-[0.9] text-center" style={{ color: 'rgb(0,0,0)', fontFamily: "'SageNav', sans-serif", fontWeight: 400 }}>
           <span className="pr-[15vw] md:pr-[2vw]">Our</span> <br /> <span className="pl-[20vw] md:pl-[15vw]">Projects</span>
         </h2>
-        <p className="max-w-2xl text-center text-base md:text-lg font-light mt-8 px-6" style={{ color: 'rgb(0,0,0)' }}>
+        <p className="max-w-2xl text-center font-normal mt-8 px-6" style={{ color: 'rgb(0,0,0)', fontSize: '14px', lineHeight: '17px' }}>
           Storytelling through design - a curated selection <br />
           of over 100 projects worldwide.
         </p>
@@ -147,7 +147,7 @@ export default function ProjectSection() {
                     <span
                       className="letter-inner inline-block will-change-transform"
                       style={{
-                        fontFamily: "'BigCaslonFB', serif",
+                        fontFamily: "'Elicyon', serif",
                         fontWeight: 400,
                         fontSize: "clamp(48px, 40vw, 8vw)" // Responsive font sizing: 22vw max for desktop
                       }}
@@ -161,7 +161,7 @@ export default function ProjectSection() {
 
             {/* PROJECT INFO */}
             <div className="project-details absolute bottom-8 right-6 md:bottom-12 md:right-12 text-right text-white z-30">
-              <h4 className="text-2xl md:text-6xl mb-2 md:mb-4" style={{ fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", sans-serif', fontWeight: 400 }}>{project.subtitle}</h4>
+              <h4 className="mb-2 md:mb-4 uppercase" style={{ fontFamily: "'Elicyon', serif", fontWeight: 400, fontSize: '35px', lineHeight: '42px' }}>{project.subtitle}</h4>
               <button className="border-b border-white pb-1 uppercase tracking-widest text-[11px] md:text-sm hover:opacity-50 transition-opacity" style={{ fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", sans-serif', fontWeight: 400 }}>
                 View Project
               </button>

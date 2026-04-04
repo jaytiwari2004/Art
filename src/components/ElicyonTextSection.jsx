@@ -32,16 +32,22 @@ const ElicyonTextSection = () => {
           }
         });
 
-        const mergeTime = 1.3;
+        const mergeTime = 5.0;
 
-        // DESKTOP: FADE HEADER + HORIZONTAL MERGE
-        mainTl.to(".f-vision", { opacity: 0, y: -20, duration: 1 }, 0)
-          .to(".f-studio", { opacity: 0, y: -20, duration: 1 }, 0.2)
-          .to(".f-your", { opacity: 0, y: -20, duration: 1 }, 0.4)
-          .to(".f-sculpts", { opacity: 0, y: -20, duration: 1 }, 0.6)
-          .to(".f-spaces", { opacity: 0, y: -20, duration: 1 }, 0.8)
-          .to(".f-reflect", { opacity: 0, y: -20, duration: 1 }, 1.0)
-          .to(".f-our", { opacity: 0, y: -20, duration: 1 }, 1.2);
+        // 1. GLIDE FROM BOTTOM TO CENTER (DURING INITIAL SCROLL)
+        mainTl.to(".text-wrapper", { y: "-45vh", duration: 2, ease: "none" }, 0)
+          
+          // 2. PAUSE AT CENTER, THEN START FADE/MERGE ANIMATIONS (STARTING AT 2.5s)
+          .to(".f-vision", { opacity: 0, y: -20, duration: 1 }, 2.5)
+          .to(".f-studio", { opacity: 0, y: -20, duration: 1 }, 2.7)
+          .to(".f-your", { opacity: 0, y: -20, duration: 1 }, 2.9)
+          .to(".f-sculpts", { opacity: 0, y: -20, duration: 1 }, 3.1)
+          .to(".f-spaces", { opacity: 0, y: -20, duration: 1 }, 3.3)
+          .to(".f-reflect", { opacity: 0, y: -20, duration: 1 }, 3.5)
+          .to(".f-our", { opacity: 0, y: -20, duration: 1 }, 3.7);
+
+        // 3. SMOOTHLY RETURN TO BOTTOM AT THE END OF THE SECTION
+        mainTl.to(".text-wrapper", { y: "0vh", duration: 4, ease: "sine.inOut" }, 6.5);
 
         // Merging into two rows: 
         // Row 1: through CRAFT, (stays static)
@@ -116,9 +122,9 @@ const ElicyonTextSection = () => {
       </div>
 
       {/* TEXT CONTENT LAYER */}
-      <div className="sticky top-0 w-full h-screen flex items-center md:items-center justify-center z-10 text-center px-4 pt-[15vh] md:pt-0 pointer-events-none">
+      <div className="sticky top-0 w-full h-screen flex flex-col items-center justify-end z-10 text-center px-4 pb-[2vh] pointer-events-none">
 
-        <div className="flex flex-col items-center select-none antialiased">
+        <div className="text-wrapper flex flex-col items-center select-none antialiased">
 
           {/* DESKTOP ONLY: HEADER BLOCK */}
           <div className="hidden md:flex flex-col items-center">

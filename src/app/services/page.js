@@ -250,6 +250,18 @@ export default function ServicesPage() {
       <style dangerouslySetInnerHTML={{
         __html: `
         @media (max-width: 767px) {
+          .refined-heading-fix {
+            font-size: 32px !important;
+            line-height: 37px !important;
+          }
+          .leaders-heading-fix {
+            font-size: 32px !important;
+            line-height: 37px !important;
+          }
+          .intention-heading-fix {
+            font-size: 32px !important;
+            line-height: 37px !important;
+          }
           .services-hero-title {
             font-size: 28px !important;
             letter-spacing: 0.25em !important;
@@ -550,17 +562,17 @@ export default function ServicesPage() {
 
       {/* A Refined Process Section - Natural Scroll */}
       <section
-        className="relative w-full bg-[#6d88c7] px-10 md:px-20 py-32"
+        className="relative w-full bg-[#6d88c7] px-10 md:px-20 py-32 max-md:py-16 max-md:px-6"
       >
         {/* Header - Scrolls with section */}
-        <div className="mb-32">
+        <div className="mb-32 max-md:mb-10">
           <div className="flex flex-col items-center text-center">
             <h2
-              className="text-5xl md:text-7xl font-light tracking-widest text-[#1a1a1a] uppercase leading-tight relative"
+              className="text-5xl md:text-7xl max-md:!text-[32px] max-md:!leading-[37px] refined-heading-fix font-light tracking-widest text-[#1a1a1a] uppercase leading-tight relative"
               style={headingStyle}
             >
-              A REFINED <br />
-              <span className="relative left-10 md:left-20">PROCESS</span>
+              <span className="block max-md:-ml-5">A REFINED</span>
+              <span className="relative left-10 md:left-20 max-md:left-10 block">PROCESS</span>
             </h2>
           </div>
         </div>
@@ -570,7 +582,7 @@ export default function ServicesPage() {
           {processes.map((item, index) => (
             <div
               key={index}
-              className="process-item mb-12 flex flex-col md:flex-row gap-16 md:gap-24 transition-all duration-700"
+              className="process-item mb-12 max-md:mb-8 flex flex-col md:flex-row gap-16 md:gap-24 max-md:gap-4 transition-all duration-700"
             >
               {/* Left Column: Title */}
               <div className="w-full md:w-1/3">
@@ -605,16 +617,16 @@ export default function ServicesPage() {
       </section>
 
       {/* Recognition & Awards Section */}
-      <section className="bg-[#f2f1ee] px-8 py-32 md:px-20 lg:px-32">
+      <section className="bg-[#f2f1ee] px-8 py-32 md:px-20 lg:px-32 max-md:pt-10 max-md:pb-16 max-md:px-6">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 max-w-[1600px] mx-auto">
 
           {/* Left Column: Heading */}
           <div className="lg:col-span-4">
             <h2
-              className="sticky top-24 text-6xl md:text-7xl font-light uppercase leading-[0.9] tracking-tighter text-black"
+              className="sticky top-24 text-6xl md:text-7xl max-md:!text-[32px] max-md:!leading-[37px] leaders-heading-fix font-light uppercase leading-[0.9] tracking-tighter text-black max-md:relative max-md:top-0 max-md:pt-4 max-md:mb-16"
               style={headingStyle}
             >
-              Leaders <br /> <span className="inline-block ml-10">in Design</span>
+              Leaders <br /> <span className="inline-block ml-10 max-md:ml-16">in Design</span>
             </h2>
           </div>
 
@@ -622,16 +634,16 @@ export default function ServicesPage() {
           <div className="lg:col-span-8 lg:pt-12">
 
             {/* Recognition Sub-section */}
-            <div className="mb-24 pl-60">
+            <div className="mb-24 pl-60 max-md:pl-0 max-md:mb-16">
               <h3
                 className="mb-8"
                 style={{
                   ...bodyStyle,
-                  fontSize: "12px",
-                  lineHeight: "12px",
+                  fontSize: "13px",
+                  lineHeight: "13px",
                   color: "rgb(0, 0, 0)",
                   textTransform: "uppercase",
-                  letterSpacing: "0.2em"
+                  letterSpacing: "0.25em"
                 }}
               >
                 Recognition
@@ -640,14 +652,14 @@ export default function ServicesPage() {
                 {recognitionData.map((item, idx) => (
                   <div
                     key={idx}
-                    className="group relative flex w-full cursor-pointer items-center justify-between border-b border-black/20 py-4 transition-colors duration-300 hover:bg-black/5"
+                    className="group relative flex w-full cursor-pointer items-center justify-between border-b border-black py-5 transition-colors duration-300 hover:bg-black/5"
                   >
                     <p
                       className="transition-transform duration-300 group-hover:translate-x-3 tracking-wide"
                       style={{
                         ...bodyStyle,
                         fontSize: "14px",
-                        lineHeight: "16px",
+                        lineHeight: "20px",
                         color: "rgb(0, 0, 0)"
                       }}
                     >
@@ -659,16 +671,16 @@ export default function ServicesPage() {
             </div>
 
             {/* Awards Sub-section */}
-            <div className="mb-20 pl-60">
+            <div className="mb-20 pl-60 max-md:pl-0">
               <h3
                 className="mb-8"
                 style={{
                   ...bodyStyle,
-                  fontSize: "12px",
-                  lineHeight: "12px",
+                  fontSize: "13px",
+                  lineHeight: "13px",
                   color: "rgb(0, 0, 0)",
                   textTransform: "uppercase",
-                  letterSpacing: "0.2em"
+                  letterSpacing: "0.25em"
                 }}
               >
                 Awards
@@ -677,14 +689,14 @@ export default function ServicesPage() {
                 {awardsData.map((item, idx) => (
                   <div
                     key={idx}
-                    className="group relative flex w-full cursor-pointer items-center justify-between border-b border-black/20 py-4 transition-colors duration-300 hover:bg-black/5"
+                    className="group relative flex w-full cursor-pointer items-center justify-between border-b border-black py-5 transition-colors duration-300 hover:bg-black/5"
                   >
                     <p
                       className="transition-transform duration-300 group-hover:translate-x-3 tracking-wide"
                       style={{
                         ...bodyStyle,
                         fontSize: "14px",
-                        lineHeight: "16px",
+                        lineHeight: "20px",
                         color: "rgb(0, 0, 0)"
                       }}
                     >
@@ -706,11 +718,11 @@ export default function ServicesPage() {
           {/* Left Column: Heading */}
           <div className="lg:col-span-6 lg:pt-12">
             <h2
-              className="text-[60px] md:text-[80px] lg:text-[100px] font-light uppercase leading-[0.85] tracking-tight text-black"
+              className="text-[60px] md:text-[80px] lg:text-[100px] max-md:!text-[32px] max-md:!leading-[37px] intention-heading-fix font-light uppercase leading-[0.85] tracking-tight text-black"
               style={headingStyle}
             >
               Designed with <br />
-              <span className="ml-[15%] md:ml-[25%] block">Intention</span>
+              <span className="ml-[15%] md:ml-[25%] max-md:ml-[30px] block">Intention</span>
             </h2>
           </div>
 

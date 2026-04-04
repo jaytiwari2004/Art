@@ -127,7 +127,7 @@ export default function ProjectsPage() {
   const [visibleCount, setVisibleCount] = React.useState(13);
 
   const headingStyle = {
-    fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
+    fontFamily: "'Elicyon', serif",
     fontWeight: 400,
     color: "rgb(0, 0, 0)",
   };
@@ -172,16 +172,16 @@ export default function ProjectsPage() {
       <section className="pt-40 pb-20 flex items-center justify-center px-6 md:px-12 max-w-[1600px] mx-auto overflow-hidden">
         {/* Mobile View */}
         <h1
-          className="md:hidden text-[36px] leading-[1.1] text-center tracking-tight flex flex-col items-center justify-center"
-          style={headingStyle}
+          className="md:hidden text-[36px] leading-[1.1] text-center tracking-tight flex flex-col items-center justify-center text-[#111111]"
+          style={{ ...headingStyle, fontFamily: "'SageNav', sans-serif" }}
         >
           <span className="italic lowercase" style={{ textTransform: "none" }}>MALMAR</span>
           <span className="uppercase">PROJECT</span>
         </h1>
         {/* Desktop View */}
         <h1
-          className="hidden md:block text-[115px] leading-tight uppercase text-center tracking-tight"
-          style={headingStyle}
+          className="hidden md:block text-[115px] leading-tight uppercase text-center tracking-tight text-[#111111]"
+          style={{ ...headingStyle, fontFamily: "'SageNav', sans-serif" }}
         >
           MALMAR  PROJECTS
         </h1>
