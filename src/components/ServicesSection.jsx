@@ -390,14 +390,16 @@ function ArcMarquee() {
               That’s exactly what drives us too!
             </p>
 
-            <button
-              className="mt-8 md:mt-12 px-8 py-3 border border-white/20 rounded-full text-white text-sm tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-500"
-              style={{
-                fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", sans-serif',
-              }}
-            >
-              gallery →
-            </button>
+            <Link href="/projects">
+              <button
+                className="mt-8 md:mt-12 px-8 py-3 border border-white/20 rounded-full text-white text-sm tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-500 cursor-pointer"
+                style={{
+                  fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", sans-serif',
+                }}
+              >
+                gallery →
+              </button>
+            </Link>
           </div>
         </div>
       </div>
