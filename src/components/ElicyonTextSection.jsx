@@ -21,9 +21,9 @@ const ElicyonTextSection = () => {
       let { isDesktop } = context.conditions;
 
       if (isDesktop) {
-        // Platform detection for Mac to fix specific overlap issues
-        const isMac = typeof window !== 'undefined' && (navigator.platform.toUpperCase().indexOf('MAC') >= 0 || navigator.userAgent.includes('Mac'));
-        const verticalOffset = isMac ? "-38vh" : "-45vh";
+        // Platform detection for Mac to fix specific overlap issues on high-res displays like MacBook Pro
+        const isMac = typeof window !== 'undefined' && (/Macintosh|MacIntel|MacPPC|Mac68K/.test(navigator.platform) || /Mac/i.test(navigator.userAgent));
+        const verticalOffset = isMac ? "-22vh" : "-45vh";
 
         // 1. PIN THE ENTIRE SECTION (DESKTOP ONLY)
         const mainTl = gsap.timeline({
