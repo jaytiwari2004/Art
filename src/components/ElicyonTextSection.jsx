@@ -21,6 +21,10 @@ const ElicyonTextSection = () => {
       let { isDesktop } = context.conditions;
 
       if (isDesktop) {
+        // Platform detection for Mac to fix specific overlap issues
+        const isMac = typeof window !== 'undefined' && (navigator.platform.toUpperCase().indexOf('MAC') >= 0 || navigator.userAgent.includes('Mac'));
+        const verticalOffset = isMac ? "-38vh" : "-45vh";
+
         // 1. PIN THE ENTIRE SECTION (DESKTOP ONLY)
         const mainTl = gsap.timeline({
           scrollTrigger: {
@@ -35,7 +39,7 @@ const ElicyonTextSection = () => {
         const mergeTime = 5.0;
 
         // 1. GLIDE FROM BOTTOM TO CENTER (DURING INITIAL SCROLL)
-        mainTl.to(".text-wrapper", { y: "-45vh", duration: 2, ease: "none" }, 0)
+        mainTl.to(".text-wrapper", { y: verticalOffset, duration: 2, ease: "none" }, 0)
 
           // 2. PAUSE AT CENTER, THEN START FADE/MERGE ANIMATIONS (STARTING AT 2.5s)
           .to(".f-vision", { opacity: 0, y: -20, duration: 1 }, 2.5)
