@@ -36,7 +36,7 @@ const ElicyonTextSection = () => {
 
         // 1. GLIDE FROM BOTTOM TO CENTER (DURING INITIAL SCROLL)
         mainTl.to(".text-wrapper", { y: "-45vh", duration: 2, ease: "none" }, 0)
-          
+
           // 2. PAUSE AT CENTER, THEN START FADE/MERGE ANIMATIONS (STARTING AT 2.5s)
           .to(".f-vision", { opacity: 0, y: -20, duration: 1 }, 2.5)
           .to(".f-studio", { opacity: 0, y: -20, duration: 1 }, 2.7)
@@ -52,8 +52,8 @@ const ElicyonTextSection = () => {
         // Merging into two rows: 
         // Row 1: through CRAFT, (stays static)
         // Row 2: VISION and unrivalled + GLOBAL EXPERTISE.
-        mainTl.to(".f-unrivalled", { x: "-15vw", duration: 2, ease: "power2.inOut" }, mergeTime)
-          .to(".f-expertise", { y: -58, x: "22vw", duration: 2, ease: "power2.inOut" }, mergeTime);
+        mainTl.to(".f-unrivalled", { x: -260, duration: 2, ease: "power2.inOut" }, mergeTime)
+          .to(".f-expertise", { y: -64, x: 310, duration: 2, ease: "power2.inOut" }, mergeTime);
 
         // 3. IMAGE PARALLAX (DESKTOP ONLY)
         gsap.to(".parallax-img", {

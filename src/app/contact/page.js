@@ -37,9 +37,9 @@ const ContactPage = () => {
         <div className="max-w-4xl mx-auto text-center px-6 md:px-12">
           {/* Main Title */}
           <div className="flex flex-col items-center gap-2 mb-10">
-            <h1 className="text-[48px] md:text-[100px] leading-tight uppercase tracking-tight relative"
+            <h1 className="text-[18px] md:text-[60px] leading-tight uppercase tracking-tight relative"
               style={textStyle}>
-              The WORLD <br /> of MALMAR
+              The WORLD <br className="md:hidden" /> of <br /> MALMAR
             </h1>
           </div>
 
