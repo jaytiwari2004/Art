@@ -93,37 +93,42 @@ const HeroSection = () => {
             className="w-full font-serif font-normal tracking-tighter uppercase"
             style={{ color: 'rgb(244, 242, 238)' }}
           >
-            {/* Line 1: TIMELESS (TOP) */}
+            {/* Line 1: TIMELESS (TOP) - shifted slightly down for all screens, extra down on Mac/large */}
             <div
-              className="text-center md:text-left mt-12 md:mt-16 text-[56px] md:text-[90px] leading-[68px] md:leading-[124.4px]"
+              className="text-center md:text-left mt-24 md:mt-32 xl:mt-40 2xl:mt-44"
               style={{
-                fontFamily: '_Elicyon-Regular.woff2, __elicyon_Fallback_df1f4c',
+                fontFamily: 'SageNav, sans-serif',
                 fontWeight: 400,
                 color: "rgb(244, 242, 238)",
+                fontSize: "50px",
+                lineHeight: "65px",
               }}
             >
               TIMELESS
             </div>
 
-            {/* Line 2: TAILORED (MIDDLE) */}
+            {/* Line 2: TAILORED (MIDDLE) - tighter spacing */}
             <div
-              className="text-center md:text-right md:pr-56 lg:pr-150 mt-40 md:mt-12 text-[56px] md:text-[90px] leading-[68px] md:leading-[124.4px]"
+              className="text-center md:text-right md:pr-56 lg:pr-250 mt-40 md:mt-8 xl:mt-6 2xl:mt-6"
               style={{
-                fontFamily: '_Elicyon-Regular.woff2, __elicyon_Fallback_df1f4c',
+                fontFamily: 'SageNav, sans-serif',
                 fontWeight: 400,
                 color: "rgb(244, 242, 238)",
+                fontSize: "50px",
+                lineHeight: "65px",
               }}
             >
               TAILORED
             </div>
-            {/* here i change some size tex of the text in md text 70 and left right lg pr 190 */}
-            {/* Line 3: SPACES (BOTTOM) */}
+            {/* Line 3: SPACES (BOTTOM) - tighter spacing */}
             <div
-              className="text-center md:text-left pl-0 md:pl-[10%] lg:pl-[16%] mt-40 md:mt-12 text-[56px] md:text-[90px] leading-[68px] md:leading-[124.4px]"
+              className="text-center md:text-left pl-0 md:pl-[10%] lg:pl-[9%] mt-40 md:mt-8 xl:mt-6 2xl:mt-6"
               style={{
-                fontFamily: '_Elicyon-Regular.woff2, __elicyon_Fallback_df1f4c',
+                fontFamily: 'SageNav, sans-serif',
                 fontWeight: 400,
                 color: "rgb(244, 242, 238)",
+                fontSize: "50px",
+                lineHeight: "65px",
               }}
             >
               SPACES
