@@ -172,7 +172,7 @@ export default function ProjectsPage() {
       <section className="pt-40 pb-20 flex items-center justify-center px-6 md:px-12 max-w-[1600px] mx-auto overflow-hidden">
         {/* Mobile View */}
         <h1
-          className="md:hidden text-[36px] leading-[1.1] text-center tracking-tight flex flex-col items-center justify-center text-[#111111]"
+          className="md:hidden text-[28px] leading-[28px] text-center tracking-tight flex flex-col items-center justify-center text-[#111111]"
           style={{ ...headingStyle, fontFamily: "'SageNav', sans-serif" }}
         >
           <span className="italic lowercase" style={{ textTransform: "none" }}>MALMAR</span>
@@ -230,7 +230,7 @@ export default function ProjectsPage() {
           </button>
           <button
             onClick={() => setViewMode("full")}
-            className={`transition-opacity duration-300 flex items-center justify-center ${viewMode === "full" ? "opacity-100" : "opacity-40 hover:opacity-100"}`}
+            className={`hidden md:flex transition-opacity duration-300 items-center justify-center ${viewMode === "full" ? "opacity-100" : "opacity-40 hover:opacity-100"}`}
             title="List View"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">

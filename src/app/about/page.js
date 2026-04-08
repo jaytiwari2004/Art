@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
+import { HeroParallax } from "@/components/ui/hero-parallax";
 
 export default function AboutPage() {
   const testimonials = [
@@ -105,7 +106,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-black/50"></div>
 
         <div className="relative z-10 text-center flex flex-col items-center">
-          <h1 className="text-white text-[32px] md:text-[80px] font-bold uppercase tracking-wide mb-4">
+          <h1 className="text-white text-[28px] leading-[28px] md:text-[80px] font-bold uppercase tracking-wide mb-4">
             About Us
           </h1>
 
@@ -151,7 +152,7 @@ export default function AboutPage() {
               </span>
             </div>
 
-            <h2 className="text-[32px] md:text-[60px] leading-tight font-bold uppercase tracking-tight text-[#111111]">
+            <h2 className="text-[28px] leading-[28px] md:text-[60px] md:leading-tight font-bold uppercase tracking-tight text-[#111111]">
               We Provide You Best <br className="hidden md:block" /> Experience
             </h2>
 
@@ -214,7 +215,7 @@ export default function AboutPage() {
             >
               <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[18px] border-l-white border-b-[10px] border-b-transparent group-hover:border-l-black ml-1"></div>
             </div>
-            <h2 className="text-[32px] md:text-[64px] font-bold uppercase tracking-[2px] leading-tight">
+            <h2 className="text-[28px] leading-[28px] md:text-[64px] font-bold uppercase tracking-[2px] md:leading-tight">
               Take A Tour Of Luxury
             </h2>
           </div>
@@ -292,7 +293,7 @@ export default function AboutPage() {
                 Testimonials
               </span>
             </div>
-            <h2 className="text-[32px] md:text-[60px] leading-tight font-bold uppercase tracking-tight text-[#111111]">
+            <h2 className="text-[28px] leading-[28px] md:text-[60px] md:leading-tight font-bold uppercase tracking-tight text-[#111111]">
               Our Happy Client
             </h2>
           </div>
@@ -328,7 +329,7 @@ export default function AboutPage() {
                 </span>
               </div>
 
-              <h2 className="text-[32px] md:text-[48px] font-bold text-white uppercase leading-tight tracking-tight">
+              <h2 className="text-[28px] leading-[28px] md:text-[48px] font-bold text-white uppercase md:leading-tight tracking-tight">
                 See How We Work <br /> For You
               </h2>
 
@@ -377,9 +378,109 @@ export default function AboutPage() {
 
         </div>
       </section>
+      
+      <section className="w-full bg-[#ede8df]">
+        <HeroParallax products={products} />
+      </section>
 
 
       <Footer />
     </main>
   );
 }
+
+const products = [
+  {
+    title: "Moonbeam",
+    link: "https://gomoonbeam.com",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/moonbeam.png",
+  },
+  {
+    title: "Cursor",
+    link: "https://cursor.so",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/cursor.png",
+  },
+  {
+    title: "Rogue",
+    link: "https://userogue.com",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/rogue.png",
+  },
+ 
+  {
+    title: "Editorially",
+    link: "https://editorially.org",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/editorially.png",
+  },
+  {
+    title: "Editrix AI",
+    link: "https://editrix.ai",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/editrix.png",
+  },
+  {
+    title: "Pixel Perfect",
+    link: "https://app.pixelperfect.quest",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/pixelperfect.png",
+  },
+ 
+  {
+    title: "Algochurn",
+    link: "https://algochurn.com",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/algochurn.png",
+  },
+  {
+    title: "Aceternity UI",
+    link: "https://ui.aceternity.com",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/aceternityui.png",
+  },
+  {
+    title: "Tailwind Master Kit",
+    link: "https://tailwindmasterkit.com",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/tailwindmasterkit.png",
+  },
+  {
+    title: "SmartBridge",
+    link: "https://smartbridgetech.com",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/smartbridge.png",
+  },
+  {
+    title: "Renderwork Studio",
+    link: "https://renderwork.studio",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/renderwork.png",
+  },
+ 
+  {
+    title: "Creme Digital",
+    link: "https://cremedigital.com",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/cremedigital.png",
+  },
+  {
+    title: "Golden Bells Academy",
+    link: "https://goldenbellsacademy.com",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/goldenbellsacademy.png",
+  },
+  {
+    title: "Invoker Labs",
+    link: "https://invoker.lol",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/invoker.png",
+  },
+  {
+    title: "E Free Invoice",
+    link: "https://efreeinvoice.com",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/efreeinvoice.png",
+  },
+];

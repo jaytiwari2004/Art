@@ -100,12 +100,16 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
     }
-  }, [isMenuOpen]);
+  }, [isMenuOpen, pathname]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -185,20 +189,30 @@ const Navbar = () => {
       >
         {activeMenu === "main" && (
           <div className="flex-1 flex flex-col items-center justify-center space-y-4 md:space-y-6 animate-in fade-in duration-500">
-            {["Project", "Services", "About"].map((item) => (
-              <Link
-                key={item}
-                href={item === "Project" ? "/projects" : (item === "Services" ? "/services" : `/${item.toLowerCase()}`)}
-                onClick={() => setIsMenuOpen(false)}
-                className="menu-item hover:opacity-60 transition-all text-center uppercase cursor-pointer block text-[28px] leading-[32px] md:text-[64px] md:leading-[77px]"
-                style={{
-                  fontFamily: 'var(--font-nav-menu)',
-                  color: "rgb(0, 0, 0)"
-                }}
-              >
-                {item}
-              </Link>
-            ))}
+            <a
+              href="/projects"
+              onClick={() => setIsMenuOpen(false)}
+              className="menu-item hover:opacity-60 transition-all text-center uppercase cursor-pointer block text-[28px] leading-[28px] md:text-[64px] md:leading-[77px]"
+              style={{ fontFamily: 'var(--font-nav-menu)', color: "rgb(0, 0, 0)" }}
+            >
+              Projects
+            </a>
+            <a
+              href="/services"
+              onClick={() => setIsMenuOpen(false)}
+              className="menu-item hover:opacity-60 transition-all text-center uppercase cursor-pointer block text-[28px] leading-[28px] md:text-[64px] md:leading-[77px]"
+              style={{ fontFamily: 'var(--font-nav-menu)', color: "rgb(0, 0, 0)" }}
+            >
+              Services
+            </a>
+            <a
+              href="/about"
+              onClick={() => setIsMenuOpen(false)}
+              className="menu-item hover:opacity-60 transition-all text-center uppercase cursor-pointer block text-[28px] leading-[28px] md:text-[64px] md:leading-[77px]"
+              style={{ fontFamily: 'var(--font-nav-menu)', color: "rgb(0, 0, 0)" }}
+            >
+              About
+            </a>
           </div>
         )}
 
