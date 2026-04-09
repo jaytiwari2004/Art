@@ -17,7 +17,7 @@ export default function ServicesSection() {
             <h2
               className="text-[32px] md:text-[48px] leading-[37px] md:leading-[58px]"
               style={{
-                fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
+                fontFamily: "'SageNav', sans-serif",
                 fontWeight: 400,
                 color: "rgb(0, 0, 0)",
               }}
@@ -314,7 +314,7 @@ function ArcMarquee() {
       {/* Gallery section — animation only when visible */}
       <div className="arc-section" ref={sectionRef} id="arc-section" style={{ background: '#734128' }}>
         <div className="arc-hero">
-          <h2 style={{ fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif', fontWeight: 400 }}>Our Gallery</h2>
+          <h2 style={{ fontFamily: "'SageNav', sans-serif", fontWeight: 400 }}>Our Gallery</h2>
 
         </div>
 

@@ -116,7 +116,7 @@ export default function ContactSection() {
               textShadow: "0px 4px 12px rgba(0,0,0,0.6)",
             }}
           >
-            Refined vision meets <br /> extraordinary execution
+
           </p>
         </div>
       </div>

@@ -17,6 +17,7 @@ const projects = [
 export default function ProjectSection() {
   const wrapperRef = useRef(null);
   const containerRef = useRef(null);
+  const headerRef = useRef(null);
 
   useGSAP(() => {
     const slides = gsap.utils.toArray('.project-slide');
@@ -28,6 +29,18 @@ export default function ProjectSection() {
         end: `+=${slides.length * 250}%`,
         pin: true,
         scrub: true,
+      }
+    });
+
+    // Header reveal animation
+    gsap.from(headerRef.current, {
+      y: 100,
+      opacity: 0,
+      duration: 1.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: headerRef.current,
+        start: "top 90%",
       }
     });
 
@@ -108,8 +121,8 @@ export default function ProjectSection() {
       `}} />
       {/* SECTION HEADER */}
       <section className="w-full flex flex-col items-center justify-center pt-32 pb-12 text-black bg-[#f8f7f3]">
-        <h2 className="text-[32vw] md:text-[18vw] uppercase leading-[0.9] text-center" style={{ color: 'rgb(0,0,0)', fontFamily: "'SageNav', sans-serif", fontWeight: 400 }}>
-          <span className="pr-[20vw] md:pr-[12vw]">Our</span> <br /> <span className="pl-[16vw] md:pl-[1vw]">Projects</span>
+        <h2 ref={headerRef} className="text-[32vw] md:text-[18vw] uppercase leading-[0.9] text-center" style={{ color: 'rgb(0,0,0)', fontFamily: "'SageNav', sans-serif", fontWeight: 400 }}>
+          <span className="pr-[20vw] md:pr-[12vw]">Our</span> <br /> <span className="pl-[20vw] md:pl-[2vw]">Projects</span>
         </h2>
         <p className="max-w-fit text-left font-normal mt-8 px-6 mx-auto" style={{ color: 'rgb(0,0,0)', fontSize: '14px', lineHeight: '14px', fontFamily: "'__antiqueLegacy_623eb9', '__antiqueLegacy_Fallback_623eb9', sans-serif" }}>
           Storytelling through design - a curated selection <br />

@@ -95,13 +95,13 @@ const HeroSection = () => {
           >
             {/* Line 1: TIMELESS (TOP) - shifted slightly down for all screens, extra down on Mac/large */}
             <div
-              className="text-center md:text-left mt-24 md:mt-32 xl:mt-40 2xl:mt-44"
+              className="text-center pl-8 md:text-left md:pl-16 mt-24 md:mt-32 xl:mt-40 2xl:mt-44"
               style={{
                 fontFamily: 'SageNav, sans-serif',
                 fontWeight: 400,
                 color: "rgb(244, 242, 238)",
-                fontSize: "50px",
-                lineHeight: "65px",
+                fontSize: "65px",
+                lineHeight: "75px",
               }}
             >
               TIMELESS
@@ -109,26 +109,26 @@ const HeroSection = () => {
 
             {/* Line 2: TAILORED (MIDDLE) - tighter spacing */}
             <div
-              className="text-center md:text-right md:pr-56 lg:pr-250 mt-40 md:mt-8 xl:mt-6 2xl:mt-6"
+              className="text-center pl-8 md:text-right md:pr-56 lg:pr-240 mt-40 md:mt-8 xl:mt-6 2xl:mt-6"
               style={{
                 fontFamily: 'SageNav, sans-serif',
                 fontWeight: 400,
                 color: "rgb(244, 242, 238)",
-                fontSize: "50px",
-                lineHeight: "65px",
+                fontSize: "65px",
+                lineHeight: "75px",
               }}
             >
               TAILORED
             </div>
             {/* Line 3: SPACES (BOTTOM) - tighter spacing */}
             <div
-              className="text-center md:text-left pl-0 md:pl-[10%] lg:pl-[9%] mt-40 md:mt-8 xl:mt-6 2xl:mt-6"
+              className="text-center pl-8 md:text-left md:pl-[20%] lg:pl-[18%] mt-40 md:mt-8 xl:mt-6 2xl:mt-6"
               style={{
                 fontFamily: 'SageNav, sans-serif',
                 fontWeight: 400,
                 color: "rgb(244, 242, 238)",
-                fontSize: "50px",
-                lineHeight: "65px",
+                fontSize: "65px",
+                lineHeight: "75px",
               }}
             >
               SPACES

@@ -227,7 +227,7 @@ export default function ObjectsOfDesire() {
       <div className="text-center mb-16 mt-8">
         <h2
           style={{
-            fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
+            fontFamily: "'SageNav', sans-serif",
             fontSize: "48px",
             fontWeight: 400,
             fontStyle: "normal",

@@ -56,8 +56,8 @@ const ElicyonTextSection = () => {
         // Merging into two rows: 
         // Row 1: through CRAFT, (stays static)
         // Row 2: VISION and unrivalled + GLOBAL EXPERTISE.
-        mainTl.to(".f-unrivalled", { x: -260, duration: 2, ease: "power2.inOut" }, mergeTime)
-          .to(".f-expertise", { y: -64, x: 310, duration: 2, ease: "power2.inOut" }, mergeTime);
+        mainTl.to(".f-unrivalled", { x: -180, duration: 2, ease: "power2.inOut" }, mergeTime)
+          .to(".f-expertise", { y: -58, x: 210, duration: 2, ease: "power2.inOut" }, mergeTime);
 
         // 3. IMAGE PARALLAX (DESKTOP ONLY)
         gsap.to(".parallax-img", {
@@ -103,7 +103,7 @@ const ElicyonTextSection = () => {
   }, { scope: sectionRef });
 
   const textStyle = {
-    fontFamily: 'var(--font-heading), "Elicyon", serif',
+    fontFamily: 'Maqotta, serif',
     fontStyle: 'normal',
     fontWeight: '400',
     color: 'rgb(0, 0, 0)',
@@ -140,14 +140,18 @@ const ElicyonTextSection = () => {
             </h2>
             <h2 className="f-luxury" style={textStyle}>through CRAFT,</h2>
             <h2 className="f-unrivalled" style={textStyle}>VISION and unrivalled</h2>
-            <h2 className="f-expertise" style={textStyle}>GLOBAL EXPERTISE.</h2>
+            <h2 className="f-expertise" style={textStyle}>
+              <span style={textStyle}>GL<span style={{ fontSize: '1.1em', display: 'inline-block', transform: 'translateY(2px)' }}>O</span>BAL</span> <span style={textStyle}>EXPERTISE.</span>
+            </h2>
           </div>
 
           {/* MOBILE ONLY: FINAL TEXT REVEAL ONLY */}
           <div className="flex md:hidden flex-col items-center gap-4">
             <h2 className="f-mobile-row" style={{ ...textStyle, color: 'black', fontSize: '30px', lineHeight: '36px', fontWeight: 'bold', textShadow: '0px 0px 12px rgba(255,255,255,0.9)' }}>through CRAFT,</h2>
             <h2 className="f-mobile-row" style={{ ...textStyle, color: 'black', fontSize: '24px', lineHeight: '28px', fontWeight: '500', textShadow: '0px 0px 12px rgba(255,255,255,0.9)' }}>VISION and unrivalled</h2>
-            <h2 className="f-mobile-row" style={{ ...textStyle, color: 'black', fontSize: '28px', lineHeight: '32px', fontWeight: '500', textShadow: '0px 0px 12px rgba(255,255,255,0.9)' }}>GLOBAL EXPERTISE.</h2>
+            <h2 className="f-mobile-row" style={{ ...textStyle, color: 'black', fontSize: '28px', lineHeight: '32px', fontWeight: '500', textShadow: '0px 0px 12px rgba(255,255,255,0.9)' }}>
+              <span>GL<span style={{ fontSize: '1.0em', display: 'inline-block', transform: 'translateY(1px)' }}>O</span>BAL</span> <span>EXPERTISE.</span>
+            </h2>
           </div>
         </div>
       </div>

@@ -26,7 +26,7 @@ export default function Footer() {
               @media (min-width: 768px) { .footer-mobile-title { font-size: 35px; line-height: 0.8; } }
             `}</style>
             <h2 className="mb-12 uppercase footer-mobile-title" style={{
-              fontFamily: "__elicyon_df1f4c, __elicyon_Fallback_df1f4c",
+              fontFamily: "'SageNav', sans-serif",
               fontWeight: 400,
               color: "rgb(0, 0, 0)"
             }}>

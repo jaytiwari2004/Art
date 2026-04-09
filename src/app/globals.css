@@ -46,6 +46,15 @@
   font-display: swap;
 }
 
+/* 🔥 Maqotta Font */
+@font-face {
+  font-family: 'Maqotta';
+  src: url('/fonts/Maqotta.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* 🔥 Instrument Sans Font */
 @font-face {
   font-family: 'InstrumentSans';

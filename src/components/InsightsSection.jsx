@@ -63,7 +63,7 @@ export default function InsightsSection() {
           <h2
             className="text-[32px] md:text-[48px] leading-[37px] md:leading-[58px]"
             style={{
-              fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
+              fontFamily: "'SageNav', sans-serif",
               fontWeight: 400,
               fontStyle: "normal",
               color: "rgb(0, 0, 0)",
