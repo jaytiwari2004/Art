@@ -364,7 +364,7 @@ function ArcMarquee() {
               className="text-xs tracking-widest uppercase whitespace-nowrap"
               style={{
                 color: "#e8e6e7",
-                fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
+                fontFamily: "'SageNav', sans-serif",
                 fontWeight: 400,
                 fontSize: "14px",
                 lineHeight: "24px",
@@ -379,7 +379,7 @@ function ArcMarquee() {
               ref={textRef}
               className="text-[#603522] text-[48px] leading-[53px]"
               style={{
-                fontFamily: "'InstrumentSans', sans-serif",
+                fontFamily: "'Elicyon', serif",
                 fontWeight: 400,
               }}
             >

@@ -62,6 +62,19 @@ const HeroSection = () => {
           },
         }
       );
+
+      // 4. Entrance animation for text lines
+      gsap.fromTo(".hero-line", 
+        { y: 50, opacity: 0 },
+        { 
+          y: 0, 
+          opacity: 1, 
+          duration: 1.2, 
+          stagger: 0.15, 
+          ease: "power4.out",
+          delay: 0.2 // Small delay after reveal starts
+        }
+      );
     },
     { scope: container }
   );
@@ -95,7 +108,19 @@ const HeroSection = () => {
           >
             {/* Line 1: TIMELESS (TOP) - shifted slightly down for all screens, extra down on Mac/large */}
             <div
-              className="text-center pl-8 md:text-left md:pl-16 mt-24 md:mt-32 xl:mt-40 2xl:mt-44"
+              className="hero-line text-center w-full mt-16 md:mt-24"
+              style={{
+                fontFamily: 'SageNav, sans-serif',
+                fontWeight: 400,
+                color: "rgb(244, 242, 238)",
+                fontSize: "65px",
+                lineHeight: "75px",
+              }}
+            >
+              WE DESIGN
+            </div>
+            <div
+              className="hero-line text-center w-full mt-4 md:mt-5 pl-8 md:pl-16"
               style={{
                 fontFamily: 'SageNav, sans-serif',
                 fontWeight: 400,
@@ -109,7 +134,7 @@ const HeroSection = () => {
 
             {/* Line 2: TAILORED (MIDDLE) - tighter spacing */}
             <div
-              className="text-center pl-8 md:text-right md:pr-56 lg:pr-240 mt-40 md:mt-8 xl:mt-6 2xl:mt-6"
+              className="hero-line text-center w-full mt-4 md:mt-5 pl-16 md:pl-32"
               style={{
                 fontFamily: 'SageNav, sans-serif',
                 fontWeight: 400,
@@ -120,9 +145,21 @@ const HeroSection = () => {
             >
               TAILORED
             </div>
+            <div
+              className="hero-line text-center w-full mt-3 md:mt-4 pl-16 md:pl-32"
+              style={{
+                fontFamily: 'SageNav, sans-serif',
+                fontWeight: 400,
+                color: "rgb(244, 242, 238)",
+                fontSize: "65px",
+                lineHeight: "75px",
+              }}
+            >
+              LIVING
+            </div>
             {/* Line 3: SPACES (BOTTOM) - tighter spacing */}
             <div
-              className="text-center pl-8 md:text-left md:pl-[20%] lg:pl-[18%] mt-40 md:mt-8 xl:mt-6 2xl:mt-6"
+              className="hero-line text-center w-full mt-4 md:mt-5 pl-32 md:pl-64"
               style={{
                 fontFamily: 'SageNav, sans-serif',
                 fontWeight: 400,

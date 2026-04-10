@@ -129,7 +129,7 @@ const Navbar = () => {
           <div
             className="hidden md:flex space-x-8 font-normal tracking-wide uppercase"
             style={{
-              fontFamily: "var(--font-body)",
+              fontFamily: "var(--font-nav-menu)",
               fontSize: "18px",
               lineHeight: "14 px",
             }}
@@ -146,7 +146,7 @@ const Navbar = () => {
           <button
             onClick={toggleMenu}
             className="md:hidden text-sm md:text-xl font-normal tracking-[0.2em] uppercase cursor-pointer"
-            style={{ fontFamily: "var(--font-body)" }}
+            style={{ fontFamily: "var(--font-nav-menu)" }}
           >
             {isMenuOpen ? "CLOSE" : "MENU"}
           </button>
@@ -169,7 +169,7 @@ const Navbar = () => {
         <div
           className="flex justify-end items-center font-normal tracking-[0.2em] uppercase"
           style={{
-            fontFamily: "var(--font-body)",
+            fontFamily: "var(--font-nav-menu)",
             fontSize: "14px",
             lineHeight: "14px",
           }}
@@ -193,7 +193,7 @@ const Navbar = () => {
               href="/projects"
               onClick={() => setIsMenuOpen(false)}
               className="menu-item hover:opacity-60 transition-all text-center uppercase cursor-pointer block text-[28px] leading-[28px] md:text-[64px] md:leading-[77px]"
-              style={{ fontFamily: 'var(--font-body)', color: "rgb(0, 0, 0)" }}
+              style={{ fontFamily: 'var(--font-nav-menu)', color: "rgb(0, 0, 0)" }}
             >
               Projects
             </a>
@@ -201,7 +201,7 @@ const Navbar = () => {
               href="/services"
               onClick={() => setIsMenuOpen(false)}
               className="menu-item hover:opacity-60 transition-all text-center uppercase cursor-pointer block text-[28px] leading-[28px] md:text-[64px] md:leading-[77px]"
-              style={{ fontFamily: 'var(--font-body)', color: "rgb(0, 0, 0)" }}
+              style={{ fontFamily: 'var(--font-nav-menu)', color: "rgb(0, 0, 0)" }}
             >
               Services
             </a>
@@ -209,7 +209,7 @@ const Navbar = () => {
               href="/about"
               onClick={() => setIsMenuOpen(false)}
               className="menu-item hover:opacity-60 transition-all text-center uppercase cursor-pointer block text-[28px] leading-[28px] md:text-[64px] md:leading-[77px]"
-              style={{ fontFamily: 'var(--font-body)', color: "rgb(0, 0, 0)" }}
+              style={{ fontFamily: 'var(--font-nav-menu)', color: "rgb(0, 0, 0)" }}
             >
               About
             </a>
@@ -227,7 +227,7 @@ const Navbar = () => {
                   href="#"
                   className="hover:opacity-60 transition-all uppercase"
                   style={{
-                    fontFamily: "var(--font-antique)",
+                    fontFamily: "var(--font-nav-menu)",
                     fontWeight: 400,
                     color: "rgb(0, 0, 0)",
                     fontSize: "14px",
@@ -247,7 +247,7 @@ const Navbar = () => {
                   href="#"
                   className="hover:opacity-60 transition-all uppercase"
                   style={{
-                    fontFamily: "var(--font-antique)",
+                    fontFamily: "var(--font-nav-menu)",
                     fontWeight: 400,
                     color: "rgb(0, 0, 0)",
                     fontSize: "14px",
@@ -264,7 +264,7 @@ const Navbar = () => {
           <div
             className="uppercase opacity-40 text-center tracking-[0.2em]"
             style={{
-              fontFamily: "var(--font-antique)",
+              fontFamily: "var(--font-nav-menu)",
               color: "rgb(0, 0, 0)",
               fontSize: "10px",
             }}

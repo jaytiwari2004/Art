@@ -10,6 +10,7 @@ if (typeof window !== "undefined") {
 
 const ElicyonTextSection = () => {
   const sectionRef = useRef(null);
+  const textWrapper = useRef(null);
 
   useGSAP(() => {
     let mm = gsap.matchMedia();
@@ -21,143 +22,104 @@ const ElicyonTextSection = () => {
       let { isDesktop } = context.conditions;
 
       if (isDesktop) {
-        // Platform detection for Mac to fix specific overlap issues on high-res displays like MacBook Pro
-        const isMac = typeof window !== 'undefined' && (/Macintosh|MacIntel|MacPPC|Mac68K/.test(navigator.platform) || /Mac/i.test(navigator.userAgent));
-        const verticalOffset = isMac ? "-18vh" : "-45vh";
-
-        // 1. PIN THE ENTIRE SECTION (DESKTOP ONLY)
         const mainTl = gsap.timeline({
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top top",
-            end: "+=400%",
+            end: "+=500%",
             pin: true,
             scrub: 1.2,
           }
         });
 
-        const mergeTime = 5.0;
+        // 1. Initial drift DOWNWARDS slightly
+        mainTl.to(textWrapper.current, { y: "10vh", duration: 3, ease: "power1.inOut" }, 0.5);
 
-        // 1. GLIDE FROM BOTTOM TO CENTER (DURING INITIAL SCROLL)
-        mainTl.to(".text-wrapper", { y: verticalOffset, duration: 2, ease: "none" }, 0)
+        // 2. SPACES THAT fades out
+        mainTl.to(".word-spaces", { opacity: 0, y: -30, scale: 0.95, duration: 1.5 }, 1.5);
 
-          // 2. PAUSE AT CENTER, THEN START FADE/MERGE ANIMATIONS (STARTING AT 2.5s)
-          .to(".f-vision", { opacity: 0, y: -20, duration: 1 }, 2.5)
-          .to(".f-studio", { opacity: 0, y: -20, duration: 1 }, 2.7)
-          .to(".f-your", { opacity: 0, y: -20, duration: 1 }, 2.9)
-          .to(".f-sculpts", { opacity: 0, y: -20, duration: 1 }, 3.1)
-          .to(".f-spaces", { opacity: 0, y: -20, duration: 1 }, 3.3)
-          .to(".f-reflect", { opacity: 0, y: -20, duration: 1 }, 3.5)
-          .to(".f-our", { opacity: 0, y: -20, duration: 1 }, 3.7);
+        // 3. Merging Animation
+        mainTl.to(".row-2", { x: -170, y: 20, duration: 3, ease: "power2.inOut" }, 3.5);
+        mainTl.to(".row-3", { x: 180, y: -52, duration: 3, ease: "power2.inOut" }, 3.5);
 
-        // 3. SMOOTHLY PUSH TO BOTTOM AT THE END OF THE SECTION (goes a little further down, stays visible)
-        mainTl.to(".text-wrapper", { y: "7vh", duration: 4, ease: "sine.inOut" }, 6.5);
+        // 4. Final Phase: Text follows the images to the bottom of the section
+        mainTl.to(textWrapper.current, { y: "60vh", duration: 6, ease: "power1.inOut" }, 6.5);
 
-        // Merging into two rows: 
-        // Row 1: through CRAFT, (stays static)
-        // Row 2: VISION and unrivalled + GLOBAL EXPERTISE.
-        mainTl.to(".f-unrivalled", { x: -180, duration: 2, ease: "power2.inOut" }, mergeTime)
-          .to(".f-expertise", { y: -58, x: 210, duration: 2, ease: "power2.inOut" }, mergeTime);
-
-        // 3. IMAGE PARALLAX (DESKTOP ONLY)
+        // Parallax for images - moving them UP as user scrolls DOWN
         gsap.to(".parallax-img", {
-          y: "-200vh",
+          y: "-260vh",
           ease: "none",
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top top",
-            end: "+=400%",
+            end: "+=500%",
             scrub: 1,
           }
         });
       } else {
-        // MOBILE: FASTER ZERO-LAG SCROLL - TEXT BLOCKED TRAVELS FURTHER
-        gsap.fromTo(".f-mobile-row",
-          { y: -100, opacity: 1 },
+        // Mobile Animation
+        gsap.fromTo(".mobile-text-row",
+          { y: 50, opacity: 0 },
           {
-            y: 1100,
+            y: -50,
             opacity: 1,
-            stagger: 0,
-            ease: "none",
+            stagger: 0.2,
             scrollTrigger: {
               trigger: sectionRef.current,
-              start: "top top",
-              end: "bottom bottom",
-              scrub: true, // Syncs exactly with scroll but covers more distance (faster)
+              start: "top 80%",
+              end: "bottom 20%",
+              scrub: true,
             }
           }
         );
-
-        // Responsive parallax movement for background images
-        gsap.to(".parallax-img", {
-          y: "-120px",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true
-          }
-        });
       }
     });
   }, { scope: sectionRef });
 
-  const textStyle = {
-    fontFamily: 'Maqotta, serif',
-    fontStyle: 'normal',
-    fontWeight: '400',
-    color: 'rgb(0, 0, 0)',
-    fontSize: '48px',
-    lineHeight: '58px',
-    textAlign: 'center',
-    textTransform: 'none',
-    display: 'inline-block',
+  const wordStyle = {
+    fontFamily: "'SageNav', sans-serif",
+    fontSize: "clamp(18px, 4.5vw, 52px)",
+    lineHeight: "1.3",
+    color: "#000",
+    textTransform: "none",
+    display: "inline-block",
   };
 
   return (
-    <div ref={sectionRef} className="relative w-full h-[250vh] md:h-screen bg-[#f8f7f3] overflow-hidden">
-
+    <div ref={sectionRef} className="relative w-full h-[300vh] md:h-screen bg-[#f8f7f3] overflow-hidden">
+      
       {/* BACKGROUND IMAGES */}
       <div className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none">
-        <img src="/new.jpeg" className="parallax-img absolute top-[10vh] right-[5%] w-32 h-44 md:w-80 md:h-[450px] object-cover shadow-lg" alt="Interior 1" />
-        <img src="/new1.jpeg" className="parallax-img absolute top-[70vh] left-[5%] w-28 h-40 md:w-72 md:h-96 object-cover shadow-lg" alt="Interior 2" />
-        <img src="/new3.jpeg" className="parallax-img absolute top-[130vh] right-[8%] w-32 h-44 md:w-96 md:h-[500px] object-cover shadow-lg" alt="Interior 3" />
-        <img src="/elylast.png" className="parallax-img absolute top-[190vh] left-[8%] w-36 h-52 md:w-[450px] md:h-[600px] object-cover shadow-lg" alt="Interior 4" />
+        <img src="/new.jpeg" className="parallax-img absolute top-[20vh] right-[8%] w-40 h-56 md:w-[450px] md:h-[600px] object-cover shadow-2xl" alt="Interior 1" />
+        <img src="/new1.jpeg" className="parallax-img absolute top-[110vh] left-[6%] w-32 h-44 md:w-80 md:h-[500px] object-cover shadow-2xl" alt="Interior 2" />
+        <img src="/new3.jpeg" className="parallax-img absolute top-[210vh] right-[10%] w-40 h-56 md:w-[500px] md:h-[700px] object-cover shadow-2xl" alt="Interior 3" />
+        <img src="/elylast.png" className="parallax-img absolute top-[310vh] left-[10%] w-44 h-60 md:w-[550px] md:h-[750px] object-cover shadow-2xl" alt="Interior 4" />
       </div>
 
       {/* TEXT CONTENT LAYER */}
-      <div className="sticky top-0 w-full h-screen flex flex-col items-center justify-end z-10 text-center px-4 pb-[2vh] pointer-events-none">
-
-        <div className="text-wrapper flex flex-col items-center select-none antialiased">
-
-          {/* DESKTOP ONLY: HEADER BLOCK */}
-          <div className="hidden md:flex flex-col items-center">
-            <h2 className="f-spaces-reflect" style={textStyle}>
-              <span className="f-spaces" style={textStyle}>SPACES</span> <span className="f-reflect" style={textStyle}>that reflect</span>
-            </h2>
-            <h2 style={textStyle}>
-              <span className="f-your" style={textStyle}>your</span> <span className="f-vision" style={textStyle}>vision,</span>
-            </h2>
-            <h2 className="f-luxury" style={textStyle}>through CRAFT,</h2>
-            <h2 className="f-unrivalled" style={textStyle}>VISION and unrivalled</h2>
-            <h2 className="f-expertise" style={textStyle}>
-              <span style={textStyle}>GL<span style={{ fontSize: '1.1em', display: 'inline-block', transform: 'translateY(2px)' }}>O</span>BAL</span> <span style={textStyle}>EXPERTISE.</span>
-            </h2>
+      <div className="sticky top-0 w-full h-screen flex flex-col items-center justify-center z-10 text-center px-4 pointer-events-none">
+        <div ref={textWrapper} className="flex flex-col items-center">
+          
+          {/* Line 1: SPACES THAT (Fades out) */}
+          <div className="word-spaces mb-2" style={wordStyle}>
+            SPACES that
           </div>
 
-          {/* MOBILE ONLY: FINAL TEXT REVEAL ONLY */}
-          <div className="flex md:hidden flex-col items-center gap-4">
-            <h2 className="f-mobile-row" style={{ ...textStyle, color: 'black', fontSize: '30px', lineHeight: '36px', fontWeight: 'bold', textShadow: '0px 0px 12px rgba(255,255,255,0.9)' }}>through CRAFT,</h2>
-            <h2 className="f-mobile-row" style={{ ...textStyle, color: 'black', fontSize: '24px', lineHeight: '28px', fontWeight: '500', textShadow: '0px 0px 12px rgba(255,255,255,0.9)' }}>VISION and unrivalled</h2>
-            <h2 className="f-mobile-row" style={{ ...textStyle, color: 'black', fontSize: '28px', lineHeight: '32px', fontWeight: '500', textShadow: '0px 0px 12px rgba(255,255,255,0.9)' }}>
-              <span>GL<span style={{ fontSize: '1.0em', display: 'inline-block', transform: 'translateY(1px)' }}>O</span>BAL</span> <span>EXPERTISE.</span>
-            </h2>
+          {/* Line 2: reflect vision */}
+          <div className="row-2 flex space-x-6 mb-2">
+            <div className="word-reflect" style={wordStyle}>reflect</div>
+            <div className="word-vision" style={wordStyle}>vision</div>
           </div>
+
+          {/* Line 3: through CRAFT */}
+          <div className="row-3 flex space-x-6">
+            <div className="word-through" style={wordStyle}>through</div>
+            <div className="word-craft" style={wordStyle}>CRAFT</div>
+          </div>
+
         </div>
       </div>
 
-      {/* Frame Border */}
-      <div className="absolute inset-0 pointer-events-none border-[20px] border-[#f8f7f3] z-20" />
     </div>
   );
 };

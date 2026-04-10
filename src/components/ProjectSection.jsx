@@ -120,15 +120,16 @@ export default function ProjectSection() {
         }
       `}} />
       {/* SECTION HEADER */}
-      <section className="w-full flex flex-col items-center justify-center pt-32 pb-12 text-black bg-[#f8f7f3]">
-        <h2 ref={headerRef} className="text-[32vw] md:text-[18vw] uppercase leading-[0.9] text-center" style={{ color: 'rgb(0,0,0)', fontFamily: "'SageNav', sans-serif", fontWeight: 400 }}>
-          <span className="pr-[20vw] md:pr-[12vw]">Our</span> <br /> <span className="pl-[20vw] md:pl-[2vw]">Projects</span>
+      <section className="w-full flex flex-col items-end pt-32 pb-12 text-black bg-[#f8f7f3] px-6 md:px-12">
+        <h2 ref={headerRef} className="text-[32vw] md:text-[18vw] uppercase leading-[0.9] text-right w-full" style={{ color: 'rgb(0,0,0)', fontFamily: "'SageNav', sans-serif", fontWeight: 400 }}>
+          <div className="pr-20 md:pr-47">Our</div>
+          <div>Projects</div>
         </h2>
-        <p className="max-w-fit text-left font-normal mt-8 px-6 mx-auto" style={{ color: 'rgb(0,0,0)', fontSize: '14px', lineHeight: '14px', fontFamily: "'__antiqueLegacy_623eb9', '__antiqueLegacy_Fallback_623eb9', sans-serif" }}>
+        <p className="max-w-fit text-right font-normal mt-8 px-0" style={{ color: 'rgb(0,0,0)', fontSize: '14px', lineHeight: '14px', fontFamily: "'__antiqueLegacy_623eb9', '__antiqueLegacy_Fallback_623eb9', sans-serif" }}>
           Storytelling through design - a curated selection <br />
           of over 100 projects worldwide.
         </p>
-        <button className="group relative mt-10 flex flex-col items-center" style={{ color: 'rgb(0,0,0)' }}>
+        <button className="group relative mt-10 flex flex-col items-end px-0" style={{ color: 'rgb(0,0,0)' }}>
           <span className="uppercase tracking-[0.4em] text-[10px] font-medium mb-1">View Projects</span>
           <div className="relative w-full h-[1px] overflow-hidden">
             <div className="w-full h-full bg-black transition-transform duration-400 ease-in-out group-hover:translate-x-full" />
@@ -161,7 +162,7 @@ export default function ProjectSection() {
                     <span
                       className="letter-inner inline-block will-change-transform"
                       style={{
-                        fontFamily: "'Elicyon', serif",
+                        fontFamily: "'SageNav', sans-serif",
                         fontWeight: 400,
                         fontSize: "clamp(48px, 40vw, 8vw)" // Responsive font sizing: 22vw max for desktop
                       }}
@@ -175,7 +176,7 @@ export default function ProjectSection() {
 
             {/* PROJECT INFO */}
             <div className="project-details absolute bottom-8 right-6 md:bottom-12 md:right-12 text-right text-white z-30">
-              <h4 className="mb-2 md:mb-4 uppercase" style={{ fontFamily: "'Elicyon', serif", fontWeight: 400, fontSize: '35px', lineHeight: '42px' }}>{project.subtitle}</h4>
+              <h4 className="mb-2 md:mb-4 uppercase" style={{ fontFamily: "'SageNav', sans-serif", fontWeight: 400, fontSize: '35px', lineHeight: '42px' }}>{project.subtitle}</h4>
               <button className="border-b border-white pb-1 uppercase tracking-widest text-[11px] md:text-sm hover:opacity-50 transition-opacity" style={{ fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", sans-serif', fontWeight: 400 }}>
                 View Project
               </button>
