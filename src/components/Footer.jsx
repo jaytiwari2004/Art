@@ -1,7 +1,8 @@
-"use client";
-import React from 'react';
+import { motion } from 'framer-motion';
 
 export default function Footer() {
+  const letters = "MALMAR".split("");
+  
   const antiqueStyle = {
     fontFamily: "__antiqueLegacy_623eb9, __antiqueLegacy_Fallback_623eb9",
     fontWeight: 400,
@@ -17,7 +18,7 @@ export default function Footer() {
 
       <div className="max-w-[1400px] mx-auto w-full z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24">
-
+          
           {/* LEFT: NEWSLETTER FORM */}
           <div className="flex flex-col">
             <style>{`
@@ -49,7 +50,6 @@ export default function Footer() {
             </p>
 
             <form className="space-y-8 w-full max-w-md">
-              {/* Names - Side by side on mobile too */}
               <div className="flex flex-row gap-4 md:gap-8">
                 <input
                   type="text"
@@ -91,9 +91,8 @@ export default function Footer() {
             </form>
           </div>
 
-          {/* RIGHT: LINKS (STAGGERED 2 COLUMNS ON MOBILE) */}
+          {/* RIGHT: LINKS */}
           <div className="grid grid-cols-2 gap-8 md:gap-16 pt-4 lg:pt-0">
-            {/* Column 1: Main Links */}
             <div className="flex flex-col space-y-2">
               {["PROJECTS", "SERVICES", "FAQS", "CONTACT"].map((link) => (
                 <span key={link} className="cursor-pointer hover:opacity-50 transition-opacity" style={antiqueStyle}>
@@ -101,8 +100,6 @@ export default function Footer() {
                 </span>
               ))}
             </div>
-
-            {/* Column 2: Social Links */}
             <div className="flex flex-col space-y-2">
               {["INSTAGRAM", "PINTEREST", "LINKEDIN", "FACEBOOK"].map((link) => (
                 <span key={link} className="cursor-pointer hover:opacity-50 transition-opacity" style={antiqueStyle}>
@@ -114,14 +111,40 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* --- DESKTOP BOTTOM LAYER --- */}
-      <div className="hidden md:flex w-full mt-auto justify-center items-end py-4 z-10 transition-transform duration-700">
-        <img
-          src="/logo.png"
-          alt="Art Studio Logo"
-          className="h-[40px] w-auto object-contain opacity-90 transition-opacity hover:opacity-100"
-        />
-      </div>
+      {/* --- BIG LOGO TEXT WITH SHUTTER EFFECT --- */}
+      <motion.div 
+        className="w-full mt-24 mb-12 z-10 overflow-hidden flex justify-center"
+        initial={{ clipPath: "inset(100% 0% 0% 0%)" }}
+        whileInView={{ clipPath: "inset(0% 0% 0% 0%)" }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.5, ease: [0.77, 0, 0.175, 1] }}
+      >
+        <div className="flex select-none">
+          {letters.map((char, i) => (
+            <motion.span
+              key={i}
+              initial={{ y: 200, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{
+                delay: 0.1 + (i * 0.08),
+                duration: 1.2,
+                ease: [0.215, 0.61, 0.355, 1],
+              }}
+              style={{
+                fontFamily: "'SageNav', sans-serif",
+                fontSize: "clamp(60px, 22vw, 303px)",
+                lineHeight: "clamp(60px, 22vw, 303px)",
+                color: "rgb(0, 0, 0)",
+                textTransform: "uppercase",
+                display: "inline-block"
+              }}
+            >
+              {char}
+            </motion.span>
+          ))}
+        </div>
+      </motion.div>
 
       <div className="hidden md:block w-full py-4 z-10 bg-[#fdf0d5]">
         <div className="max-w-[1400px] mx-auto flex flex-row justify-between items-center gap-6 text-[11px] opacity-60" style={antiqueStyle}>
