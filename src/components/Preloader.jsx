@@ -16,32 +16,40 @@ const Preloader = ({ onComplete }) => {
     >
       <div className="relative flex flex-col items-center justify-center w-full h-full">
 
-        {/* 1. MALMAR Text Reveal */}
-        <AnimatePresence>
-          {!isExpanding && (
-            <motion.div
-              exit={{ opacity: 0, y: -20 }}
-              className="flex z-20 pointer-events-none mb-4"
+        {/* 1. MALMAR Text Reveal & Move to Logo Position */}
+        <motion.div
+          className="flex z-30 pointer-events-none mb-4 absolute"
+          animate={isExpanding ? {
+            top: "40px",
+            scale: 0.35,
+            color: "#ffffff", // Change to white to match the Hero logo
+            opacity: 0, // Fade out so the actual logo can take over
+            transition: { duration: 1.2, ease: [0.76, 0, 0.24, 1] }
+          } : {
+            top: "50%",
+            y: "-50%",
+            scale: 1,
+            opacity: 1,
+            color: "#000000"
+          }}
+        >
+          {words.map((word, i) => (
+            <motion.span
+              key={i}
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{
+                delay: i * 0.08,
+                duration: 0.6,
+                ease: [0.215, 0.61, 0.355, 1],
+              }}
+              className="text-5xl md:text-7xl font-light tracking-tighter text-black"
+              style={{ fontFamily: "'SageNav', sans-serif" }}
             >
-              {words.map((word, i) => (
-                <motion.span
-                  key={i}
-                  initial={{ y: 100, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{
-                    delay: i * 0.08,
-                    duration: 0.6,
-                    ease: [0.215, 0.61, 0.355, 1],
-                  }}
-                  className="text-7xl md:text-9xl font-light tracking-tighter text-black"
-                  style={{ fontFamily: "'SageNav', sans-serif" }}
-                >
-                  {word}
-                </motion.span>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
+              {word}
+            </motion.span>
+          ))}
+        </motion.div>
 
         {/* 2. The "Window" Opening */}
         <motion.div
@@ -64,10 +72,10 @@ const Preloader = ({ onComplete }) => {
               onComplete();
             }
           }}
-          className="absolute z-10 overflow-hidden shadow-2xl bg-stone-200"
+          className="absolute z-10 overflow-hidden shadow-2xl bg-white"
         >
           <video
-            src="/MMM.webm"
+            src="/MMM.mp4"
             autoPlay
             loop
             muted

@@ -36,7 +36,7 @@ const ElicyonTextSection = () => {
 
         mainTl.to(".word-spaces", { opacity: 0, y: -30, scale: 0.95, duration: 1.5 }, 1.5);
 
-        mainTl.to(".row-2", { x: -180, y: 20, duration: 3, ease: "power2.inOut" }, 3.5);
+        mainTl.to(".row-2", { x: -300, y: 1, duration: 3, ease: "power2.inOut" }, 3.5);
         mainTl.to(".row-3", { x: 170, y: -53, duration: 3, ease: "power2.inOut" }, 3.5);
 
         mainTl.to(textWrapper.current, { y: "25vh", duration: 8, ease: "power1.inOut" }, 6.5);
@@ -85,9 +85,9 @@ const ElicyonTextSection = () => {
       {/* BACKGROUND IMAGES */}
       <div className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none">
         <img src="/new.jpeg" className="parallax-img absolute top-[25vh] right-[8%] w-32 h-44 md:w-80 md:h-[450px] object-cover shadow-lg" alt="Interior 1" />
-        <img src="/new1.jpeg" className="parallax-img absolute top-[85vh] left-[6%] w-28 h-40 md:w-72 md:h-96 object-cover shadow-lg" alt="Interior 2" />
-        <img src="/new3.jpeg" className="parallax-img absolute top-[155vh] right-[10%] w-32 h-44 md:w-96 md:h-[500px] object-cover shadow-lg" alt="Interior 3" />
-        <img src="/elylast.jpeg" className="parallax-img absolute top-[225vh] left-[10%] w-36 h-52 md:w-[450px] md:h-[600px] object-cover shadow-lg" alt="Interior 4" />
+        <img src="/new1.jpeg" className="parallax-img absolute top-[85vh] left-[6%] w-32 h-44 md:w-80 md:h-[450px] object-cover shadow-lg" alt="Interior 2" />
+        <img src="/new3.jpeg" className="parallax-img absolute top-[155vh] right-[10%] w-32 h-44 md:w-80 md:h-[450px] object-cover shadow-lg" alt="Interior 3" />
+        <img src="/elylast.jpeg" className="parallax-img absolute top-[225vh] left-[10%] w-32 h-44 md:w-80 md:h-[450px] object-cover shadow-lg" alt="Interior 4" />
       </div>
 
       {/* TEXT CONTENT */}
@@ -106,14 +106,14 @@ const ElicyonTextSection = () => {
           </div>
 
           {/* Line 3 */}
-        <div className="row-3 flex space-x-6">
-  <div className="word-through" style={{ ...wordStyle, fontStyle: "italic" }}>
-    THROUGH
-  </div>
-  <div className="word-craft" style={{ ...wordStyle, fontStyle: "italic" }}>
-    CRAFT
-  </div>
-</div>
+          <div className="row-3 flex space-x-6">
+            <div className="word-through" style={{ ...wordStyle, fontStyle: "italic" }}>
+              THROUGH
+            </div>
+            <div className="word-craft" style={{ ...wordStyle, fontStyle: "italic" }}>
+              CRAFT
+            </div>
+          </div>
 
         </div>
       </div>

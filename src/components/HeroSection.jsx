@@ -117,6 +117,7 @@ const HeroSection = () => {
                 fontWeight: 400,
                 fontSize: "65px",
                 lineHeight: "1",
+                wordSpacing: "-0.08em",
               }}
             >
               WE DESIGN Timeless
@@ -124,12 +125,13 @@ const HeroSection = () => {
 
             {/* Line 2 (tight, no gap) */}
             <div
-              className="hero-line w-full mt-0 flex justify-center items-center"
+              className="hero-line w-full -mt-2 md:-mt-3 flex justify-center items-center"
               style={{
                 fontFamily: "SageNav, sans-serif",
                 fontWeight: 400,
                 fontSize: "65px",
                 lineHeight: "1.2",
+                wordSpacing: "-0.08em",
               }}
             >
               <span className="text-center italic">Tailored Spaces</span>

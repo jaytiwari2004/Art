@@ -202,7 +202,7 @@ export default function VisionSection() {
 
           <button
             style={{
-              fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
+              fontFamily: "'Elicyon-Regular', serif",
               fontSize: "13px",
               fontWeight: 400,
               letterSpacing: "0.3em",
@@ -210,7 +210,6 @@ export default function VisionSection() {
               color: "rgb(244, 242, 238)",
               background: "none",
               border: "none",
-              borderBottom: "1px solid rgba(244,242,238,0.5)",
               paddingBottom: "6px",
               cursor: "pointer",
             }}

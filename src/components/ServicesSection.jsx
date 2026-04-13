@@ -23,7 +23,7 @@ export default function ServicesSection() {
               }}
             >
               <span className="relative -left-4 md:-left-20">OUR</span><br />
-              <span className="relative -left-2 md:-left-8">SERVICES</span>
+              <span className="relative -left-2 md:-left-15">SERVICES</span>
             </h2>
             <p
               className="text-[14px] leading-[20px] md:leading-[17px] mt-6 md:mt-5 max-w-full md:max-w-[310px] relative -left-4 md:-left-16"
@@ -134,9 +134,9 @@ export default function ServicesSection() {
 
               <Link
                 href="/services"
-                className="text-[13px] tracking-[0.25em] uppercase underline underline-offset-4 cursor-pointer relative left-2 md:left-16 inline-block"
+                className="text-[13px] tracking-[0.25em] uppercase cursor-pointer relative left-2 md:left-1 inline-block"
                 style={{
-                  fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
+                  fontFamily: "'Elicyon-Regular', serif",
                   fontWeight: 400,
                   color: "rgb(0, 0, 0)",
                 }}
