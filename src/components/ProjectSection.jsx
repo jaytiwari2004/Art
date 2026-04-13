@@ -121,22 +121,50 @@ export default function ProjectSection() {
       `}} />
       {/* SECTION HEADER */}
       <section className="w-full flex flex-col items-end pt-32 pb-12 text-black bg-[#f8f7f3] px-6 md:px-12">
-        <h2 ref={headerRef} className="text-[32vw] md:text-[18vw] uppercase leading-[0.9] text-right w-full" style={{ color: 'rgb(0,0,0)', fontFamily: "'SageNav', sans-serif", fontWeight: 400 }}>
-          <div className="pr-20 md:pr-47">Our</div>
-          <div>Projects</div>
-        </h2>
-        <p className="max-w-fit text-right font-normal mt-8 px-0" style={{ color: 'rgb(0,0,0)', fontSize: '14px', lineHeight: '14px', fontFamily: "'__antiqueLegacy_623eb9', '__antiqueLegacy_Fallback_623eb9', sans-serif" }}>
-          Storytelling through design - a curated selection <br />
-          of over 100 projects worldwide.
-        </p>
-        <button className="group relative mt-10 flex flex-col items-end px-0" style={{ color: 'rgb(0,0,0)' }}>
-          <span className="uppercase tracking-[0.4em] text-[10px] font-medium mb-1">View Projects</span>
-          <div className="relative w-full h-[1px] overflow-hidden">
-            <div className="w-full h-full bg-black transition-transform duration-400 ease-in-out group-hover:translate-x-full" />
-            <div className="absolute inset-0 bg-black -translate-x-full transition-transform duration-400 ease-in-out group-hover:translate-x-0" />
-          </div>
-        </button>
-      </section>
+  <h2
+    ref={headerRef}
+    className="text-[32vw] md:text-[18vw] uppercase leading-[0.75] text-right w-full"
+    style={{
+      color: 'rgb(0,0,0)',
+      fontFamily: "'SageNav', sans-serif",
+      fontWeight: 400,
+      letterSpacing: "-0.02em" // ✅ tighter letters
+    }}
+  >
+    <div className="pr-20 md:pr-47">OUR</div>
+
+    <div style={{ fontStyle: "italic" }}>
+      PROJECTS
+    </div>
+  </h2>
+
+  <p
+    className="max-w-fit text-right font-normal mt-8 px-0"
+    style={{
+      color: 'rgb(0,0,0)',
+      fontSize: '14px',
+      lineHeight: '14px',
+      fontFamily: "'__antiqueLegacy_623eb9', '__antiqueLegacy_Fallback_623eb9', sans-serif"
+    }}
+  >
+    Storytelling through design - a curated selection <br />
+    of over 100 projects worldwide.
+  </p>
+
+  <button
+    className="group relative mt-10 flex flex-col items-end px-0"
+    style={{ color: 'rgb(0,0,0)' }}
+  >
+    <span className="uppercase tracking-[0.4em] text-[10px] font-medium mb-1">
+      View Projects
+    </span>
+
+    <div className="relative w-full h-[1px] overflow-hidden">
+      <div className="w-full h-full bg-black transition-transform duration-400 ease-in-out group-hover:translate-x-full" />
+      <div className="absolute inset-0 bg-black -translate-x-full transition-transform duration-400 ease-in-out group-hover:translate-x-0" />
+    </div>
+  </button>
+</section>
 
       {/* PINNED AREA */}
       <div ref={containerRef} className="relative w-full h-screen overflow-hidden bg-black">

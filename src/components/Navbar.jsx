@@ -18,12 +18,14 @@ const Navbar = () => {
   const isContactPage = pathname === "/contact";
   const isAboutPage = pathname === "/about";
   const isLightPage = isProjectsPage || isContactPage || isAboutPage;
+
   const navbarRef = useRef(null);
   const menuRef = useRef(null);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOverArc, setIsOverArc] = useState(false);
-  const [activeMenu, setActiveMenu] = useState("main"); // "main" or "projects"
+  const [activeMenu, setActiveMenu] = useState("main");
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -32,7 +34,7 @@ const Navbar = () => {
       },
       {
         rootMargin: "-80px 0px -90% 0px",
-        threshold: 0
+        threshold: 0,
       }
     );
 
@@ -70,11 +72,22 @@ const Navbar = () => {
         duration: 0.8,
         ease: "power4.out",
       });
-      gsap.fromTo(".menu-item",
+
+      gsap.fromTo(
+        ".menu-item",
         { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power3.out", delay: 0.3 }
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: "power3.out",
+          delay: 0.3,
+        }
       );
-      gsap.fromTo(".menu-footer",
+
+      gsap.fromTo(
+        ".menu-footer",
         { opacity: 0 },
         { opacity: 1, duration: 0.8, delay: 0.8 }
       );
@@ -89,11 +102,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > window.innerHeight * 0.9) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > window.innerHeight * 0.9);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -104,54 +113,65 @@ const Navbar = () => {
   }, [pathname]);
 
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
   }, [isMenuOpen, pathname]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    if (!isMenuOpen) {
-      setActiveMenu("main");
-    }
+    if (!isMenuOpen) setActiveMenu("main");
   };
 
   return (
     <>
       <nav
         ref={navbarRef}
-        className={`fixed top-0 left-0 w-full z-[100] grid grid-cols-3 items-center px-6 md:px-12 py-8 drop-shadow-sm transition-colors duration-500 ease-in-out ${isOverArc ? "text-white" : (isScrolled || isLightPage ? (isMenuOpen ? "text-black" : "text-[#78233e]") : (isMenuOpen ? "text-black" : "text-white"))
-          }`}
+        className={`fixed top-0 left-0 w-full z-[100] grid grid-cols-3 items-center px-6 md:px-12 py-8 drop-shadow-sm transition-colors duration-500 ease-in-out ${
+          isOverArc
+            ? "text-white"
+            : isScrolled || isLightPage
+            ? isMenuOpen
+              ? "text-black"
+              : "text-[#78233e]"
+            : isMenuOpen
+            ? "text-black"
+            : "text-white"
+        }`}
       >
+        {/* LEFT MENU */}
         <div className="flex items-center">
           <div
-            className="hidden md:flex space-x-8 font-normal tracking-wide uppercase"
+            className="hidden md:flex space-x-8 font-normal uppercase"
             style={{
               fontFamily: "var(--font-nav-menu)",
-              fontSize: "18px",
-              lineHeight: "14 px",
+              fontSize: "14px",
+              lineHeight: "14px",
+              letterSpacing: "2.1px",
             }}
           >
-            <Link
-              href="/projects"
-              className="hover:opacity-80 transition-all uppercase cursor-pointer"
-            >
+            <Link href="/projects" className="hover:opacity-80 transition-all">
               Projects
             </Link>
-            <Link href="/services" className="hover:opacity-80 transition-all">Services</Link>
-            <Link href="/about" className="hover:opacity-80 transition-all">About</Link>
+            <Link href="/services" className="hover:opacity-80 transition-all">
+              Services
+            </Link>
+            <Link href="/about" className="hover:opacity-80 transition-all">
+              About
+            </Link>
           </div>
+
           <button
             onClick={toggleMenu}
-            className="md:hidden text-sm md:text-xl font-normal tracking-[0.2em] uppercase cursor-pointer"
-            style={{ fontFamily: "var(--font-nav-menu)" }}
+            className="md:hidden text-sm uppercase cursor-pointer"
+            style={{
+              fontFamily: "var(--font-nav-menu)",
+              letterSpacing: "2.1px",
+            }}
           >
             {isMenuOpen ? "CLOSE" : "MENU"}
           </button>
         </div>
 
+        {/* LOGO */}
         <div className="flex justify-center items-center">
           <Link href="/">
             <Image
@@ -159,65 +179,65 @@ const Navbar = () => {
               alt="MALMAR"
               width={200}
               height={50}
-              className={`h-6 md:h-10 w-auto transition-all duration-500 ${isOverArc ? "invert brightness-0 invert" : (isScrolled || isLightPage ? (isMenuOpen ? "" : "") : (isMenuOpen ? "" : "invert brightness-0 invert"))
-                }`}
+              className={`h-6 md:h-10 w-auto transition-all duration-500 ${
+                isOverArc
+                  ? "invert brightness-0 invert"
+                  : isScrolled || isLightPage
+                  ? ""
+                  : isMenuOpen
+                  ? ""
+                  : "invert brightness-0 invert"
+              }`}
               priority
             />
           </Link>
         </div>
 
+        {/* RIGHT CONTACT */}
         <div
-          className="flex justify-end items-center font-normal tracking-[0.2em] uppercase"
+          className="flex justify-end items-center font-normal uppercase"
           style={{
             fontFamily: "var(--font-nav-menu)",
             fontSize: "14px",
             lineHeight: "14px",
+            letterSpacing: "2.1px",
           }}
         >
-          <Link href="/contact" className="relative group inline-block">
-            <span className="relative z-10 transition-opacity group-hover:opacity-80">Contact</span>
-            <span className={`absolute bottom-0 left-0 w-full h-[1.5px] transition-transform duration-500 ease-in-out origin-left group-hover:origin-right scale-x-100 group-hover:scale-x-0 ${isOverArc ? "bg-white" : ((isScrolled || isLightPage) && !isMenuOpen ? "bg-[#78233e]" : (isMenuOpen ? "bg-black" : "bg-white"))
-              }`}></span>
+          <Link
+            href="/contact"
+            className="inline-block transition-all duration-300 hover:opacity-70"
+          >
+            Contact
           </Link>
         </div>
       </nav>
 
+      {/* FULLSCREEN MENU */}
       <div
         ref={menuRef}
         style={{ backgroundColor: "#fcefd4" }}
         className="fixed top-0 left-0 w-full h-screen z-[90] -translate-y-full flex flex-col justify-between px-6 md:px-12 py-10 md:py-20"
       >
         {activeMenu === "main" && (
-          <div className="flex-1 flex flex-col items-center justify-center space-y-4 md:space-y-6 animate-in fade-in duration-500">
-            <a
-              href="/projects"
-              onClick={() => setIsMenuOpen(false)}
-              className="menu-item hover:opacity-60 transition-all text-center uppercase cursor-pointer block text-[28px] leading-[28px] md:text-[64px] md:leading-[77px]"
-              style={{ fontFamily: 'var(--font-nav-menu)', color: "rgb(0, 0, 0)" }}
-            >
-              Projects
-            </a>
-            <a
-              href="/services"
-              onClick={() => setIsMenuOpen(false)}
-              className="menu-item hover:opacity-60 transition-all text-center uppercase cursor-pointer block text-[28px] leading-[28px] md:text-[64px] md:leading-[77px]"
-              style={{ fontFamily: 'var(--font-nav-menu)', color: "rgb(0, 0, 0)" }}
-            >
-              Services
-            </a>
-            <a
-              href="/about"
-              onClick={() => setIsMenuOpen(false)}
-              className="menu-item hover:opacity-60 transition-all text-center uppercase cursor-pointer block text-[28px] leading-[28px] md:text-[64px] md:leading-[77px]"
-              style={{ fontFamily: 'var(--font-nav-menu)', color: "rgb(0, 0, 0)" }}
-            >
-              About
-            </a>
+          <div className="flex-1 flex flex-col items-center justify-center space-y-4 md:space-y-6">
+            {["Projects", "Services", "About"].map((item) => (
+              <a
+                key={item}
+                href={`/${item.toLowerCase()}`}
+                onClick={() => setIsMenuOpen(false)}
+                className="menu-item hover:opacity-60 transition-all uppercase text-[28px] md:text-[64px]"
+                style={{
+                  fontFamily: "var(--font-nav-menu)",
+                  letterSpacing: "2.1px",
+                }}
+              >
+                {item}
+              </a>
+            ))}
           </div>
         )}
 
-
-
+        {/* FOOTER */}
         <div className="menu-footer w-full flex flex-col space-y-12">
           <div className="flex justify-between items-end pt-8">
             <div className="flex flex-col space-y-1">
@@ -228,11 +248,9 @@ const Navbar = () => {
                   className="hover:opacity-60 transition-all uppercase"
                   style={{
                     fontFamily: "var(--font-nav-menu)",
-                    fontWeight: 400,
-                    color: "rgb(0, 0, 0)",
                     fontSize: "14px",
                     lineHeight: "24px",
-                    letterSpacing: "0.1em"
+                    letterSpacing: "0.1em",
                   }}
                 >
                   {social}
@@ -248,11 +266,9 @@ const Navbar = () => {
                   className="hover:opacity-60 transition-all uppercase"
                   style={{
                     fontFamily: "var(--font-nav-menu)",
-                    fontWeight: 400,
-                    color: "rgb(0, 0, 0)",
                     fontSize: "14px",
                     lineHeight: "24px",
-                    letterSpacing: "0.1em"
+                    letterSpacing: "0.1em",
                   }}
                 >
                   {link}
@@ -262,11 +278,11 @@ const Navbar = () => {
           </div>
 
           <div
-            className="uppercase opacity-40 text-center tracking-[0.2em]"
+            className="uppercase opacity-40 text-center"
             style={{
               fontFamily: "var(--font-nav-menu)",
-              color: "rgb(0, 0, 0)",
               fontSize: "10px",
+              letterSpacing: "0.2em",
             }}
           >
             REGISTERED TRADE MARK OF MALMAR 2026

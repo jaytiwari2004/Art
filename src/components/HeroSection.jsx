@@ -20,7 +20,6 @@ const HeroSection = () => {
       const mm = gsap.matchMedia();
 
       mm.add("(max-width: 767px)", () => {
-        // Mobile Parallax
         gsap.to(heroText.current, {
           y: -50,
           ease: "none",
@@ -34,7 +33,6 @@ const HeroSection = () => {
       });
 
       mm.add("(min-width: 768px)", () => {
-        // Desktop Parallax
         gsap.to(heroText.current, {
           y: -150,
           ease: "none",
@@ -47,7 +45,6 @@ const HeroSection = () => {
         });
       });
 
-      // 3. Image subtle zoom-out effect (all screens)
       gsap.fromTo(
         heroImage.current,
         { scale: 1.1 },
@@ -63,16 +60,16 @@ const HeroSection = () => {
         }
       );
 
-      // 4. Entrance animation for text lines
-      gsap.fromTo(".hero-line", 
+      gsap.fromTo(
+        ".hero-line",
         { y: 50, opacity: 0 },
-        { 
-          y: 0, 
-          opacity: 1, 
-          duration: 1.2, 
-          stagger: 0.15, 
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.2,
+          stagger: 0.15,
           ease: "power4.out",
-          delay: 0.2 // Small delay after reveal starts
+          delay: 0.2,
         }
       );
     },
@@ -82,101 +79,65 @@ const HeroSection = () => {
   return (
     <div ref={container} className="relative bg-[#f4f1ea] selection:bg-stone-200">
       <Navbar />
+
       {/* Hero Section */}
       <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
-        {/* Background Image Container */}
+
+        {/* 🎥 Video */}
         <div className="absolute inset-0 z-0">
           <video
             ref={heroImage}
-            src="/malmar.webm"
+            src="/MMM.mp4"
             autoPlay
             loop
             muted
             playsInline
             className="w-full h-full object-cover brightness-95"
           />
-          <div className="absolute inset-0 bg-stone-900/10" /> {/* Subtle warming overlay */}
         </div>
 
-        {/* Hero Content */}
-        {/* Hero Content */}
-        {/* Hero Content - Synchronized with Navbar Padding */}
-        <div ref={heroText} className="relative z-10 w-full max-w-[1600px] px-6 md:px-12 select-none">
+        {/* 🖤 (Optional overlay — keep/remove as needed) */}
+        <div className="absolute inset-0 z-[1] bg-black/30" />
+
+        {/* ✨ Hero Text */}
+        <div
+          ref={heroText}
+          className="relative z-10 w-full max-w-[1600px] px-6 md:px-12 select-none"
+        >
           <h1
             className="w-full font-serif font-normal tracking-tighter uppercase"
-            style={{ color: 'rgb(244, 242, 238)' }}
+            style={{ color: "rgb(244, 242, 238)" }}
           >
-            {/* Line 1: TIMELESS (TOP) - shifted slightly down for all screens, extra down on Mac/large */}
+
+            {/* Line 1 */}
             <div
               className="hero-line text-center w-full mt-16 md:mt-24"
               style={{
-                fontFamily: 'SageNav, sans-serif',
+                fontFamily: "SageNav, sans-serif",
                 fontWeight: 400,
-                color: "rgb(244, 242, 238)",
                 fontSize: "65px",
-                lineHeight: "75px",
+                lineHeight: "1",
               }}
             >
-              WE DESIGN
-            </div>
-            <div
-              className="hero-line text-center w-full mt-4 md:mt-5 pl-8 md:pl-16"
-              style={{
-                fontFamily: 'SageNav, sans-serif',
-                fontWeight: 400,
-                color: "rgb(244, 242, 238)",
-                fontSize: "65px",
-                lineHeight: "75px",
-              }}
-            >
-              TIMELESS
+              WE DESIGN Timeless
             </div>
 
-            {/* Line 2: TAILORED (MIDDLE) - tighter spacing */}
+            {/* Line 2 (tight, no gap) */}
             <div
-              className="hero-line text-center w-full mt-4 md:mt-5 pl-16 md:pl-32"
+              className="hero-line w-full mt-0 flex justify-center items-center"
               style={{
-                fontFamily: 'SageNav, sans-serif',
+                fontFamily: "SageNav, sans-serif",
                 fontWeight: 400,
-                color: "rgb(244, 242, 238)",
                 fontSize: "65px",
-                lineHeight: "75px",
+                lineHeight: "1.2",
               }}
             >
-              TAILORED
+              <span className="text-center italic">Tailored Spaces</span>
             </div>
-            <div
-              className="hero-line text-center w-full mt-3 md:mt-4 pl-16 md:pl-32"
-              style={{
-                fontFamily: 'SageNav, sans-serif',
-                fontWeight: 400,
-                color: "rgb(244, 242, 238)",
-                fontSize: "65px",
-                lineHeight: "75px",
-              }}
-            >
-              LIVING
-            </div>
-            {/* Line 3: SPACES (BOTTOM) - tighter spacing */}
-            <div
-              className="hero-line text-center w-full mt-4 md:mt-5 pl-32 md:pl-64"
-              style={{
-                fontFamily: 'SageNav, sans-serif',
-                fontWeight: 400,
-                color: "rgb(244, 242, 238)",
-                fontSize: "65px",
-                lineHeight: "75px",
-              }}
-            >
-              SPACES
-            </div>
+
           </h1>
         </div>
       </section>
-
-
-
-
     </div>
   );
 };

@@ -67,7 +67,7 @@ const Preloader = ({ onComplete }) => {
           className="absolute z-10 overflow-hidden shadow-2xl bg-stone-200"
         >
           <video
-            src="/malmar.webm"
+            src="/MMM.webm"
             autoPlay
             loop
             muted
