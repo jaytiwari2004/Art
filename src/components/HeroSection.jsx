@@ -10,7 +10,7 @@ if (typeof window !== "undefined") {
 
 import Navbar from "./Navbar";
 
-const HeroSection = () => {
+const HeroSection = ({ isLoading }) => {
   const container = useRef(null);
   const heroText = useRef(null);
   const heroImage = useRef(null);
@@ -60,20 +60,22 @@ const HeroSection = () => {
         }
       );
 
-      gsap.fromTo(
-        ".hero-line",
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1.2,
-          stagger: 0.15,
-          ease: "power4.out",
-          delay: 0.2,
-        }
-      );
+      if (!isLoading) {
+        gsap.fromTo(
+          ".hero-line",
+          { y: 50, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1.2,
+            stagger: 0.15,
+            ease: "power4.out",
+            delay: 0.3,
+          }
+        );
+      }
     },
-    { scope: container }
+    { scope: container, dependencies: [isLoading] }
   );
 
   return (
@@ -92,7 +94,7 @@ const HeroSection = () => {
             loop
             muted
             playsInline
-            className="w-full h-full object-cover brightness-95"
+            className="w-full h-full object-cover"
           />
         </div>
 

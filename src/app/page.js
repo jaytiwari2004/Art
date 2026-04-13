@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import Preloader from "@/components/Preloader";
 import HeroSection from "@/components/HeroSection";
 import ElicyonTextSection from "@/components/ElicyonTextSection";
@@ -17,30 +17,25 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen bg-white">
+      {/* Preloader sits on top as a fixed overlay — content is always mounted */}
       <AnimatePresence>
         {isLoading && (
           <Preloader key="loader" onComplete={() => setIsLoading(false)} />
         )}
       </AnimatePresence>
 
-      {!isLoading && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="relative bg-white"
-        >
-          <HeroSection />
-          <ElicyonTextSection />
-          <ProjectSection />
-          <ServicesSection />
-          <VisionSection />
-          <InsightsSection />
-          <ObjectsOfDesire />
-          <ContactSection />
-          <Footer />
-        </motion.div>
-      )}
+      {/* Site content always rendered, preloader covers it until done */}
+      <div className="relative">
+        <HeroSection isLoading={isLoading} />
+        <ElicyonTextSection />
+        <ProjectSection />
+        <ServicesSection />
+        <VisionSection />
+        <InsightsSection />
+        <ObjectsOfDesire />
+        <ContactSection />
+        <Footer />
+      </div>
     </main>
   );
 }

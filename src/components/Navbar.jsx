@@ -125,17 +125,16 @@ const Navbar = () => {
     <>
       <nav
         ref={navbarRef}
-        className={`fixed top-0 left-0 w-full z-[100] grid grid-cols-3 items-center px-6 md:px-12 py-8 drop-shadow-sm transition-colors duration-500 ease-in-out ${
-          isOverArc
+        className={`fixed top-0 left-0 w-full z-[100] grid grid-cols-3 items-center px-6 md:px-12 py-8 drop-shadow-sm transition-colors duration-500 ease-in-out ${isOverArc
             ? "text-white"
             : isScrolled || isLightPage
-            ? isMenuOpen
-              ? "text-black"
-              : "text-[#78233e]"
-            : isMenuOpen
-            ? "text-black"
-            : "text-white"
-        }`}
+              ? isMenuOpen
+                ? "text-black"
+                : "text-[#78233e]"
+              : isMenuOpen
+                ? "text-black"
+                : "text-white"
+          }`}
       >
         {/* LEFT MENU */}
         <div className="flex items-center">
@@ -179,15 +178,14 @@ const Navbar = () => {
               alt="MALMAR"
               width={200}
               height={50}
-              className={`h-6 md:h-10 w-auto transition-all duration-500 ${
-                isOverArc
+              className={`h-6 md:h-10 w-auto transition-all duration-500 ${isOverArc
                   ? "invert brightness-0 invert"
                   : isScrolled || isLightPage
-                  ? ""
-                  : isMenuOpen
-                  ? ""
-                  : "invert brightness-0 invert"
-              }`}
+                    ? ""
+                    : isMenuOpen
+                      ? ""
+                      : "invert brightness-0 invert"
+                }`}
               priority
             />
           </Link>

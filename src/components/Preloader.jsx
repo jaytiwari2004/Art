@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const words = "MALMAR".split("");
 
@@ -12,35 +12,39 @@ const Preloader = ({ onComplete }) => {
       className="fixed inset-0 z-[1000] flex items-center justify-center overflow-hidden"
       style={{ backgroundColor: "#fcefd4" }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.6 }}
     >
       <div className="relative flex flex-col items-center justify-center w-full h-full">
 
-        {/* 1. MALMAR Text Reveal & Move to Logo Position */}
+        {/* 1. MALMAR Text — moves to logo position when window expands */}
         <motion.div
-          className="flex z-30 pointer-events-none mb-4 absolute"
+          className="flex z-30 pointer-events-none absolute"
+          style={{ top: "50%", left: "50%", x: "-50%", y: "-50%" }}
           animate={isExpanding ? {
             top: "40px",
-            scale: 0.35,
-            color: "#ffffff", // Change to white to match the Hero logo
-            opacity: 0, // Fade out so the actual logo can take over
-            transition: { duration: 1.2, ease: [0.76, 0, 0.24, 1] }
+            left: "50%",
+            x: "-50%",
+            y: "0%",
+            scale: 0.5,
+            opacity: 0,
           } : {
             top: "50%",
+            left: "50%",
+            x: "-50%",
             y: "-50%",
             scale: 1,
             opacity: 1,
-            color: "#000000"
           }}
+          transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
         >
           {words.map((word, i) => (
             <motion.span
               key={i}
-              initial={{ y: 100, opacity: 0 }}
+              initial={{ y: 60, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{
-                delay: i * 0.08,
-                duration: 0.6,
+                delay: i * 0.13,
+                duration: 0.5,
                 ease: [0.215, 0.61, 0.355, 1],
               }}
               className="text-5xl md:text-7xl font-light tracking-tighter text-black"
@@ -65,14 +69,14 @@ const Preloader = ({ onComplete }) => {
           }}
           onAnimationComplete={() => {
             if (!isExpanding) {
-              // Transition immediately to expansion
+              // Small window formed — now expand to full screen
               setIsExpanding(true);
             } else {
-              // Finish immediately after expansion
+              // Fully expanded — reveal the site
               onComplete();
             }
           }}
-          className="absolute z-10 overflow-hidden shadow-2xl bg-white"
+          className="absolute z-10 overflow-hidden shadow-2xl"
         >
           <video
             src="/MMM.mp4"
@@ -80,7 +84,7 @@ const Preloader = ({ onComplete }) => {
             loop
             muted
             playsInline
-            className="w-full h-full object-cover scale-105"
+            className="w-full h-full object-cover"
           />
         </motion.div>
 
