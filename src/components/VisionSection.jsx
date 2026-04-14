@@ -133,16 +133,18 @@ export default function VisionSection() {
               fontSize: "48px",
               fontWeight: 400,
               fontStyle: "normal",
-              lineHeight: "58px",
+              lineHeight: "61px",
               color: "rgb(244, 242, 238)",
               letterSpacing: "0.18em",
               textTransform: "uppercase",
               margin: 0,
             }}
           >
-            Leading<br />
-            <em style={{ fontStyle: "italic", letterSpacing: "0.1em" }}>the</em>{" "}
-            Vision
+            <span style={{ display: "block" }}>Leading</span>
+            <span style={{ display: "block", marginTop: "-12px" }}>
+              <em style={{ fontStyle: "italic", letterSpacing: "0.1em" }}>the</em>{" "}
+              Vision
+            </span>
           </h2>
         </div>
 

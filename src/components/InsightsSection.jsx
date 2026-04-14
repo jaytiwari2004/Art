@@ -61,7 +61,7 @@ export default function InsightsSection() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 pt-16">
         <div className="max-w-2xl">
           <h2
-            className="text-[32px] md:text-[48px] leading-[37px] md:leading-[58px]"
+            className="text-[32px] md:text-[48px] leading-tight md:leading-tight"
             style={{
               fontFamily: "'SageNav', sans-serif",
               fontWeight: 400,
@@ -69,8 +69,8 @@ export default function InsightsSection() {
               color: "rgb(0, 0, 0)",
             }}
           >
-            The WORLD <br />
-            <span className="ml-14 md:ml-36 inline-block">
+            <span className="block">The WORLD</span>
+            <span className="block ml-14 md:ml-36 -mt-4 md:-mt-3">
               of
               <span className="inline md:hidden ml-2">MALMAR</span>
               <span className="hidden md:inline md:ml-3">MALMAR</span>

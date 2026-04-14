@@ -15,15 +15,15 @@ export default function ServicesSection() {
           {/* Top: Title + Description */}
           <div className="mb-12 md:mb-16">
             <h2
-              className="text-[32px] md:text-[48px] leading-[37px] md:leading-[58px]"
+              className="text-[32px] md:text-[48px] leading-tight"
               style={{
                 fontFamily: "'SageNav', sans-serif",
                 fontWeight: 400,
                 color: "rgb(0, 0, 0)",
               }}
             >
-              <span className="relative -left-4 md:-left-20">OUR</span><br />
-              <span className="relative -left-2 md:-left-15">SERVICES</span>
+              <span className="block relative -left-4 md:-left-20">OUR</span>
+              <span className="block relative -left-2 md:-left-15 -mt-3 md:-mt-3">SERVICES</span>
             </h2>
             <p
               className="text-[14px] leading-[20px] md:leading-[17px] mt-6 md:mt-5 max-w-full md:max-w-[310px] relative -left-4 md:-left-16"

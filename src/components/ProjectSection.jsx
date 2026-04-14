@@ -121,7 +121,7 @@ export default function ProjectSection() {
         }
       `}} />
       {/* SECTION HEADER */}
-      <section className="w-full flex flex-col items-end pt-32 pb-6 text-black bg-[#f8f7f3] px-6 md:px-12">
+      <section className="w-full flex flex-col items-end pt-30 pb-2 text-black bg-[#f8f7f3] px-6 md:px-12">
         <h2
           ref={headerRef}
           className="text-[32vw] md:text-[18vw] uppercase leading-[0.75] text-right w-full"
@@ -134,13 +134,13 @@ export default function ProjectSection() {
         >
           <div className="pr-20 md:pr-47">OUR</div>
 
-          <div className="pr-4 md:pr-7" style={{ fontStyle: "italic" }}>
+          <div className="pr-4 md:pr-7 -mt-3 " style={{ fontStyle: "italic" }}>
             PROJECTS
           </div>
         </h2>
 
         <p
-          className="max-w-fit text-right font-normal mt-6 px-10"
+          className="max-w-fit text-right font-normal mt-2 px-10"
           style={{
             color: 'rgb(0,0,0)',
             fontSize: '14px',
