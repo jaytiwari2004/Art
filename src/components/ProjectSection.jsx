@@ -10,9 +10,9 @@ if (typeof window !== "undefined") {
 }
 
 const projects = [
-  { id: 1, title: "RESIDENTIAL", subtitle: "60 CURZON APARTMENT", image: "/project1.jpeg" },
-  { id: 2, title: "DEVELOPMENT", subtitle: "CHELSEA BARRACKS", image: "/project22.jpg" },
-  { id: 3, title: "COMMERCIAL", subtitle: "WIGMORE PRIVATE OFFICE", image: "/project33.png" }
+  { id: 1, title: "RESIDENTIAL", subtitle: "Casa del Maré - Ibiza", image: "/new4.jpeg" },
+  { id: 2, title: "DEVELOPMENT", subtitle: "Casa del Maré - Ibiza", image: "/resnew.jpeg" },
+  { id: 3, title: "COMMERCIAL", subtitle: "Casa del Maré - Ibiza", image: "/commnew.jpeg" }
 ];
 
 export default function ProjectSection() {
