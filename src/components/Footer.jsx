@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 export default function Footer() {
   const letters = "MALMAR".split("");
@@ -12,6 +13,13 @@ export default function Footer() {
     lineHeight: "14px",
     color: "rgb(0, 0, 0)"
   };
+
+  const navLinks = [
+    { name: "PROJECTS", path: "/projects" },
+    { name: "SERVICES", path: "/services" },
+    { name: "ABOUT", path: "/about" },
+    { name: "CONTACT", path: "/contact" }
+  ];
 
   return (
     <footer className="relative bg-[#fdf0d5] text-[#1a1a1a] pt-20 md:pt-32 pb-16 md:pb-24 px-6 md:px-16 overflow-hidden flex flex-col">
@@ -94,10 +102,15 @@ export default function Footer() {
           {/* RIGHT: LINKS */}
           <div className="grid grid-cols-2 gap-4 md:gap-10 pt-1 lg:pt-0">
             <div className="flex flex-col space-y-1">
-              {["PROJECTS", "SERVICES", "FAQS", "CONTACT"].map((link) => (
-                <span key={link} className="cursor-pointer hover:opacity-50 transition-opacity text-[11px]" style={antiqueStyle}>
-                  {link}
-                </span>
+              {navLinks.map((link) => (
+                <Link 
+                  href={link.path} 
+                  key={link.name} 
+                  className="cursor-pointer hover:opacity-50 transition-opacity text-[11px]" 
+                  style={antiqueStyle}
+                >
+                  {link.name}
+                </Link>
               ))}
             </div>
             <div className="flex flex-col space-y-1">
@@ -149,8 +162,8 @@ export default function Footer() {
       <div className="hidden md:block w-full py-2 z-10 bg-[#fdf0d5]">
         <div className="max-w-[1400px] mx-auto flex flex-row justify-between items-center gap-4 text-[9px] opacity-60" style={antiqueStyle}>
           <div className="flex gap-4 hover:opacity-100 transition-opacity">
-            <span className="cursor-pointer font-bold">Privacy Policy</span>
-            <span className="cursor-pointer font-bold">Terms & Conditions</span>
+            <Link href="/privacy" className="cursor-pointer font-bold">Privacy Policy</Link>
+            <Link href="/terms" className="cursor-pointer font-bold">Terms & Conditions</Link>
           </div>
           <div className="text-right">
             <span>REGISTERED TRADE MARK OF MALMAR STUDIO © 2026</span>
@@ -162,14 +175,16 @@ export default function Footer() {
       <div className="flex flex-col md:hidden w-full mt-8 mb-3 z-10">
         {/* Logo Replacement */}
         <div className="w-full flex justify-center mb-5">
-          <img src="/logo.png" alt="Malmar Logo" className="h-[22px] sm:h-[30px] w-auto object-contain object-center opacity-90" />
+          <Link href="/">
+            <img src="/logo.png" alt="Malmar Logo" className="h-[22px] sm:h-[30px] w-auto object-contain object-center opacity-90" />
+          </Link>
         </div>
 
         {/* Legal Text */}
         <div className="w-full flex flex-col text-[7.5px] min-[390px]:text-[8.5px] uppercase opacity-70 tracking-widest font-medium" style={antiqueStyle}>
           <div className="flex justify-start gap-[10%] w-full mb-2">
-            <span className="cursor-pointer">TERMS OF SERVICE</span>
-            <span className="cursor-pointer">PRIVACY POLICY</span>
+            <Link href="/terms" className="cursor-pointer">TERMS OF SERVICE</Link>
+            <Link href="/privacy" className="cursor-pointer">PRIVACY POLICY</Link>
           </div>
           <div className="text-left w-full">
             <span>REGISTERED TRADE MARK OF MALMAR 2026</span>

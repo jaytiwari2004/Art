@@ -43,16 +43,21 @@ export default function AboutPage() {
     },
   ];
 
-  const textStyle = {
-    fontFamily: 'var(--font-elicyon), serif',
+  const headingStyle = {
+    fontFamily: 'SageNav, sans-serif',
     fontWeight: 400,
-    color: "rgb(0, 0, 0)",
   };
 
   const bodyStyle = {
-    fontFamily: 'var(--font-antique), serif',
+    fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
     fontWeight: 400,
     color: "rgba(0, 0, 0, 0.7)",
+  };
+
+  const bodyStyleWhite = {
+    fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
+    fontWeight: 400,
+    color: "rgba(255, 255, 255, 0.7)",
   };
 
   const [isPlaying, setIsPlaying] = useState(false);
@@ -106,7 +111,10 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-black/50"></div>
 
         <div className="relative z-10 text-center flex flex-col items-center">
-          <h1 className="text-white text-[28px] leading-[28px] md:text-[80px] font-bold uppercase tracking-wide mb-4">
+          <h1
+            className="text-white text-[28px] leading-[28px] md:text-[80px] uppercase tracking-wide mb-4"
+            style={headingStyle}
+          >
             About Us
           </h1>
 
@@ -152,21 +160,27 @@ export default function AboutPage() {
               </span>
             </div>
 
-            <h2 className="text-[28px] leading-[28px] md:text-[60px] md:leading-tight font-bold uppercase tracking-tight text-[#111111]">
+            <h2
+              className="text-[28px] leading-[28px] md:text-[60px] md:leading-tight uppercase tracking-tight text-[#111111]"
+              style={headingStyle}
+            >
               We Provide You Best <br className="hidden md:block" /> Experience
             </h2>
 
             <div className="flex items-start gap-6 border-l-2 border-[#c5a059] pl-6 py-2">
-              <p className="text-[#444444] italic text-[18px] md:text-[20px] leading-relaxed">
+              <p
+                className="text-[#444444] italic text-[18px] md:text-[20px] leading-relaxed"
+                style={bodyStyle}
+              >
                 Our signature design process comes standard...refresh, remodel, new and enjoyable design experience
               </p>
             </div>
 
             <div className="space-y-6 text-[#666666] text-[16px] leading-[1.8] font-light">
-              <p>
+              <p style={bodyStyle}>
                 Cras aliquet scelerisque dui, dapibus condimentum lacus pulvinar quis. Quisque ullamcorper placerat sem nec congue. Ut sed consequat nunc. Aenean mollis dolor nec diam feugiat molestie.
               </p>
-              <p>
+              <p style={bodyStyle}>
                 Nulla et leo lacus. Nulla facilisi. Integer nunc orci, porttitor eu urna non, porta faucibus dolor. Integer at felis varius, interdum enim vel, ornare felis.
               </p>
             </div>
@@ -215,7 +229,10 @@ export default function AboutPage() {
             >
               <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[18px] border-l-white border-b-[10px] border-b-transparent group-hover:border-l-black ml-1"></div>
             </div>
-            <h2 className="text-[28px] leading-[28px] md:text-[64px] font-bold uppercase tracking-[2px] md:leading-tight">
+            <h2
+              className="text-[28px] leading-[28px] md:text-[64px] uppercase tracking-[2px] md:leading-tight"
+              style={headingStyle}
+            >
               Take A Tour Of Luxury
             </h2>
           </div>
@@ -290,10 +307,12 @@ export default function AboutPage() {
             <div className="flex items-center gap-4">
               <div className="w-12 h-[2px] bg-[#c5a059]"></div>
               <span className="text-[#c5a059] uppercase tracking-[0.3em] font-bold text-sm">
-                Testimonials
               </span>
             </div>
-            <h2 className="text-[28px] leading-[28px] md:text-[60px] md:leading-tight font-bold uppercase tracking-tight text-[#111111]">
+            <h2
+              className="text-[28px] leading-[28px] md:text-[60px] md:leading-tight uppercase tracking-tight text-[#111111]"
+              style={headingStyle}
+            >
               Our Happy Client
             </h2>
           </div>
@@ -329,7 +348,10 @@ export default function AboutPage() {
                 </span>
               </div>
 
-              <h2 className="text-[28px] leading-[28px] md:text-[48px] font-bold text-white uppercase md:leading-tight tracking-tight">
+              <h2
+                className="text-[28px] leading-[28px] md:text-[48px] text-white uppercase md:leading-tight tracking-tight"
+                style={headingStyle}
+              >
                 See How We Work <br /> For You
               </h2>
 
@@ -340,8 +362,16 @@ export default function AboutPage() {
                     1.
                   </div>
                   <div className="space-y-1">
-                    <h3 className="text-[20px] font-bold text-white uppercase tracking-wide">Idea</h3>
-                    <p className="text-gray-400 text-[14px] leading-[22px] max-w-sm">
+                    <h3
+                      className="text-[20px] text-white uppercase tracking-wide"
+                      style={headingStyle}
+                    >
+                      Idea
+                    </h3>
+                    <p
+                      className="text-white/70 text-[14px] leading-[22px] max-w-sm"
+                      style={bodyStyleWhite}
+                    >
                       Phasellus non libero non nisi fermentum sodales non non neque nulla quis tortor orci.
                     </p>
                   </div>
@@ -353,8 +383,16 @@ export default function AboutPage() {
                     2.
                   </div>
                   <div className="space-y-1">
-                    <h3 className="text-[20px] font-bold text-white uppercase tracking-wide">Design</h3>
-                    <p className="text-gray-400 text-[14px] leading-[22px] max-w-sm">
+                    <h3
+                      className="text-[20px] text-white uppercase tracking-wide"
+                      style={headingStyle}
+                    >
+                      Design
+                    </h3>
+                    <p
+                      className="text-white/70 text-[14px] leading-[22px] max-w-sm"
+                      style={bodyStyleWhite}
+                    >
                       Phasellus non libero non nisi fermentum sodales non non neque nulla quis tortor orci.
                     </p>
                   </div>
@@ -366,8 +404,16 @@ export default function AboutPage() {
                     3.
                   </div>
                   <div className="space-y-1">
-                    <h3 className="text-[20px] font-bold text-white uppercase tracking-wide">Execution</h3>
-                    <p className="text-gray-400 text-[14px] leading-[22px] max-w-sm">
+                    <h3
+                      className="text-[20px] text-white uppercase tracking-wide"
+                      style={headingStyle}
+                    >
+                      Execution
+                    </h3>
+                    <p
+                      className="text-white/70 text-[14px] leading-[22px] max-w-sm"
+                      style={bodyStyleWhite}
+                    >
                       Phasellus non libero non nisi fermentum sodales non non neque nulla quis tortor orci.
                     </p>
                   </div>
@@ -378,9 +424,11 @@ export default function AboutPage() {
 
         </div>
       </section>
-      
+
       <section className="w-full bg-[#ede8df]">
         <HeroParallax products={products} />
+        {/* Spacer to create gap before footer */}
+        <div className="h-40 md:h-30" />
       </section>
 
 
@@ -391,96 +439,78 @@ export default function AboutPage() {
 
 const products = [
   {
-    title: "Moonbeam",
-    link: "https://gomoonbeam.com",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/moonbeam.png",
+    title: "The Penthouse - London",
+    link: "/projects",
+    thumbnail: "/arc1.jpg",
   },
   {
-    title: "Cursor",
-    link: "https://cursor.so",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/cursor.png",
+    title: "Coastal Retreat - Ibiza",
+    link: "/projects",
+    thumbnail: "/arc2.jpg",
   },
   {
-    title: "Rogue",
-    link: "https://userogue.com",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/rogue.png",
-  },
- 
-  {
-    title: "Editorially",
-    link: "https://editorially.org",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/editorially.png",
+    title: "Modern Sanctuary",
+    link: "/projects",
+    thumbnail: "/arc3.jpg",
   },
   {
-    title: "Editrix AI",
-    link: "https://editrix.ai",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/editrix.png",
+    title: "Imperial Suite",
+    link: "/projects",
+    thumbnail: "/arc4.jpeg",
   },
   {
-    title: "Pixel Perfect",
-    link: "https://app.pixelperfect.quest",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/pixelperfect.png",
-  },
- 
-  {
-    title: "Algochurn",
-    link: "https://algochurn.com",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/algochurn.png",
+    title: "Heritage Villa",
+    link: "/projects",
+    thumbnail: "/arc5.jpeg",
   },
   {
-    title: "Aceternity UI",
-    link: "https://ui.aceternity.com",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/aceternityui.png",
+    title: "Azure Residences",
+    link: "/projects",
+    thumbnail: "/arc6.jpg",
   },
   {
-    title: "Tailwind Master Kit",
-    link: "https://tailwindmasterkit.com",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/tailwindmasterkit.png",
+    title: "The Glass House",
+    link: "/projects",
+    thumbnail: "/arc7.jpg",
   },
   {
-    title: "SmartBridge",
-    link: "https://smartbridgetech.com",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/smartbridge.png",
+    title: "Metropolitan Loft",
+    link: "/projects",
+    thumbnail: "/arc8.jpeg",
   },
   {
-    title: "Renderwork Studio",
-    link: "https://renderwork.studio",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/renderwork.png",
-  },
- 
-  {
-    title: "Creme Digital",
-    link: "https://cremedigital.com",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/cremedigital.png",
+    title: "Ivory Court",
+    link: "/projects",
+    thumbnail: "/arc9.jpg",
   },
   {
-    title: "Golden Bells Academy",
-    link: "https://goldenbellsacademy.com",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/goldenbellsacademy.png",
+    title: "Oasis Pavilion",
+    link: "/projects",
+    thumbnail: "/arc10.jpeg",
   },
   {
-    title: "Invoker Labs",
-    link: "https://invoker.lol",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/invoker.png",
+    title: "Ethereal Interiors",
+    link: "/projects",
+    thumbnail: "/new.jpeg",
   },
   {
-    title: "E Free Invoice",
-    link: "https://efreeinvoice.com",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/efreeinvoice.png",
+    title: "Velvet Sky Lounge",
+    link: "/projects",
+    thumbnail: "/new1.jpeg",
+  },
+  {
+    title: "Crystal Manor",
+    link: "/projects",
+    thumbnail: "/new3.jpeg",
+  },
+  {
+    title: "Obsidian Office",
+    link: "/projects",
+    thumbnail: "/new4.jpeg",
+  },
+  {
+    title: "Aurelian Chambers",
+    link: "/projects",
+    thumbnail: "/resnew.jpeg",
   },
 ];

@@ -121,13 +121,13 @@ export default function ServicesPage() {
   ];
 
   const headingStyle = {
-    fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
+    fontFamily: 'SageNav, sans-serif',
     fontWeight: 400,
     color: "rgb(0, 0, 0)",
   };
 
   const heroHeadingStyle = {
-    fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
+    fontFamily: 'SageNav, sans-serif',
     fontWeight: 400,
     color: "rgb(244, 242, 238)",
     textTransform: "uppercase",
@@ -135,7 +135,7 @@ export default function ServicesPage() {
   };
 
   const narrativeHeadingStyle = {
-    fontFamily: '"__elicyon_df1f4c", "__elicyon_Fallback_df1f4c", "Elicyon", serif',
+    fontFamily: 'SageNav, sans-serif',
     fontWeight: 400,
     color: "rgb(0, 0, 0)",
     fontSize: "48px",
@@ -155,6 +155,11 @@ export default function ServicesPage() {
     fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
     fontWeight: 400,
     color: "rgb(0, 0, 0)",
+  };
+
+  const projectLinkStyle = {
+    fontFamily: 'Elicyon-Regular, serif',
+    fontWeight: 400,
   };
 
   const { scrollY } = useScroll();
@@ -447,10 +452,9 @@ export default function ServicesPage() {
                 <div className="inline-block relative group cursor-pointer pb-1 overflow-hidden">
                   <span
                     className="text-[10px] tracking-[0.3em] uppercase font-semibold relative"
-                    style={bodyStyle}
+                    style={{ ...bodyStyle, ...projectLinkStyle }}
                   >
                     VIEW PROJECTS
-                    <span className="absolute bottom-0 left-0 w-full h-[1px] bg-black transform scale-x-100 origin-left transition-transform duration-500 ease-out group-hover:scale-x-0 group-hover:origin-right" />
                   </span>
                 </div>
               </div>
@@ -495,10 +499,9 @@ export default function ServicesPage() {
             <div className="inline-block relative group cursor-pointer pb-1 overflow-hidden">
               <span
                 className="text-[10px] tracking-[0.3em] uppercase font-semibold relative"
-                style={bodyStyle}
+                style={{ ...bodyStyle, ...projectLinkStyle }}
               >
                 VIEW PROJECTS
-                <span className="absolute bottom-0 left-0 w-full h-[1px] bg-black transform scale-x-100 origin-left transition-transform duration-500 ease-out group-hover:scale-x-0 group-hover:origin-right" />
               </span>
             </div>
           </div>

@@ -63,7 +63,7 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className={`${isMobile ? 'h-[200vh]' : 'h-[300vh]'} py-20 md:py-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]`}
+      className={`${isMobile ? 'h-[200vh]' : 'h-[300vh]'} pt-20 pb-40 md:pt-40 md:pb-96 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]`}
     >
       <Header />
       <motion.div
@@ -110,10 +110,16 @@ export const HeroParallax = ({
 export const Header = () => {
   return (
     <div className="max-w-7xl relative mx-auto py-10 md:py-40 px-8 md:px-6 w-full left-0 top-0 text-center md:text-left">
-      <h1 className="text-[18px] md:text-7xl font-bold text-[#111111] uppercase tracking-tight leading-loose md:leading-tight" style={{ fontFamily: 'var(--font-elicyon)' }}>
+      <h1
+        className="text-[18px] md:text-7xl text-[#111111] uppercase tracking-tight leading-loose md:leading-tight"
+        style={{ fontFamily: 'SageNav, sans-serif' }}
+      >
         The Ultimate <br className="hidden md:block" /> development studio
       </h1>
-      <p className="max-w-xl text-[12px] md:text-xl mt-4 md:mt-8 text-[#444444] opacity-80 mx-auto md:mx-0 leading-relaxed" style={{ fontFamily: 'var(--font-antique)' }}>
+      <p 
+        className="max-w-xl text-[12px] md:text-xl mt-4 md:mt-8 text-[#444444] opacity-80 mx-auto md:mx-0 leading-relaxed" 
+        style={{ fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif' }}
+      >
         We build beautiful products with the latest technologies and frameworks.
         We are a team of passionate developers and designers that love to build
         amazing products.

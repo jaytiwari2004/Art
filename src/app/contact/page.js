@@ -23,9 +23,15 @@ const ContactPage = () => {
   };
 
   const textStyle = {
-    fontFamily: 'var(--font-elicyon), serif',
+    fontFamily: 'SageNav, sans-serif',
     fontWeight: 400,
     color: "#111"
+  };
+
+  const subtextStyle = {
+    fontFamily: '"__antiqueLegacy_623eb9", "__antiqueLegacy_Fallback_623eb9", "AntiqueLegacy", serif',
+    fontWeight: 400,
+    color: "rgb(0, 0, 0)"
   };
 
   return (
@@ -45,7 +51,10 @@ const ContactPage = () => {
 
           {/* Subtext Paragraphs */}
           <div className="max-w-xl mx-auto space-y-8">
-            <p className="text-[16px] md:text-[18px] leading-[1.8] text-stone-600 font-light">
+            <p 
+              className="text-[16px] md:text-[18px] leading-[1.8] text-stone-600 font-light"
+              style={subtextStyle}
+            >
               A collection of narratives, from our own reflections to those told by esteemed industry peers, capturing the essence of our work and the inspirations behind it.
             </p>
           </div>
@@ -62,7 +71,7 @@ const ContactPage = () => {
         {/* Right Content Pane */}
         <div className="w-full lg:w-1/2 bg-[#d8d3cd] flex flex-col items-center justify-center py-8 px-8 text-center min-h-[400px] lg:min-h-[560px] gap-8">
           <div className="max-w-md mx-auto">
-            <h2 className="text-[24px] md:text-[32px] uppercase font-serif" style={textStyle}>
+            <h2 className="text-[24px] md:text-[32px] uppercase" style={textStyle}>
               A Dubai Villa of QUIET <br /> GRANDEUR and CRAFTED <br /> DETAIL
             </h2>
           </div>
@@ -70,7 +79,7 @@ const ContactPage = () => {
             <img src="/new4.jpeg" alt="Architectural Detail" className="w-full h-full object-cover" />
           </div>
           <div className="space-y-8 mb-8">
-            <p className="text-[14px] uppercase tracking-widest text-stone-800" style={{ fontFamily: 'var(--font-antique)' }}>
+            <p className="text-[14px] uppercase tracking-widest text-stone-800" style={subtextStyle}>
               Where BESPOKE FORM meets desert STILLNESS
             </p>
             <div className="flex justify-center">
@@ -88,7 +97,7 @@ const ContactPage = () => {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24">
 
           <div className="flex flex-col justify-start">
-            <h2 className="text-[36px] md:text-[52px] leading-[1.1] uppercase font-serif tracking-tight text-[#111]"
+            <h2 className="text-[36px] md:text-[52px] leading-[1.1] uppercase tracking-tight text-[#111]"
               style={textStyle}>
               EVERY SPACE STARTS <br /> with a STORY. LET&apos;S <br /> START YOURS
             </h2>
@@ -241,7 +250,7 @@ const ContactPage = () => {
       <section className="relative w-full flex flex-col lg:flex-row items-stretch">
         {/* Left: General Enquiries */}
         <div className="w-full lg:w-1/2 bg-[#6d88c7] py-24 px-8 md:px-12 flex flex-col items-center text-center text-[#111] min-h-[600px] lg:min-h-[800px] justify-between">
-          <h2 className="text-[32px] md:text-[48px] uppercase tracking-tight leading-tight font-serif" style={textStyle}>
+          <h2 className="text-[32px] md:text-[48px] uppercase tracking-tight leading-tight" style={textStyle}>
             GENERAL <br /> ENQUIRIES
           </h2>
 
@@ -274,7 +283,7 @@ const ContactPage = () => {
 
         {/* Right: Press Enquiries */}
         <div className="w-full lg:w-1/2 bg-[#d4cdc5] py-24 px-8 md:px-12 flex flex-col items-center text-center text-[#111] min-h-[600px] lg:min-h-[800px] justify-between">
-          <h2 className="text-[32px] md:text-[48px] uppercase tracking-tight leading-tight font-serif" style={textStyle}>
+          <h2 className="text-[32px] md:text-[48px] uppercase tracking-tight leading-tight" style={textStyle}>
             PRESS <br /> ENQUIRIES
           </h2>
 
@@ -301,20 +310,20 @@ const ContactPage = () => {
 
           {/* Left: Address Info */}
           <div className="space-y-12">
-            <h2 className="text-[36px] md:text-[56px] leading-[1.1] uppercase font-serif tracking-tight text-[#111]"
+            <h2 className="text-[36px] md:text-[56px] leading-[1.1] uppercase tracking-tight text-[#111]"
               style={textStyle}>
               OUR <br /> LOCATION
             </h2>
 
             <div className="space-y-6">
-              <div className="text-[14px] md:text-[16px] leading-relaxed text-stone-800 font-light" style={{ fontFamily: 'var(--font-antique)' }}>
+              <div className="text-[14px] md:text-[16px] leading-relaxed text-stone-800 font-light" style={subtextStyle}>
                 <p>First Floor, Avon House</p>
                 <p>Avonmore Road</p>
                 <p>Kensington Village</p>
                 <p>London, W14 8TS</p>
               </div>
 
-              <p className="text-[14px] md:text-[16px] italic text-stone-600 font-light" style={{ fontFamily: 'var(--font-antique)' }}>
+              <p className="text-[14px] md:text-[16px] italic text-stone-600 font-light" style={subtextStyle}>
                 Visits by appointment only
               </p>
             </div>
