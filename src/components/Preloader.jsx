@@ -6,6 +6,13 @@ const words = "MALMAR".split("");
 
 const Preloader = ({ onComplete }) => {
   const [isExpanding, setIsExpanding] = useState(false);
+  const videoRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
+  }, []);
 
   return (
     <motion.div
@@ -79,11 +86,13 @@ const Preloader = ({ onComplete }) => {
           className="absolute z-10 overflow-hidden shadow-2xl"
         >
           <video
+            ref={videoRef}
             src="/MMM.mp4"
             autoPlay
             loop
             muted
             playsInline
+            preload="auto"
             className="w-full h-full object-cover"
           />
         </motion.div>
