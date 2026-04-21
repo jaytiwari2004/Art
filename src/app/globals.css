@@ -88,7 +88,7 @@
   /* ✅ Font variables */
   --font-heading: 'Elicyon', serif;
   --font-body: 'AntiqueLegacy', serif;
-  --font-nav-menu: 'AntiqueCustom', sans-serif;
+  --font-nav-menu: var(--font-nav-menu-local), sans-serif;
   --font-hero: 'BigCaslonRegular', serif;
   --font-sage: 'SageNav', sans-serif;
 
