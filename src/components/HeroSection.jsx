@@ -136,7 +136,9 @@ const HeroSection = ({ isLoading }) => {
                 wordSpacing: "-0.08em",
               }}
             >
-              <span className="text-center italic">Tailored Spaces</span>
+              <span className="text-center italic">
+                Tailored <span className="inline-block relative -top-2 md:top-0">Spaces</span>
+              </span>
             </div>
 
           </h1>
