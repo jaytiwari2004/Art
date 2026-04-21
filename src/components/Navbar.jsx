@@ -214,7 +214,7 @@ const Navbar = () => {
       <div
         ref={menuRef}
         style={{ backgroundColor: "#fcefd4" }}
-        className="fixed top-0 left-0 w-full h-screen z-[90] -translate-y-full flex flex-col justify-between px-6 md:px-12 py-10 md:py-20"
+        className="fixed top-0 left-0 w-full h-screen z-[90] -translate-y-full flex flex-col justify-between px-6 md:px-12 py-10 md:py-20 text-black"
       >
         {activeMenu === "main" && (
           <div className="flex-1 flex flex-col items-center justify-center space-y-4 md:space-y-6">

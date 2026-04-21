@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -12,8 +12,17 @@ import Navbar from "./Navbar";
 
 const HeroSection = ({ isLoading }) => {
   const container = useRef(null);
-  const heroText = useRef(null);
   const heroImage = useRef(null);
+  const heroText = useRef(null);
+
+  useEffect(() => {
+    // Force video play for iOS compatibility
+    if (heroImage.current) {
+      heroImage.current.play().catch(() => {
+        // Fallback or silent fail if autoplay is still blocked by system settings
+      });
+    }
+  }, []);
 
   useGSAP(
     () => {
@@ -94,6 +103,7 @@ const HeroSection = ({ isLoading }) => {
             loop
             muted
             playsInline
+            preload="auto"
             className="w-full h-full object-cover"
           />
         </div>
