@@ -132,9 +132,9 @@ export default function ProjectSection() {
             letterSpacing: "-0.02em" // ✅ tighter letters
           }}
         >
-          <div className="pr-20 md:pr-47">OUR</div>
+          <div className="pr-40 md:pr-47">OUR</div>
 
-          <div className="pr-4 md:pr-7 -mt-3 " style={{ fontStyle: "italic" }}>
+          <div className="pr-6 md:pr-7 -mt-3 " style={{ fontStyle: "italic" }}>
             PROJECTS
           </div>
         </h2>
@@ -160,7 +160,7 @@ export default function ProjectSection() {
             fontFamily: "'Elicyon-Regular.Woff2', sans-serif"
           }}
         >
-          <span className="uppercase tracking-[0.4em] text-[10px] font-medium mb-1 hover:opacity-50 transition-opacity md:pr-23 ">
+          <span className="uppercase tracking-[0.4em] text-[10px] font-medium mb-1 hover:opacity-50 transition-opacity pr-10 md:pr-10 ">
             Discover our work
           </span>
         </Link>

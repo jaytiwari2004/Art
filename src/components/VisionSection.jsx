@@ -83,6 +83,7 @@ export default function VisionSection() {
   return (
     <section
       ref={containerRef}
+      className="vision-section"
       style={{
         position: "relative",
         minHeight: "120vh",
@@ -96,6 +97,15 @@ export default function VisionSection() {
         padding: "120px 24px",
       }}
     >
+      <style>{`
+        @media (max-width: 768px) {
+          .vision-section { padding: 120px 24px 100px 24px !important; }
+          .vision-title { text-align: center !important; }
+          .vision-card { max-width: 250px !important; margin-left: auto !important; margin-right: 0 !important; }
+          .vision-desc { text-align: right !important; }
+        }
+      `}</style>
+
       {/* ── Parallax Background Layer ── */}
       <div
         ref={bgRef}
@@ -115,6 +125,7 @@ export default function VisionSection() {
 
       {/* ── Content Layer ── */}
       <div
+        className="vision-content-wrapper"
         style={{
           position: "relative",
           zIndex: 10,
@@ -128,6 +139,7 @@ export default function VisionSection() {
         {/* Headline */}
         <div ref={headlineRef} style={{ textAlign: "center", marginBottom: "56px" }}>
           <h2
+            className="vision-title"
             style={{
               fontFamily: "'SageNav', sans-serif",
               fontSize: "48px",
@@ -150,6 +162,7 @@ export default function VisionSection() {
 
         {/* Central Image Card */}
         <div
+          className="vision-card"
           style={{
             width: "100%",
             maxWidth: "420px",
@@ -175,6 +188,7 @@ export default function VisionSection() {
         {/* Description + CTA */}
         <div
           ref={descRef}
+          className="vision-desc"
           style={{
             maxWidth: "480px",
             marginTop: "52px",

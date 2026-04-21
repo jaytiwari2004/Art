@@ -5,12 +5,12 @@ export default function Footer() {
   const letters = "MALMAR".split("");
 
   const antiqueStyle = {
-    fontFamily: "__antiqueLegacy_623eb9, __antiqueLegacy_Fallback_623eb9",
+    fontFamily: "__elicyon_df1f4c, __elicyon_Fallback_df1f4c, Elicyon, serif",
     fontWeight: 400,
     textTransform: "uppercase",
     letterSpacing: "0.2em",
     fontSize: "14px",
-    lineHeight: "14px",
+    lineHeight: "1.6",
     color: "rgb(0, 0, 0)"
   };
 
@@ -23,7 +23,7 @@ export default function Footer() {
 
   return (
     <footer className="relative bg-[#fdf0d5] text-[#1a1a1a] pt-20 md:pt-32 pb-16 md:pb-24 px-6 md:px-16 overflow-hidden flex flex-col">
-                                                          {/*pt-6 md:pt-10   */}
+      {/*pt-6 md:pt-10   */}
       <div className="max-w-[1400px] mx-auto w-full z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
 
@@ -47,7 +47,7 @@ export default function Footer() {
               </div>
 
               {/* Mobile View */}
-              <div className="block md:hidden" style={{ lineHeight: "1" }}>
+              <div className="block md:hidden" style={{ lineHeight: "1.2" }}>
                 <div className="whitespace-nowrap">JOIN <span className="italic lowercase mx-1" style={{ textTransform: "none" }}>the</span> WORLD</div>
                 <div className="whitespace-nowrap"><span className="italic lowercase mr-2" style={{ textTransform: "none" }}>of</span> MALMAR</div>
               </div>
@@ -101,19 +101,19 @@ export default function Footer() {
 
           {/* RIGHT: LINKS */}
           <div className="grid grid-cols-2 gap-4 md:gap-10 pt-1 lg:pt-0">
-            <div className="flex flex-col space-y-1">
+            <div className="flex flex-col space-y-2">
               {navLinks.map((link) => (
-                <Link 
-                  href={link.path} 
-                  key={link.name} 
-                  className="cursor-pointer hover:opacity-50 transition-opacity text-[11px]" 
+                <Link
+                  href={link.path}
+                  key={link.name}
+                  className="cursor-pointer hover:opacity-50 transition-opacity text-[11px]"
                   style={antiqueStyle}
                 >
                   {link.name}
                 </Link>
               ))}
             </div>
-            <div className="flex flex-col space-y-1">
+            <div className="flex flex-col space-y-2">
               {["INSTAGRAM", "PINTEREST", "LINKEDIN", "FACEBOOK"].map((link) => (
                 <span key={link} className="cursor-pointer hover:opacity-50 transition-opacity text-[11px]" style={antiqueStyle}>
                   {link}
@@ -126,7 +126,7 @@ export default function Footer() {
 
       {/* --- BIG LOGO TEXT WITH SHUTTER EFFECT --- */}
       <motion.div
-        className="w-full mt-8 mb-6 z-10 overflow-hidden flex justify-center"
+        className="hidden md:flex w-full mt-8 mb-6 z-10 overflow-hidden justify-center"
         initial={{ clipPath: "inset(100% 0% 0% 0%)" }}
         whileInView={{ clipPath: "inset(0% 0% 0% 0%)" }}
         viewport={{ once: true }}

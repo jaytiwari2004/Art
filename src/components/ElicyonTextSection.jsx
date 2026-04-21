@@ -52,27 +52,40 @@ const ElicyonTextSection = () => {
           }
         });
       } else {
-        gsap.fromTo(".mobile-text-row",
-          { y: 50, opacity: 0 },
-          {
-            y: -50,
-            opacity: 1,
-            stagger: 0.2,
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top 80%",
-              end: "bottom 20%",
-              scrub: true,
-            }
+        const mobileTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "+=300%",
+            pin: true,
+            scrub: 1.2,
           }
-        );
+        });
+
+        // Similar behavior to desktop but with adjusted values
+        mobileTl.to(textWrapper.current, { y: "12vh", duration: 3, ease: "power1.inOut" }, 0.5);
+        mobileTl.to(".word-spaces", { opacity: 0, y: -20, scale: 0.95, duration: 1.5 }, 1.5);
+        mobileTl.to(".row-2", { x: "-15vw", duration: 3, ease: "power2.inOut" }, 3.5);
+        mobileTl.to(".row-3", { x: "10vw", y: 5, duration: 3, ease: "power2.inOut" }, 3.5);
+        mobileTl.to(textWrapper.current, { y: "20vh", duration: 8, ease: "power1.inOut" }, 6.5);
+
+        gsap.to(".parallax-img", {
+          y: "-260vh",
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "+=400%",
+            scrub: 1,
+          }
+        });
       }
     });
   }, { scope: sectionRef });
 
   const wordStyle = {
     fontFamily: "'SageNav', sans-serif",
-    fontSize: "clamp(18px, 4.5vw, 52px)",
+    fontSize: "clamp(18px, 6vw, 52px)",
     lineHeight: "1", // ✅ tightened
     color: "#000",
     textTransform: "none",
@@ -80,7 +93,7 @@ const ElicyonTextSection = () => {
   };
 
   return (
-    <div ref={sectionRef} className="relative w-full h-[250vh] md:h-screen bg-[#f8f7f3] overflow-hidden">
+    <div ref={sectionRef} className="relative w-full h-screen bg-[#f8f7f3] overflow-hidden">
 
       {/* BACKGROUND IMAGES */}
       <div className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none">
@@ -100,13 +113,13 @@ const ElicyonTextSection = () => {
           </div>
 
           {/* Line 2 */}
-          <div className="row-2 flex space-x-6 mb-0">
+          <div className="row-2 flex space-x-2 md:space-x-6 mb-0">
             <div className="word-reflect" style={wordStyle}>REFLECT</div>
             <div className="word-vision" style={wordStyle}>VISION</div>
           </div>
 
           {/* Line 3 */}
-          <div className="row-3 flex space-x-6">
+          <div className="row-3 flex space-x-2 md:space-x-6">
             <div className="word-through" style={{ ...wordStyle, fontStyle: "italic" }}>
               THROUGH
             </div>
